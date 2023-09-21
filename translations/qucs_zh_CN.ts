@@ -6,12 +6,12 @@
     <message>
         <location filename="../qucs/dialogs/aboutdialog.cpp" line="+115"/>
         <source>About Qucs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关于Qucs</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">版本</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -3297,19 +3297,19 @@ but is %1 !</source>
         <location filename="../qucs/components/ac_sim.cpp" line="+28"/>
         <location line="+49"/>
         <source>ac simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>ac仿真</translation>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_sens_ac.cpp" line="+25"/>
         <location line="+43"/>
         <source>AC sensitivity simulation</source>
-        <translation type="unfinished"></translation>
+        <translation>AC灵敏度仿真</translation>
     </message>
     <message>
         <location line="-22"/>
         <location filename="../qucs/spicecomponents/sp_sens.cpp" line="+46"/>
         <source>Output variable</source>
-        <translation type="unfinished"></translation>
+        <translation>输出变量</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3320,7 +3320,7 @@ but is %1 !</source>
         <location filename="../qucs/components/param_sweep.cpp" line="+49"/>
         <location filename="../qucs/components/ac_sim.cpp" line="-23"/>
         <source>sweep type</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描类型</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3329,7 +3329,7 @@ but is %1 !</source>
         <location filename="../qucs/components/sp_sim.cpp" line="+2"/>
         <location filename="../qucs/components/ac_sim.cpp" line="+2"/>
         <source>start frequency in Hertz</source>
-        <translation type="unfinished"></translation>
+        <translation>起始频率(Hz)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3338,7 +3338,7 @@ but is %1 !</source>
         <location filename="../qucs/components/sp_sim.cpp" line="+2"/>
         <location filename="../qucs/components/ac_sim.cpp" line="+2"/>
         <source>stop frequency in Hertz</source>
-        <translation type="unfinished"></translation>
+        <translation>终止频率(Hz)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3348,29 +3348,29 @@ but is %1 !</source>
         <location filename="../qucs/components/param_sweep.cpp" line="+8"/>
         <location filename="../qucs/components/ac_sim.cpp" line="+2"/>
         <source>number of simulation steps</source>
-        <translation type="unfinished"></translation>
+        <translation>仿真时间步个数</translation>
     </message>
     <message>
         <location filename="../qucs/components/ac_sim.cpp" line="+2"/>
         <source>calculate noise voltages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">计算噪声电压</translation>
     </message>
     <message>
         <location filename="../qucs/components/am_modulator.cpp" line="+23"/>
         <source>ac voltage source with amplitude modulator</source>
-        <translation type="unfinished"></translation>
+        <translation>带调幅的ac电压源</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>AM</source>
-        <translation type="unfinished"></translation>
+        <translation>AM</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_ac.cpp" line="+50"/>
         <location filename="../qucs/components/pm_modulator.cpp" line="+52"/>
         <location filename="../qucs/components/am_modulator.cpp" line="+15"/>
         <source>peak voltage in Volts</source>
-        <translation type="unfinished"></translation>
+        <translation>峰值电压(V)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3380,7 +3380,7 @@ but is %1 !</source>
         <location filename="../qucs/components/ampere_ac.cpp" line="+52"/>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
         <source>frequency in Hertz</source>
-        <translation type="unfinished"></translation>
+        <translation>频率(Hz)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3388,7 +3388,7 @@ but is %1 !</source>
         <location filename="../qucs/components/ampere_ac.cpp" line="+2"/>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
         <source>initial phase in degrees</source>
-        <translation type="unfinished"></translation>
+        <translation>初始相位(角度)</translation>
     </message>
     <message>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
@@ -11014,7 +11014,7 @@ Active Filter synthesis program
     <message>
         <location filename="../qucs/qucs.cpp" line="-571"/>
         <source>Schematic</source>
-        <translation type="unfinished"></translation>
+        <translation>原理图</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -11024,43 +11024,43 @@ Active Filter synthesis program
     <message>
         <location line="+1"/>
         <source>Qucs Documents</source>
-        <translation type="unfinished"></translation>
+        <translation>Qucs文档</translation>
     </message>
     <message>
         <location line="+1"/>
         <location line="+1500"/>
         <source>VHDL Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>VHDL源代码</translation>
     </message>
     <message>
         <location line="-1499"/>
         <location line="+1500"/>
         <source>Verilog Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Verilog源代码</translation>
     </message>
     <message>
         <location line="-1499"/>
         <location line="+1500"/>
         <source>Verilog-A Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Verilog-A源代码</translation>
     </message>
     <message>
         <location line="-1499"/>
         <location line="+1500"/>
         <source>Octave Scripts</source>
-        <translation type="unfinished"></translation>
+        <translation>Octave脚本</translation>
     </message>
     <message>
         <location line="-1499"/>
         <source>Spice Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Spice文件</translation>
     </message>
     <message>
         <location filename="../qucs/qucs_actions.cpp" line="-19"/>
         <location filename="../qucs/qucs.cpp" line="+1"/>
         <location line="+1501"/>
         <source>Any File</source>
-        <translation type="unfinished"></translation>
+        <translation>任意文件</translation>
     </message>
     <message>
         <location filename="../qucs/qucs.cpp" line="+308"/>
@@ -11131,7 +11131,7 @@ and simple press Apply button</source>
     <message>
         <location line="+31"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location line="+2"/>
