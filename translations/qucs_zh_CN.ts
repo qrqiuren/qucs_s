@@ -6,304 +6,304 @@
     <message>
         <location filename="../qucs/dialogs/aboutdialog.cpp" line="+115"/>
         <source>About Qucs</source>
-        <translation type="unfinished">关于Qucs</translation>
+        <translation>关于Qucs</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Version</source>
-        <translation type="unfinished">版本</translation>
+        <translation>版本</translation>
     </message>
     <message>
         <location line="+10"/>
         <location line="+1"/>
         <source>Copyright (C)</source>
-        <translation type="unfinished"></translation>
+        <translation>版权所有 (C)</translation>
     </message>
     <message>
         <location line="-84"/>
         <source>GUI programmer, Verilog-A dynamic loader</source>
-        <translation type="unfinished"></translation>
+        <translation>GUI程序员，Verilog-A 动态加载器</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>project maintainer, simulator interface and GUI design</source>
-        <translation type="unfinished"></translation>
+        <translation>项目负责人，仿真接口及GUI设计</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>component models, documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>元件模型，文档</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Xyce integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Xyce集成</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Testing, examples</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，例程</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Qt6 support, general improvements</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt6支持，多处改进</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Digital simulation, general improvements</source>
-        <translation type="unfinished"></translation>
+        <translation>数字仿真，多处改进</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>testing, general bugfixes</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，查错</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>testing, modelling and documentation, tutorial contributor</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，建模，以及文档、教程贡献者</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>testing, modelling, Octave.</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，建模，Octave。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>bondwire and rectangular waveguide model implementation</source>
-        <translation type="unfinished"></translation>
+        <translation>键合线与矩形波导模型</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GUI programmer, release</source>
-        <translation type="unfinished"></translation>
+        <translation>GUI编程，项目发布</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>filter synthesis (qucs-activefilter), SPICE integration (NGSPICE, Xyce)</source>
-        <translation type="unfinished"></translation>
+        <translation>滤波器分析（qucs-activefilter），SPICE集成（NGSPICE、Xyce）</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>testing, general fixes</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，多处修正</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>refactoring, modularity</source>
-        <translation type="unfinished"></translation>
+        <translation>重构，模块化</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>RF design tools</source>
-        <translation type="unfinished"></translation>
+        <translation>射频设计工具</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>founder of the project, GUI programmer</source>
-        <translation type="unfinished"></translation>
+        <translation>项目创始人，GUI编程</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Programmer of simulator</source>
-        <translation type="unfinished"></translation>
+        <translation>仿真器编程</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>webpages and translator</source>
-        <translation type="unfinished"></translation>
+        <translation>网页及翻译</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>tester and applyer of Stefan&apos;s patches, author of documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>测试，打上Stefan提供的补丁的人，文档作者</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>coplanar line and filter synthesis code, documentation contributor</source>
-        <translation type="unfinished"></translation>
+        <translation>共面传输线与滤波器合成代码，文档贡献者</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>some filter synthesis code and attenuator synthesis</source>
-        <translation type="unfinished"></translation>
+        <translation>一些滤波器合成代码以及衰减器分析</translation>
     </message>
     <message>
         <location line="+1"/>
         <location line="+5"/>
         <source>GUI programmer, Qt4 porter</source>
-        <translation type="unfinished"></translation>
+        <translation>GUI程序员，Qt4移植者</translation>
     </message>
     <message>
         <location line="-4"/>
         <source>programmer of the Verilog-AMS interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Verilog-AMS接口程序员</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>equation solver contributions, exponential sources, author of documentation</source>
-        <translation type="unfinished"></translation>
+        <translation>方程求解器贡献者，指数源，文档作者</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>temperature model for rectangular waveguide</source>
-        <translation type="unfinished"></translation>
+        <translation>矩形波导温度模型</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GUI programmer</source>
-        <translation type="unfinished"></translation>
+        <translation>GUI程序员</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>German by</source>
-        <translation type="unfinished"></translation>
+        <translation>德语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Polish by</source>
-        <translation type="unfinished"></translation>
+        <translation>波兰语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Romanian by</source>
-        <translation type="unfinished"></translation>
+        <translation>罗马尼亚语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>French by</source>
-        <translation type="unfinished"></translation>
+        <translation>法语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Portuguese by</source>
-        <translation type="unfinished"></translation>
+        <translation>葡萄牙语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Spanish by</source>
-        <translation type="unfinished"></translation>
+        <translation>西班牙语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Japanese by</source>
-        <translation type="unfinished"></translation>
+        <translation>日语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Italian by</source>
-        <translation type="unfinished"></translation>
+        <translation>意大利语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Hebrew by</source>
-        <translation type="unfinished"></translation>
+        <translation>希伯来语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Swedish by</source>
-        <translation type="unfinished"></translation>
+        <translation>瑞典语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Turkish by</source>
-        <translation type="unfinished"></translation>
+        <translation>土耳其语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Hungarian by</source>
-        <translation type="unfinished"></translation>
+        <translation>匈牙利语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Russian by</source>
-        <translation type="unfinished"></translation>
+        <translation>俄语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Czech by</source>
-        <translation type="unfinished"></translation>
+        <translation>捷克语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Catalan by</source>
-        <translation type="unfinished"></translation>
+        <translation>加泰罗尼亚语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Ukrainian by</source>
-        <translation type="unfinished"></translation>
+        <translation>乌克兰语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Arabic by</source>
-        <translation type="unfinished"></translation>
+        <translation>阿拉伯语：</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Kazakh by</source>
-        <translation type="unfinished"></translation>
+        <translation>哈萨克语：</translation>
     </message>
     <message>
         <location line="+60"/>
         <source>Home Page</source>
-        <translation type="unfinished"></translation>
+        <translation>主页</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Documentation start page</source>
-        <translation type="unfinished"></translation>
+        <translation>文档起始页</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Bugtracker page</source>
-        <translation type="unfinished"></translation>
+        <translation>Bug追踪页</translation>
     </message>
     <message>
         <location line="+53"/>
         <source>Qucs-S project team:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qucs-S项目团队：</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Based on Qucs project developed by:</source>
-        <translation type="unfinished"></translation>
+        <translation>基于Qucs项目，其开发者为：</translation>
     </message>
     <message>
         <location line="-45"/>
         <source>Authors</source>
-        <translation type="unfinished"></translation>
+        <translation>作者</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>翻译</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>支持</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>许可协议</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定(&amp;O)</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Previous Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>前开发者</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>GUI translations :</source>
-        <translation type="unfinished"></translation>
+        <translation>GUI翻译：</translation>
     </message>
 </context>
 <context>
@@ -394,12 +394,12 @@
     <message>
         <location filename="../qucs/dialogs/settingsdialog.cpp" line="+360"/>
         <source>Select</source>
-        <translation type="unfinished"></translation>
+        <translation>选择</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -3398,53 +3398,53 @@ but is %1 !</source>
     <message>
         <location line="+14"/>
         <source>AM modulated Source</source>
-        <translation type="unfinished"></translation>
+        <translation>AM调制源</translation>
     </message>
     <message>
         <location filename="../qucs/components/ampere_ac.cpp" line="-28"/>
         <source>ideal ac current source</source>
-        <translation type="unfinished"></translation>
+        <translation>理想ac电流源</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>peak current in Ampere</source>
-        <translation type="unfinished"></translation>
+        <translation>峰值电流(A)</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_ac.cpp" line="+2"/>
         <location filename="../qucs/components/ampere_ac.cpp" line="+6"/>
         <source>damping factor (transient simulation only)</source>
-        <translation type="unfinished"></translation>
+        <translation>阻尼系数(仅瞬态仿真)</translation>
     </message>
     <message>
         <location filename="../qucs/components/ampere_ac.cpp" line="+16"/>
         <source>ac Current Source</source>
-        <translation type="unfinished"></translation>
+        <translation>ac电流源</translation>
     </message>
     <message>
         <location filename="../qucs/components/ampere_dc.cpp" line="+26"/>
         <source>ideal dc current source</source>
-        <translation type="unfinished"></translation>
+        <translation>理想dc电流源</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>current in Ampere</source>
-        <translation type="unfinished"></translation>
+        <translation>电流(A)</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>dc Current Source</source>
-        <translation type="unfinished"></translation>
+        <translation>dc电流源</translation>
     </message>
     <message>
         <location filename="../qucs/components/ampere_noise.cpp" line="+25"/>
         <source>noise current source</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">noise电流源</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>current power spectral density in A^2/Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>电流功率谱密度(A^2/Hz)</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_noise.cpp" line="+48"/>
@@ -8882,7 +8882,7 @@ Wrong &apos;component&apos; line format!</source>
     <message>
         <location filename="../qucs/components/volt_ac.cpp" line="-30"/>
         <source>ideal ac voltage source</source>
-        <translation>理想交流电压源</translation>
+        <translation type="unfinished">理想ac电压源</translation>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/volt_ac_SPICE.cpp" line="+26"/>
@@ -8893,22 +8893,22 @@ Wrong &apos;component&apos; line format!</source>
         <location line="+43"/>
         <location filename="../qucs/components/volt_ac.cpp" line="+46"/>
         <source>ac Voltage Source</source>
-        <translation>交流电压源</translation>
+        <translation type="unfinished">ac电压源</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_dc.cpp" line="-23"/>
         <source>ideal dc voltage source</source>
-        <translation>理想直流电压源</translation>
+        <translation type="unfinished">理想dc电压源</translation>
     </message>
     <message>
         <location line="+52"/>
         <source>dc Voltage Source</source>
-        <translation>直流电压源</translation>
+        <translation type="unfinished">dc电压源</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_noise.cpp" line="-29"/>
         <source>noise voltage source</source>
-        <translation>噪声电压源</translation>
+        <translation type="unfinished">noise电压源</translation>
     </message>
     <message>
         <location line="+23"/>
