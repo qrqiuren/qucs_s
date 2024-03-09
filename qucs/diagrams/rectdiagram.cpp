@@ -83,6 +83,63 @@ void RectDiagram::calcCoordinate(const double* xD, const double* yD, const doubl
 }
 
 // --------------------------------------------------------------
+// Convert a point on the diagram to the value represented by that point.
+MappedPoint RectDiagram::pointToValue(const QPointF& point)
+{
+  MappedPoint result{};
+      // Update the value transform. TODO: This only needs to be called when the limits change.
+  valueTransform.reset();
+  qreal xMin = xAxis.log ? log10(xAxis.low) : xAxis.low;
+  qreal yMin = yAxis.log ? log10(yAxis.low) : yAxis.low;
+  qreal xMax = xAxis.log ? log10(xAxis.up) : xAxis.up;
+  qreal yMax = yAxis.log ? log10(yAxis.up) : yAxis.up;
+  valueTransform.translate(xMin, yMin);
+  valueTransform.scale((xMax - xMin) / x2, (yMax - yMin) / y2);
+
+  // Obtain the value at point.
+  QPointF value = valueTransform.map(point);
+
+  result.x = xAxis.log ? pow(10, value.x()) : value.x();
+  result.y1 = yAxis.log ? pow(10, value.y()) : value.y();
+
+  valueTransform.reset();
+  yMin = zAxis.log ? log10(zAxis.low) : zAxis.low;
+  yMax = zAxis.log ? log10(zAxis.up) : zAxis.up;
+  valueTransform.translate(xMin, yMin);
+  valueTransform.scale((xMax - xMin) / x2, (yMax - yMin) / y2);
+  // Obtain the value at point.
+  value = valueTransform.map(point);
+
+  result.y2 = zAxis.log ? pow(10, value.y()) : value.y();
+
+  // qDebug() << "Transform yields: " << value;
+  // Convert to exponential if needed.
+  return result;
+}
+
+void RectDiagram::setLimitsBySelectionRect(QRectF select) {
+  double a, b, c;
+  // Set the diagram limits.
+  auto minValue = pointToValue(select.bottomLeft());
+  auto maxValue = pointToValue(select.topRight());
+
+  xAxis.limit_min = minValue.x;
+  xAxis.limit_max = maxValue.x;
+  calcAxisScale(&xAxis, a, b, c, xAxis.step, double(x2)); // calculate step X
+  xAxis.autoScale = false;
+
+  yAxis.limit_min = maxValue.y1;
+  yAxis.limit_max = minValue.y1;
+  calcAxisScale(&yAxis, a, b, c, yAxis.step, double(y2)); // calculate step Y1
+  yAxis.autoScale = false;
+
+  zAxis.limit_min = maxValue.y2;
+  zAxis.limit_max = minValue.y2;
+  calcAxisScale(&zAxis, a, b, c, zAxis.step, double(y2)); // calculate step Y2
+  zAxis.autoScale = false;
+}
+
+// --------------------------------------------------------------
 void RectDiagram::finishMarkerCoordinates(float& fCX, float& fCY) const
 {
   if(!insideDiagram(fCX, fCY)) {
@@ -186,11 +243,11 @@ if(xAxis.log) {
     zD += zDstep;
     if(zD > 9.5*zDstep)  zDstep *= 10.0;
     if(back) {
-      z = int(corr*log10(zD / fabs(xAxis.up)) + 0.5); // int() implies floor()
+      z = lround(corr*log10(zD / fabs(xAxis.up)));
       z = x2 - z;
     }
     else
-      z = int(corr*log10(zD / fabs(xAxis.low)) + 0.5);// int() implies floor()
+      z = lround(corr*log10(zD / fabs(xAxis.low)));
   }
 }
 else {  // not logarithmical

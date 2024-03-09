@@ -128,8 +128,7 @@ bool EllipseArc::load(const QString& s)
   if(!ok) return false;
 
   n  = s.section(' ',7,7);    // color
-  QColor co;
-  co.setNamedColor(n);
+  QColor co = misc::ColorFromString(n);
   Pen.setColor(co);
   if(!Pen.color().isValid()) return false;
 
@@ -299,8 +298,9 @@ void EllipseArc::MouseMoving(
 }
 
 // --------------------------------------------------------------------------
-bool EllipseArc::MousePressing()
+bool EllipseArc::MousePressing(Schematic *sch)
 {
+  Q_UNUSED(sch)
   State++;
   switch(State) {
     case 1 :
@@ -346,16 +346,29 @@ bool EllipseArc::getSelected(float fX, float fY, float w)
 
 // --------------------------------------------------------------------------
 // Rotates around the center.
-void EllipseArc::rotate()
+// Rotates around the center.
+void EllipseArc::rotate(int xc, int yc)
 {
-  cy += (y2-x2) >> 1;
-  cx += (x2-y2) >> 1;
-  int tmp = x2;
-  x2 = y2;
-  y2 = tmp;
+    int xr1 = cx - xc;
+    int yr1 = cy - yc;
+    int xr2 = cx + x2 - xc;
+    int yr2 = cy + y2 - yc;
 
-  Angle += 16*90;
-  if(Angle >= 16*360)  Angle -= 16*360;
+    int tmp = xr2;
+    xr2  =  yr2;
+    yr2  = -tmp;
+
+    tmp = xr1;
+    xr1  =  yr1;
+    yr1  = -tmp;
+
+    cx = xr1 + xc;
+    cy = yr1 + yc;
+    x2 = xr2 - xr1;
+    y2 = yr2 - yr1;
+
+    Angle += 16*90;
+    if(Angle >= 16*360)  Angle -= 16*360;
 }
 
 // --------------------------------------------------------------------------
@@ -382,11 +395,11 @@ void EllipseArc::mirrorY()
 // --------------------------------------------------------------------------
 // Calls the property dialog for the painting and changes them accordingly.
 // If there were changes, it returns 'true'.
-bool EllipseArc::Dialog()
+bool EllipseArc::Dialog(QWidget *parent)
 {
   bool changed = false;
 
-  FillDialog *d = new FillDialog(QObject::tr("Edit Arc Properties"), false);
+  FillDialog *d = new FillDialog(QObject::tr("Edit Arc Properties"), false, parent);
   misc::setPickerColor(d->ColorButt,Pen.color());
   d->LineWidth->setText(QString::number(Pen.width()));
   d->StyleBox->setCurrentIndex(Pen.style()-1);

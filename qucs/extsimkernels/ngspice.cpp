@@ -27,6 +27,7 @@
 #include "spicecomponents/xsp_cmlib.h"
 #include "main.h"
 #include "misc.h"
+#include "qucs.h"
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -67,16 +68,17 @@ Ngspice::Ngspice(Schematic *sch_, QObject *parent) :
 void Ngspice::createNetlist(QTextStream &stream, int ,
                        QStringList &simulations, QStringList &vars, QStringList &outputs)
 {
+    Q_UNUSED(simulations);
+
+    if(!prepareSpiceNetlist(stream)) return; // Unable to perform spice simulation
+
     // include math. functions for inter-simulator compat.
     QString mathf_inc;
     bool found = findMathFuncInc(mathf_inc);
-    stream<<QString("* Qucs %1 %2\n").arg(PACKAGE_VERSION).arg(Sch->DocName);
     // Let to simulate schematic without mathfunc.inc file
     if (found && QucsSettings.DefaultSimulator != spicecompat::simSpiceOpus)
         stream<<QString(".INCLUDE \"%1\"\n").arg(mathf_inc);
 
-    QString s;
-    if(!prepareSpiceNetlist(stream)) return; // Unable to perform spice simulation
     startNetlist(stream); // output .PARAM and components
 
     if (DC_OP_only) {
@@ -91,28 +93,6 @@ void Ngspice::createNetlist(QTextStream &stream, int ,
         outputs.clear();
         outputs.append("spice4qucs.cir.dc_op");
         return;
-    }
-
-    // determine which simulations are in use
-    simulations.clear();
-    for(Component *pc = Sch->DocComps.first(); pc != 0; pc = Sch->DocComps.next()) {
-       if(pc->isSimulation) {
-           s = pc->getSpiceNetlist();
-           QString sim_typ = pc->Model;
-           if (sim_typ==".AC") simulations.append("ac");
-           if (sim_typ==".TR") simulations.append("tran");
-           if (sim_typ==".CUSTOMSIM") simulations.append("custom");
-           if (sim_typ==".DISTO") simulations.append("disto");
-           if (sim_typ==".NOISE") simulations.append("noise");
-           if (sim_typ==".PZ") simulations.append("pz");
-           if (sim_typ==".SENS") simulations.append("sens");
-           if (sim_typ==".SENS_AC") simulations.append("sens_ac");
-           if (sim_typ==".SP") simulations.append("sp");
-           if (sim_typ==".FFT") simulations.append("fft");
-           if ((sim_typ==".SW")&&
-               (pc->Props.at(0)->Value.startsWith("DC"))) simulations.append("dc");
-           // stream<<s;
-       }
     }
 
     // set variable names for named nodes and wires
@@ -141,16 +121,10 @@ void Ngspice::createNetlist(QTextStream &stream, int ,
     }
     vars.sort();
 
-    stream<<".control\n"          //execute simulations
-          <<"echo \"\" > spice4qucs.cir.noise\n"
-          <<"echo \"\" > spice4qucs.cir.pz\n";
+    stream << "\n.control\n\n";          //execute simulations
 
-    bool load_osdi = false;
-    for(Component *pc = Sch->DocComps.first(); pc != 0; pc = Sch->DocComps.next()) {
-        if (pc->SpiceModel == "N") load_osdi = true;
-    }
-
-    if (load_osdi) {
+    if (!QucsMain->ProjName.isEmpty()) {
+        // always load osdi from the project directory
         QStringList osdi_ext;
         osdi_ext<<"*.osdi";
         QStringList osdi_files = QucsSettings.QucsWorkDir.entryList(osdi_ext,QDir::Files);
@@ -161,260 +135,237 @@ void Ngspice::createNetlist(QTextStream &stream, int ,
         }
     }
 
-    outputs.clear();
+    // determine which simulations are in use
+    unsigned int dcSims = 0;
+    unsigned int freqSims = 0;
+    unsigned int timeSims = 0;
+    unsigned int fourSims = 0;
+    unsigned int pzSims = 0;
 
-    for (const QString& sim : simulations) {
+    outputs.clear();
+    for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+        Component *pc = Sch->DocComps.at(i);
+        if ( !pc->isSimulation ) continue;
+        if ( pc->isActive != COMP_IS_ACTIVE ) continue;
+
+        QString sim_typ = pc->Model;
+        QString sim_name = pc->Name.toLower();
+        QString spiceNetlist;
 
         bool hasParSWP = false;
         bool hasDblSWP = false;
         QString cnt_var;
 
         // Duplicate .PARAM in .control section. They may be used in euqations
-        for(Component *pc = Sch->DocComps.first(); pc != 0; pc = Sch->DocComps.next()) {
-            if (pc->Model=="Eqn") {
-                Equation *eq = (Equation *)pc;
-                stream<<eq->getNgspiceScript();
+        for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+            Component *pc1 = Sch->DocComps.at(i);
+            if ( pc1->isActive != COMP_IS_ACTIVE ) continue;
+            if ( pc1->Model == "Eqn" ) {
+                spiceNetlist.append((reinterpret_cast<Equation *>(pc1))->getNgspiceScript());
             }
         }
 
-        // Hack: Such indexation method is needed to avoid entering infinite loop
-        // in some cases of recursive access to Sch->DocComps list
-        for(unsigned int i=0;i<Sch->DocComps.count();i++) {
-            Component *pc = Sch->DocComps.at(i);
-            QString sim_typ = pc->Model;
-            if (!pc->isActive) continue;
-            if (sim_typ==".SW") {
-                QString SwpSim = pc->Props.at(0)->Value;
-                QString s = pc->getNgspiceBeforeSim(sim);
-                cnt_var = ((Param_Sweep *)pc)->getCounterVar();
-                if (SwpSim.startsWith("AC")&&(sim=="ac")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("SP")&&(sim=="sp")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("DISTO")&&(sim=="disto")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("NOISE")&&(sim=="noise")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("PZ")&&(sim=="pz")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("FFT")&&(sim=="fft")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } if (SwpSim.startsWith("TR")&&(sim=="tran")) {
-                    QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                    stream<<(s2+s);
-                    hasParSWP = true;
-                } else if (SwpSim.startsWith("SW")&&(sim=="dc")) {
-                    for(Component *pc1 = Sch->DocComps.first(); pc1 != 0; pc1 = Sch->DocComps.next()) {
-                        if ((pc1->Name==SwpSim)&&(pc1->Props.at(0)->Value.startsWith("DC"))) {
-                            QString s2 = getParentSWPscript(pc,sim,true,hasDblSWP);
-                            stream<<(s2+s);
-                            hasParSWP = true;
-                        }
+        QString nods;
+        for (const QString& nod : vars) {
+            if ( nod.endsWith("#branch") )
+                nods.append(QString("i(%1) ").arg(nod.section('#', 0, 0)));
+            else
+                nods.append(QString("v(%1) ").arg(nod));
+        }
+
+        for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+            Component *pc1 = Sch->DocComps.at(i);
+            if ( !pc1->isSimulation ) continue;
+            if ( pc1->isActive != COMP_IS_ACTIVE ) continue;
+            QString sim_typ = pc1->Model;
+            if ( sim_typ == ".SW" ) {
+                QString SwpSim = pc1->Props.at(0)->Value.toLower();
+                if ( SwpSim == sim_name ) {
+                    cnt_var = (reinterpret_cast<Param_Sweep *>(pc1))->getCounterVar();
+                    if ( !sim_name.startsWith("dc") ) {
+                        spiceNetlist.append(getParentSWPscript(pc1, sim_name, true, hasDblSWP));
+                        spiceNetlist.append(pc1->getNgspiceBeforeSim(sim_name));
+                        hasParSWP = true;
                     }
                 }
             }
         }
 
-
-        QString custom_vars;
-        QStringList ext_vars;
-        // Hack: Such indexation method is needed to avoid entering infinite loop
-        // in some cases of recursive access to Sch->DocComps list
-        for(unsigned int i=0;i<Sch->DocComps.count();i++) {
-           Component *pc = Sch->DocComps.at(i);
-           if(pc->isSimulation) {
-               QString sim_typ = pc->Model;
-               QString s = pc->getSpiceNetlist();
-               if ((sim_typ==".AC")&&(sim=="ac")) stream<<s;
-               if ((sim_typ==".SP")&&(sim=="sp")) {
-                   stream<<s;
-                   ext_vars = pc->getExtraVariables();
-               }
-               if ((sim_typ==".FFT")&&(sim=="fft")) {
-                   stream<<s;
-                   //ext_vars = pc->getExtraVariables();
-               }
-               if ((sim_typ==".DISTO")&&(sim=="disto")) stream<<s;
-               if ((sim_typ==".NOISE")&&(sim=="noise")) {
-                   outputs.append("spice4qucs.cir.noise");
-                   stream<<s;
-               } if ((sim_typ==".PZ")&&(sim=="pz")) {
-                   outputs.append("spice4qucs.cir.pz"); // Add it twice for poles and zeros
-                   outputs.append("spice4qucs.cir.pz");
-                   stream<<s;
-               } else if((sim_typ==".SENS")&&(sim=="sens")) {
-                   outputs.append("spice4qucs.ngspice.sens.dc.prn");
-                   stream<<s;
-               } else if((sim_typ==".SENS_AC")&&(sim=="sens_ac")) {
-                   outputs.append("spice4qucs.sens.prn");
-                   stream<<s;
-               } if ((sim_typ==".TR")&&(sim=="tran")) {
-                   stream<<s;
-                   Q3PtrList<Component> comps(Sch->DocComps); // find Fourier tran
-                   for(Component *pc1 = comps.first(); pc1 != 0; pc1 = comps.next()) {
-                       if (pc1->Model==".FOURIER") {
-                           if (pc1->Props.at(0)->Value==pc->Name) {
-                               QString s1 = pc1->getSpiceNetlist();
-                               outputs.append("spice4qucs.four");
-                               stream<<s1;
-                           }
-                       }
-                   }
-               }
-               if ((sim_typ==".CUSTOMSIM")&&(sim=="custom")) {
-                   stream<<s;
-                   custom_vars = pc->Props.at(1)->Value;
-                   custom_vars.replace(";"," ");
-                   QString cust_out = pc->Props.at(2)->Value;
-                   outputs.append(cust_out.split(';',qucs::SkipEmptyParts));
-               }
-               if (sim_typ==".SW") {
-                   QString SwpSim = pc->Props.at(0)->Value;
-                   if (SwpSim.startsWith("DC")&&(sim=="dc")) stream<<s;
-               }
-           }
-        }
-
-
-        QFileInfo inf(Sch->DocName);
-        QString basenam = inf.baseName();
-
-        if (sim=="custom") {
-            QString ss = custom_vars;
-            if (!ss.remove(' ').isEmpty()) { // if there was no variables
-                QString filename = basenam + "_custom.txt";
-                filename.replace(' ','_');
-                outputs.append(filename);
-                QString write_str = QString("write %1 %2\n").arg(filename).arg(custom_vars);
-                stream<<write_str;
-                stream<<"destroy all\n";
-                stream<<"reset\n";
-            }
-            continue;
-        }
-
-        QString nods;
-        nods.clear();
-        for (const QString& nod : vars) {
-            if (!nod.endsWith("#branch")) {
-                nods += QString("v(%1) ").arg(nod);
-            } else {
-                nods += QString("%1 ").arg(nod);
-            }
-        }
-
-        if (sim == "fft") {
-            stream<<QString("linearize %1\n").arg(nods);
-            stream<<QString("fft %1\n").arg(nods);
-        }
-
-        QStringList vars_eq;
-        vars_eq.clear();
-        QStringList Eqns;
-        Eqns.clear();
-        for(Component *pc = Sch->DocComps.first(); pc != 0; pc = Sch->DocComps.next()) {
-            if ((pc->Model == "Eqn")||(pc->Model== "NutmegEq")) {
-                QStringList v1;
-                QString s_eq = pc->getEquations(sim,v1);
-                stream<< s_eq;
-                Eqns.append(s_eq.split("\n"));
-                vars_eq.append(v1);
-            }
-        }
-
-        if (sim == "sp") { // S-parameter and FFT requires specific variables
-            nods.clear();
-            for (const auto &var : ext_vars) {
-                nods += " " + var;
-            }
-        }
-        for (QStringList::iterator it = vars_eq.begin();it != vars_eq.end(); it++) {
-            nods += " " + *it;
-        }
-
-        if (sim=="noise") {
-            if (hasParSWP) {  // Set necessary plot number to output Noise spectrum
-                // each step of parameter sweep creates new couple of noise plots
-                stream<<QString("let noise_%1 = 2*%1+1\n").arg(cnt_var);
-                stream<<QString("setplot noise$&noise_%1\n").arg(cnt_var);
-            } else {  // Set Noise1 plot to output noise spectrum
-                stream<<"setplot noise1\n";
-            }
-            nods = " inoise_spectrum onoise_spectrum";
-        }
-
-        if ((sim!="pz")&&(sim!="sens")&&(sim!="sens_ac")) {
-            QString filename;
-            if (hasParSWP&&hasDblSWP) filename = QString("%1_%2_swp_swp.txt").arg(basenam).arg(sim);
-            else if (hasParSWP) filename = QString("%1_%2_swp.txt").arg(basenam).arg(sim);
-            else filename = QString("%1_%2.txt").arg(basenam).arg(sim);
-            filename.replace(' ','_'); // Ngspice cannot understand spaces in filename
-
-            QString write_str = QString("write %1 %2\n").arg(filename).arg(nods);
-            stream<<write_str;
-            outputs.append(filename);
-        }
-
-
-        for(Component *pc = Sch->DocComps.first(); pc != 0; pc = Sch->DocComps.next()) {
-            QString sim_typ = pc->Model;
-            if (!pc->isActive) continue;
-            if (sim_typ==".SW") {
-                QString s = pc->getNgspiceAfterSim(sim);
-                QString SwpSim = pc->Props.at(0)->Value;
-                bool b; // value drain
-                if (SwpSim.startsWith("AC")&&(sim=="ac")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("SP")&&(sim=="sp")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("DISTO")&&(sim=="disto")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("NOISE")&&(sim=="noise")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("PZ")&&(sim=="pz")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("FFT")&&(sim=="fft")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("TR")&&(sim=="tran")) {
-                    s += getParentSWPscript(pc,sim,false,b);
-                    stream<<s;
-                } else if (SwpSim.startsWith("SW")&&(sim=="dc")) {
-                    for(Component *pc1 = Sch->DocComps.first(); pc1 != 0; pc1 = Sch->DocComps.next()) {
-                        if ((pc1->Name==SwpSim)&&(pc1->Props.at(0)->Value.startsWith("DC"))) {
-                             s += getParentSWPscript(pc,sim,false,b);
-                             stream<<s;
-                        }
+        if ( sim_typ == ".AC" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+        } else if ( sim_typ == ".TR" ) {
+            timeSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+                Component *pc1 = Sch->DocComps.at(i);
+                if ( !pc1->isSimulation ) continue;
+                if ( pc1->isActive != COMP_IS_ACTIVE ) continue;
+                if ( pc1->Model == ".FOURIER" ) {
+                    if ( pc1->Props.at(0)->Value.toLower() == sim_name ) {
+                        fourSims++;
+                        // Add it twice for THD
+                        outputs.append("spice4qucs." + pc1->Name.toLower() + ".four");
+                        outputs.append("spice4qucs." + pc1->Name.toLower() + ".four");
+                        spiceNetlist.append(pc1->getSpiceNetlist());
                     }
-               }
+                }
+            }
+        } else if ( sim_typ == ".CUSTOMSIM" ) {
+            spiceNetlist.append(pc->getSpiceNetlist());
+            nods = pc->Props.at(1)->Value;
+            nods.replace(';', ' ');
+            outputs.append(pc->Props.at(2)->Value.split(';', qucs::SkipEmptyParts));
+
+            QRegularExpression ac_rx("^\\s*ac\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression sp_rx("^\\s*sp\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression noise_rx("^\\s*noise\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression disto_rx("^\\s*disto\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression fft_rx("^\\s*fft\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression four_rx("^\\s*(four|fourier)\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression dc_rx("^\\s*dc\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression op_rx("^\\s*op\\s*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression tran_rx("^\\s*tran\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression sens_ac_rx("^\\s*sens\\s.*ac\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression sens_dc_rx("^\\s*sens\\s.*", QRegularExpression::CaseInsensitiveOption);
+            QRegularExpression pz_rx("^\\s*pz\\s.*", QRegularExpression::CaseInsensitiveOption);
+
+            QStringList lines = pc->getSpiceNetlist().split('\n');
+            for ( const QString& line : lines ) {
+                if      ( ac_rx.match(line).hasMatch() )      freqSims++ ;
+                else if ( sp_rx.match(line).hasMatch() )      freqSims++ ;
+                else if ( noise_rx.match(line).hasMatch() )   freqSims++ ;
+                else if ( disto_rx.match(line).hasMatch() )   freqSims++ ;
+                else if ( fft_rx.match(line).hasMatch() )     freqSims++ ;
+                else if ( four_rx.match(line).hasMatch() )    fourSims++ ;
+                else if ( dc_rx.match(line).hasMatch() )      dcSims++ ;
+                else if ( op_rx.match(line).hasMatch() )      dcSims++ ;
+                else if ( tran_rx.match(line).hasMatch() )    timeSims++ ;
+                else if ( sens_ac_rx.match(line).hasMatch() ) freqSims++ ;
+                else if ( sens_dc_rx.match(line).hasMatch() ) dcSims++ ;
+                else if ( pz_rx.match(line).hasMatch() )      pzSims++ ;
+            }
+        } else if ( sim_typ == ".DISTO" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            nods.clear();
+        } else if ( sim_typ == ".NOISE" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            outputs.append("spice4qucs." + sim_name + ".cir.noise");
+            if ( hasParSWP ) {  // Set necessary plot number to output Noise spectrum
+                // each step of parameter sweep creates new couple of noise plots
+                spiceNetlist.append(QString("let noise_%1 = 2*%1+1\n").arg(cnt_var));
+                spiceNetlist.append(QString("setplot noise$&noise_%1\n").arg(cnt_var));
+            } else {  // Set Noise1 plot to output noise spectrum
+                spiceNetlist.append("setplot noise1\n");
+            }
+            nods = "inoise_spectrum onoise_spectrum";
+        } else if ( sim_typ == ".PZ" ) {
+            pzSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            QString out = "spice4qucs." + sim_name + ".cir.pz";
+            // Add it twice for poles and zeros
+            outputs.append(out);
+            outputs.append(out);
+        } else if ( sim_typ == ".SENS" ) {
+            dcSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            outputs.append("spice4qucs." + sim_name + ".ngspice.sens.dc.prn");
+        } else if ( sim_typ == ".SENS_AC" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            outputs.append("spice4qucs." + sim_name + ".sens.prn");
+        } else if ( sim_typ == ".SP" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            nods.clear();
+            nods.append(' ' + pc->getExtraVariables().join(' '));
+        } else if ( sim_typ == ".FFT" ) {
+            freqSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+            spiceNetlist.append(QString("linearize %1\n").arg(nods));
+            spiceNetlist.append(QString("fft %1\n").arg(nods));
+        } else if ( sim_typ == ".DC" ) {
+            dcSims++;
+            spiceNetlist.append(pc->getSpiceNetlist());
+        } else if ( sim_typ == ".SW" ) {
+            QString SwpSim = pc->Props.at(0)->Value.toLower();
+            if ( SwpSim.startsWith("dc") ) {
+                dcSims++;
+                spiceNetlist.append(pc->getSpiceNetlist());
+            } else
+                continue;
+        } else
+            continue;
+
+        if ( (sim_typ != ".PZ") && (sim_typ != ".SENS") && (sim_typ != ".SENS_AC") ) {
+            QStringList dep_vars;
+            for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+                Component *pc1 = Sch->DocComps.at(i);
+                if ( pc1->isActive != COMP_IS_ACTIVE ) continue;
+                if ( pc1->Model == "Eqn" || pc1->Model == "NutmegEq" )
+                    spiceNetlist.append(pc1->getEquations(sim_name, dep_vars));
+            }
+            nods.append(' ' + dep_vars.join(' '));
+        }
+
+        if ( sim_typ == ".DC" ) {
+            QString out = "spice4qucs." + sim_name + ".ngspice.dc.print";
+            spiceNetlist.append(QString("print %1 > %2\n").arg(nods).arg(out));
+            outputs.append(out);
+        } else if ( (sim_typ != ".PZ") && (sim_typ != ".SENS") && (sim_typ != ".SENS_AC") ) {
+            nods = nods.simplified();
+            if ( !nods.isEmpty() ) {
+                QString basenam = "spice4qucs";
+                QString filename;
+                if ( hasParSWP && hasDblSWP )
+                    filename = QString("%1.%2._swp_swp.plot").arg(basenam).arg(sim_name);
+                else if ( hasParSWP )
+                    filename = QString("%1.%2._swp.plot").arg(basenam).arg(sim_name);
+                else
+                    filename = QString("%1.%2.plot").arg(basenam).arg(sim_name);
+                filename.replace(' ', '_'); // Ngspice cannot understand spaces in filename
+                spiceNetlist.append(QString("write %1 %2\n").arg(filename).arg(nods));
+                outputs.append(filename);
             }
         }
 
-        stream<<"destroy all\n";
-        stream<<"reset\n\n";
+        for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+            Component *pc1 = Sch->DocComps.at(i);
+            if ( !pc1->isSimulation ) continue;
+            if ( pc1->isActive != COMP_IS_ACTIVE ) continue;
+            QString sim_typ = pc1->Model;
+            if ( sim_typ == ".SW" ) {
+                QString SwpSim = pc1->Props.at(0)->Value.toLower();
+                if ( SwpSim == sim_name ) {
+                    if ( !sim_name.startsWith("dc") ) {
+                        spiceNetlist.append(pc1->getNgspiceAfterSim(sim_name));
+                        spiceNetlist.append(getParentSWPscript(pc1, sim_name, false, hasDblSWP));
+                    }
+                }
+            }
+        }
+
+        spiceNetlist.append("destroy all\n");
+        spiceNetlist.append("reset\n\n");
+        stream << spiceNetlist;
     }
 
-    stream<<"exit\n"
-          <<".endc\n";
+    stream << "exit\n"
+           << ".endc\n";
+    stream << ".END\n";
 
-    stream<<".END\n";
+    needsPrefix = ( (dcSims | freqSims | timeSims | fourSims | pzSims) > 1 );
+
+    qDebug() << '\n'
+             << "Simulations:\n"
+             << "DC:        " << dcSims << '\n'
+             << "Frequency: " << freqSims << '\n'
+             << "Time:      " << timeSims << '\n'
+             << "Fourier:   " << fourSims << '\n'
+             << "Pole-Zero: " << pzSims << '\n'
+             << '\n';
 }
 
 /*!
@@ -427,21 +378,19 @@ void Ngspice::createNetlist(QTextStream &stream, int ,
 QString Ngspice::getParentSWPscript(Component *pc_swp, QString sim, bool before, bool &hasDblSwp)
 {
     hasDblSwp = false;
-    QString swp = pc_swp->Name;
-    if (swp.startsWith("DC")) return QString("");
-    Q3PtrList<Component> Comps(Sch->DocComps);
-    if (Comps.count()>0) {
-        for (unsigned int i=0;i<Comps.count();i++) {
-            Component *pc2 = Comps.at(i);
-            if (pc2->Model.startsWith(".SW")) {
-                if (pc2->Props.at(0)->Value==swp) {
-                    if (before) {
-                        hasDblSwp = true;
-                        return pc2->getNgspiceBeforeSim(sim,1);
-                    } else {
-                        hasDblSwp = true;
-                        return pc2->getNgspiceAfterSim(sim,1);
-                    }
+    QString swp = pc_swp->Name.toLower();
+    for ( unsigned int i = 0 ; i < Sch->DocComps.count() ; i++ ) {
+        Component *pc = Sch->DocComps.at(i);
+        if ( !pc->isSimulation ) continue;
+        if ( pc->isActive != COMP_IS_ACTIVE ) continue;
+        if ( pc->Model == ".SW" ) {
+            if ( pc->Props.at(0)->Value.toLower() == swp ) {
+                if (before) {
+                    hasDblSwp = true;
+                    return pc->getNgspiceBeforeSim(sim, 1);
+                } else {
+                    hasDblSwp = true;
+                    return pc->getNgspiceAfterSim(sim, 1);
                 }
             }
         }
@@ -495,8 +444,9 @@ void Ngspice::slotSimulate()
     }
 
     if (checker_error) {
-        console->insertPlainText(output);
-        emit finished();
+        if (console != nullptr)
+            console->insertPlainText(output);
+        //emit finished();
         emit errors(QProcess::FailedToStart);
         return;
     }
@@ -527,6 +477,7 @@ void Ngspice::slotSimulate()
     QString ngsp_cmd = cmd_args.at(0);
     cmd_args.removeAt(0);
     SimProcess->start(ngsp_cmd,cmd_args);
+    if (QucsMain)
     emit started();
 }
 

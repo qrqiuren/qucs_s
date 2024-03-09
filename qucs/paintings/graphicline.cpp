@@ -119,8 +119,7 @@ bool GraphicLine::load(const QString& s)
   if(!ok) return false;
 
   n  = s.section(' ',5,5);    // color
-  QColor co;
-  co.setNamedColor(n);
+  QColor co = misc::ColorFromString(n);
   Pen.setColor(co);
   if(!Pen.color().isValid()) return false;
 
@@ -232,8 +231,9 @@ void GraphicLine::MouseMoving(
 }
 
 // --------------------------------------------------------------------------
-bool GraphicLine::MousePressing()
+bool GraphicLine::MousePressing(Schematic *sch)
 {
+  Q_UNUSED(sch)
   State++;
   if(State > 2) {
     x1 = y1 = 0;
@@ -292,14 +292,25 @@ void GraphicLine::Bounding(int& _x1, int& _y1, int& _x2, int& _y2)
 
 // --------------------------------------------------------------------------
 // Rotates around the center.
-void GraphicLine::rotate()
+void GraphicLine::rotate(int xc, int yc)
 {
-  cx += (x2>>1) - (y2>>1);
-  cy += (x2>>1) + (y2>>1);
+    int xr1 = cx - xc;
+    int yr1 = cy - yc;
+    int xr2 = cx + x2 - xc;
+    int yr2 = cy + y2 - yc;
 
-  int tmp = x2;
-  x2  =  y2;
-  y2  = -tmp;
+    int tmp = xr2;
+    xr2  =  yr2;
+    yr2  = -tmp;
+
+    tmp = xr1;
+    xr1  =  yr1;
+    yr1  = -tmp;
+
+    cx = xr1 + xc;
+    cy = yr1 + yc;
+    x2 = xr2 - xr1;
+    y2 = yr2 - yr1;
 }
 
 // --------------------------------------------------------------------------
@@ -321,11 +332,11 @@ void GraphicLine::mirrorY()
 // --------------------------------------------------------------------------
 // Calls the property dialog for the painting and changes them accordingly.
 // If there were changes, it returns 'true'.
-bool GraphicLine::Dialog()
+bool GraphicLine::Dialog(QWidget *parent)
 {
   bool changed = false;
 
-  FillDialog *d = new FillDialog(QObject::tr("Edit Line Properties"), false);
+  FillDialog *d = new FillDialog(QObject::tr("Edit Line Properties"), false, parent);
   misc::setPickerColor(d->ColorButt,Pen.color());
   d->LineWidth->setText(QString::number(Pen.width()));
   d->StyleBox->setCurrentIndex(Pen.style()-1);

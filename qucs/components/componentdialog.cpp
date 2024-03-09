@@ -41,7 +41,9 @@
 ComponentDialog::ComponentDialog(Component *c, Schematic *d)
 			: QDialog(d)
 {
-  resize(450, 250);
+  QSettings settings("qucs","qucs_s");
+  restoreGeometry(settings.value("ComponentDialog/geometry").toByteArray());
+
   setWindowTitle(tr("Edit Component Properties"));
   Comp  = c;
   Doc   = d;
@@ -59,7 +61,7 @@ ComponentDialog::ComponentDialog(Component *c, Schematic *d)
   Validator = new QRegularExpressionValidator(Expr, this);
   Expr.setPattern("[^\"]*");   // valid expression for property 'edit'
   Validator2 = new QRegularExpressionValidator(Expr, this);
-  Expr.setPattern("[\\w_\\.\\(\\) @:\\[\\]]+");  // valid expression for property 'NameEdit'. Space to enable Spice-style par sweep
+  Expr.setPattern("[\\w_.,\\(\\) @:\\[\\]]+");  // valid expression for property 'NameEdit'. Space to enable Spice-style par sweep
   ValRestrict = new QRegularExpressionValidator(Expr, this);
 
   checkSim  = 0;  comboSim  = 0;  comboType  = 0;  checkParam = 0;
@@ -469,7 +471,7 @@ ComponentDialog::ComponentDialog(Component *c, Schematic *d)
         prop->setCurrentItem(prop->item(0,0));
         slotSelectProperty(prop->item(0,0));
     }
-
+ 
 
   /// \todo add key up/down browse and select prop
   connect(prop, SIGNAL(itemClicked(QTableWidgetItem*)),
@@ -676,6 +678,11 @@ void ComponentDialog::slotSelectProperty(QTableWidgetItem *item)
       else
         desc = desc.left(desc.length()-5) + "....";
     }
+
+    if (Comp->SpiceModel == "NutmegEq" && name == "Simulation") { // simulation selection required
+        List = getSimulationList();
+    }
+
     Description->setText(desc);
 
     if(List.count() >= 1) {    // ComboBox with value list or line edit ?
@@ -821,6 +828,9 @@ void ComponentDialog::slotApplyState(int State)
 // Is called if the "OK"-button is pressed.
 void ComponentDialog::slotButtOK()
 {
+  QSettings settings("qucs","qucs_s");
+  settings.setValue("ComponentDialog/geometry", saveGeometry());
+
   slotApplyInput();
   slotButtCancel();
 }
@@ -1242,16 +1252,14 @@ void ComponentDialog::slotButtRem()
 
   // peek next, delete current, set next current
   if ( row < prop->rowCount()) {
-    prop->setCurrentItem(prop->item(row-1,0)); // Shift selection up
-    slotSelectProperty(prop->item(row-1,0));
-
-    if (!prop->selectedItems().size()) { // The first item was removed
-        prop->setCurrentItem(prop->item(0,0)); // Select the first item
-        slotSelectProperty(prop->item(0,0));
-    }
-
-    prop->removeRow(row);
-    }
+      prop->setCurrentItem(prop->item(row-1,0)); // Shift selection up
+      slotSelectProperty(prop->item(row-1,0));
+      prop->removeRow(row);
+      if (!prop->selectedItems().size()) { // The first item was removed
+          prop->setCurrentItem(prop->item(0,0)); // Select the first item
+          slotSelectProperty(prop->item(0,0));
+      }
+  }
 }
 
 /*!
@@ -1387,7 +1395,7 @@ void ComponentDialog::slotNumberChanged(const QString&)
     if(y == 0.0)  y = x / 10.0;
     if(x == 0.0)  x = y * 10.0;
     if(y == 0.0) { y = 1.0;  x = 10.0; }
-    x = editNumber->text().toDouble() / log10(fabs(x / y));
+    x = (editNumber->text().toDouble() - 1) / log10(fabs(x / y));
     Unit = QString::number(x);
   }
   else {
@@ -1442,7 +1450,7 @@ void ComponentDialog::slotStepChanged(const QString& Step)
   }
 
   editNumber->blockSignals(true);  // do not calculate number again
-  editNumber->setText(QString::number(floor(x + 1.0)));
+  editNumber->setText(QString::number(round(x + 1.0), 'g', 16));
   editNumber->blockSignals(false);
 }
 
@@ -1520,4 +1528,36 @@ void ComponentDialog::slotHHeaderClicked(int headerIdx)
     cell->setText(s);
   }
   setAllVisible = not setAllVisible; // toggle visibility for the next double-click
+}
+
+
+QStringList ComponentDialog::getSimulationList()
+{
+    QStringList sim_lst;
+    Schematic *sch = Comp->getSchematic();
+    if (sch == nullptr) {
+        return sim_lst;
+    }
+    sim_lst.append("ALL");
+    for (size_t i = 0; i < sch->DocComps.count(); i++) {
+        Component *c = sch->DocComps.at(i);
+        if (!c->isSimulation) continue;
+        if (c->Model == ".FOUR") continue;
+        if (c->Model == ".PZ") continue;
+        if (c->Model == ".SENS") continue;
+        if (c->Model == ".SENS_AC") continue;
+        if (c->Model == ".SW" && !c->Props.at(0)->Value.toUpper().startsWith("DC") ) continue;
+        sim_lst.append(c->Name);
+    }
+    QStringList sim_wo_numbers = sim_lst;
+    for(auto &s: sim_wo_numbers) {
+        s.remove(QRegularExpression("[0-9]+$"));
+    }
+    for(const auto &s: sim_wo_numbers) {
+        int cnt = sim_wo_numbers.count(s);
+        if (cnt > 1 && ! sim_lst.contains(s)) {
+            sim_lst.append(s);
+        }
+    }
+    return sim_lst;
 }

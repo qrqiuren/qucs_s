@@ -134,8 +134,9 @@ void Xyce::createNetlist(QTextStream &stream, int , QStringList &simulations,
 
     //execute simulations
 
-    QFileInfo inf(Sch->DocName);
-    QString basenam = inf.baseName();
+    //QFileInfo inf(Sch->DocName);
+    //QString basenam = inf.baseName();
+    QString basenam = "spice4qucs";
 
     QString nods;
     nods.clear();
@@ -228,8 +229,8 @@ void Xyce::createNetlist(QTextStream &stream, int , QStringList &simulations,
     }
 
     QString filename;
-    if (hasParSweep) filename = QString("%1_%2_swp.txt").arg(basenam).arg(sim);
-    else filename = QString("%1_%2.txt").arg(basenam).arg(sim);
+    if (hasParSweep) filename = QString("%1.%2._swp.plot").arg(basenam).arg(sim);
+    else filename = QString("%1.%2.plot").arg(basenam).arg(sim);
     filename.remove(QRegularExpression("\\s")); // XYCE don't support spaces and quotes
     QString write_str;
     if (sim=="hb") {
@@ -276,26 +277,29 @@ void Xyce::slotSimulate()
 {
 
     QStringList incompat;
+    bool checker_error = false;
     if (!checkSchematic(incompat)) {
         QString s = incompat.join("; ");
         output.append("There were SPICE-incompatible components. Simulator cannot proceed.");
         output.append("Incompatible components are: " + s + "\n");
-        emit finished();
-        emit errors(QProcess::FailedToStart);
-        return;
+        checker_error = true;
     }
 
     if (!checkGround()) {
         output.append("No Ground found. Please add at least one ground!\n");
-        emit finished();
-        emit errors(QProcess::FailedToStart);
-        return;
+        checker_error = true;
     }
 
     if (!checkDCSimulation()) {
         output.append("Only DC simulation found in the schematic. It has no effect!"
                       " Add TRAN, AC, or Sweep simulation to proceed.\n");
-        emit finished();
+        checker_error = true;
+    }
+
+    if (checker_error) {
+        if (console != nullptr)
+            console->insertPlainText(output);
+        //emit finished();
         emit errors(QProcess::FailedToStart);
         return;
     }

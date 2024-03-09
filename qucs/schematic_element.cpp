@@ -22,6 +22,32 @@
 #include <QDebug>
 
 
+/**
+    Given an element bounding rectangle and selection rectangle tells
+    whether the element should be marked as "selected".
+
+    If \c entirely param is \c false then an element is "selected"
+    if its bounding rectangle intersect with selection rectangle.
+    Otherwise the element must lie entirely within the selection
+    rectangle.
+*/
+static bool shouldBeSelected(const QRect& elementBoundingRect, const QRect& selectionRect, bool entirely)
+{
+    // QRect.contains() and QRect.intersects() always return false
+    // for empty rectangles. Thus an element with zero size can't be
+    // selected. To overcome this, lets treat it like a point, not
+    // as a rectangle (empty rectangle has all its corners in one spot)
+    if (elementBoundingRect.isNull()) {
+        return selectionRect.contains(elementBoundingRect.topLeft());
+    }
+
+    if (entirely) {
+        return selectionRect.contains(elementBoundingRect);
+    } else {
+        return selectionRect.intersects(elementBoundingRect);
+    }
+}
+
 /* *******************************************************************
    *****                                                         *****
    *****              Actions handling the nodes                 *****
@@ -1496,8 +1522,7 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
     for (Component *pc = Components->first(); pc != nullptr; pc = Components->next()) {
         pc->Bounding(cx1, cy1, cx2, cy2);
         QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
-        if ((entirely && selectionRect.contains(componentRect)) ||
-            (!entirely && selectionRect.intersects(componentRect))) {
+        if (shouldBeSelected(componentRect, selectionRect, entirely)) {
             pc->isSelected = true;
             z++;
             continue;
@@ -1510,8 +1535,7 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
     for (pw = Wires->first(); pw != nullptr; pw = Wires->next())   // test all wires
     {
         QRect componentRect(pw->x1, pw->y1, pw->x2 - pw->x1, pw->y2 - pw->y1);
-        if ((entirely && selectionRect.contains(componentRect)) ||
-            (!entirely && selectionRect.intersects(componentRect))) {
+        if (shouldBeSelected(componentRect, selectionRect, entirely)) {
             pw->isSelected = true;
             z++;
             continue;
@@ -1525,9 +1549,9 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
     for (pw = Wires->first(); pw != nullptr; pw = Wires->next()) {
         if (pw->Label) {
             pl = pw->Label;
-            QRect componentRect(pl->x1, pl->y1, pl->x2 - pl->x1, pl->y2 - pl->y1);
-            if ((entirely && selectionRect.contains(componentRect)) ||
-                (!entirely && selectionRect.intersects(componentRect))) {
+            pl->getLabelBounding(cx1,cy1,cx2,cy2);
+            QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
+            if (shouldBeSelected(componentRect, selectionRect, entirely)) {
                 pl->isSelected = true;
                 z++;
                 continue;
@@ -1541,9 +1565,9 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
     for (Node *pn = Nodes->first(); pn != nullptr; pn = Nodes->next()) {
         pl = pn->Label;
         if (pl) {
-            QRect componentRect(pl->x1, pl->y1, pl->x2 - pl->x1, pl->y2 - pl->y1);
-            if ((entirely && selectionRect.contains(componentRect)) ||
-                (!entirely && selectionRect.intersects(componentRect))) {
+            pl->getLabelBounding(cx1,cy1,cx2,cy2);
+            QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
+            if (shouldBeSelected(componentRect, selectionRect, entirely)) {
                 pl->isSelected = true;
                 z++;
                 continue;
@@ -1563,8 +1587,7 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
             for (Marker *pm: pg->Markers) {
                 pm->Bounding(cx1, cy1, cx2, cy2);
                 QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
-                if ((entirely && selectionRect.contains(componentRect)) ||
-                    (!entirely && selectionRect.intersects(componentRect))) {
+                if (shouldBeSelected(componentRect, selectionRect, entirely)) {
                     pm->isSelected = true;
                     z++;
                     continue;
@@ -1576,8 +1599,7 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
         // test diagram itself
         pd->Bounding(cx1, cy1, cx2, cy2);
         QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
-        if ((entirely && selectionRect.contains(componentRect)) ||
-            (!entirely && selectionRect.intersects(componentRect))) {
+        if (shouldBeSelected(componentRect, selectionRect, entirely)) {
             pd->isSelected = true;
             z++;
             continue;
@@ -1589,8 +1611,7 @@ int Schematic::selectElements(int x1, int y1, int x2, int y2, bool append, bool 
     for (Painting *pp = Paintings->first(); pp != 0; pp = Paintings->next()) {
         pp->Bounding(cx1, cy1, cx2, cy2);
         QRect componentRect(cx1, cy1, cx2 - cx1, cy2 - cy1);
-        if ((entirely && selectionRect.contains(componentRect)) ||
-            (!entirely && selectionRect.intersects(componentRect))) {
+        if (shouldBeSelected(componentRect, selectionRect, entirely)) {
             pp->isSelected = true;
             z++;
             continue;
@@ -2856,14 +2877,16 @@ void Schematic::deleteComp(Component *c)
             pn->Connection->Connections.removeRef(c);// remove connection
             break;
         }
-
+    emit signalComponentDeleted(c);
     Components->removeRef(c);   // delete component
 }
 
-Component* Schematic::getComponentByName(const QString& compname)
+Component *Schematic::getComponentByName(const QString& compname) const
 {
-    for(Component *pc = DocComps.first(); pc != nullptr; pc = DocComps.next()) {
-        if (pc->Name == compname) return pc;
+    for(Component *pc = Components->first(); pc != nullptr; pc = Components->next()) {
+        if (pc->Name.toLower() == compname.toLower()) {
+            return pc;
+        }
     }
     return nullptr;
 }

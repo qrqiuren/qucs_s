@@ -16,6 +16,7 @@ spicecompat.h
 customsimdialog.h
 simsettingsdialog.h
 verilogawriter.h
+s2spice.h
 #xspice_cmbuilder.h
 #codemodelgen.h
 )
@@ -30,6 +31,7 @@ spicecompat.cpp
 customsimdialog.cpp
 simsettingsdialog.cpp
 verilogawriter.cpp
+s2spice.cpp
 #xspice_cmbuilder.cpp
 #codemodelgen.cpp
 )
@@ -43,7 +45,6 @@ customsimdialog.h
 simsettingsdialog.h
 )
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 
 IF(QT_VERSION_MAJOR EQUAL 6)
     QT6_WRAP_CPP( EXTSIMKERNELS_MOC_SRCS ${EXTSIMKERNELS_MOC_HDRS} )

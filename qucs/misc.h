@@ -50,7 +50,8 @@ namespace misc {
   QString complexRad (double, double, int Precision=3);
   QString StringNum  (double, char form='g', int Precision=3);
   void    str2num    (const QString&, double&, QString&, double&);
-  QString num2str    (double);
+  QString num2str    (double, int Precision = -1);
+  QColor ColorFromString(const QString& color);
   QString StringNiceNum(double);
   void    convert2Unicode(QString&);
   void    convert2ASCII(QString&);
@@ -92,6 +93,7 @@ namespace misc {
   QStringList parseCmdArgs(const QString &program);
   QString getIconPath(const QString &file, int icon_type);
   bool isDarkTheme();
+  QString getWindowTitle();
   QString wildcardToRegularExpression(const QString &wc_str, const bool enableEscaping);
 
   bool simulatorExists(const QString &exe_file);

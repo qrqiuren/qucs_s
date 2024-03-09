@@ -41,7 +41,7 @@ BJT_SPICE::BJT_SPICE()
 
     Props.append(new Property("Pins", "4", true,"[3,4,5] Pins count"));
     Props.append(new Property("type", "npn", true,"[npn,pnp] BJT type"));
-    Props.append(new Property("Letter", "Q", true,"[npn,pnp] BJT type"));
+    Props.append(new Property("Letter", "Q", true,"[Q,X,N] SPICE letter"));
     Props.append(new Property("Model", "", true,"Param list and\n .model spec."));
     Props.append(new Property("Model_Line 2", "", false,"+ continuation line 1"));
     Props.append(new Property("Model_Line 3", "", false,"+ continuation line 2"));
@@ -193,11 +193,11 @@ QString BJT_SPICE::spice_netlist(bool)
         s += " "+ nam+" ";   // node names
     }
  
-    QString Q= Props.at(2)->Value;
-    QString Q_Line_2= Props.at(3)->Value;
-    QString Q_Line_3= Props.at(4)->Value;
-    QString Q_Line_4= Props.at(5)->Value;
-    QString Q_Line_5= Props.at(6)->Value;
+    QString Q= Props.at(3)->Value;
+    QString Q_Line_2= Props.at(4)->Value;
+    QString Q_Line_3= Props.at(5)->Value;
+    QString Q_Line_4= Props.at(6)->Value;
+    QString Q_Line_5= Props.at(7)->Value;
 
     if(  Q.length()  > 0)          s += QString("%1").arg(Q);
     if(  Q_Line_2.length() > 0 )   s += QString("\n%1").arg(Q_Line_2);

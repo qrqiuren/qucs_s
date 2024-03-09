@@ -26,6 +26,7 @@ sweepdialog.h
 vasettingsdialog.h
 textboxdialog.h
 displaydialog.h
+tuner.h
 )
 
 
@@ -39,6 +40,7 @@ matchdialog.cpp			simmessage.cpp newprojdialog.cpp
 sweepdialog.cpp			exportdialog.cpp loaddialog.cpp
 aboutdialog.cpp
 displaydialog.cpp
+tuner.cpp
 )
 
 SET(DIALOGS_MOC_HDRS
@@ -63,13 +65,13 @@ sweepdialog.h
 vasettingsdialog.h
 textboxdialog.h
 displaydialog.h
+tuner.h
 )
 
 SET(DIALOGS_UIC_HDRS
 searchdialog.ui
 )
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 
 IF(QT_VERSION_MAJOR EQUAL 6)
     QT6_WRAP_CPP( DIALOGS_MOC_SRCS ${DIALOGS_MOC_HDRS} )

@@ -32,12 +32,12 @@ private:
 
     Schematic *Sch;
 
-    QPushButton *buttonSimulate;
     QPushButton *buttonStopSim;
     QPushButton *buttonSaveNetlist;
     QPushButton *buttonExit;
 
     QPlainTextEdit *editSimConsole;
+    QListWidget *simStatusLog;
 
     QProgressBar *simProgress;
 
@@ -47,29 +47,33 @@ private:
     Xyce *xyce;
 
 public:
-    explicit ExternSimDialog(Schematic *sch, QWidget *parent = 0,
+    explicit ExternSimDialog(Schematic *sch,
                              bool netlist_mode = false);
     ~ExternSimDialog();
 
     bool wasSimulated;
+    bool hasError;
 
 private:
     void saveLog();
+    void addLogEntry(const QString&text, const QIcon &icon);
+    bool logContainsError(const QString &out);
+    bool logContainsWarning(const QString &out);
     
 signals:
-    void simulated();
+    void simulated(ExternSimDialog *);
     void warnings();
     void success();
     
 public slots:
     void slotSaveNetlist();
+    void slotStart();
 
 private slots:
     void slotProcessOutput();
     //void slotProcessXyceOutput();
     void slotNgspiceStarted();
     void slotNgspiceStartError(QProcess::ProcessError err);
-    void slotStart();
     void slotStop();
     void slotSetSimulator();
     

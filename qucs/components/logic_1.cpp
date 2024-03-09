@@ -29,6 +29,7 @@ logic_1::logic_1()
   createSymbol ();
   tx = x1 + 4;
   ty = y2 + 4;
+  icon_dx = 6;
   Model = "logic_1";
   Name  = "S";
 }
@@ -78,6 +79,7 @@ QString logic_1::vhdlCode( int )
   s = "\n  " + Name + ":process\n" +
      "  begin\n    " +
      L1 + " <= '1';\n" + 
+     "    wait for 1 ns;\n" +
      "  end process;\n";
   return s;
 }

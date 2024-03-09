@@ -84,7 +84,7 @@ ProjectView::refresh()
   APPEND_ROW(m_model, tr("VHDL")         );
   APPEND_ROW(m_model, tr("Octave")       );
   APPEND_ROW(m_model, tr("Schematics")   );
-  APPEND_ROW(m_model, tr("XSPICE")       );
+  APPEND_ROW(m_model, tr("SPICE")       );
   APPEND_ROW(m_model, tr("Others")       );
 
   setExpanded(m_model->index(6, 0), true);
@@ -97,7 +97,7 @@ ProjectView::refresh()
   QDir workPath(m_projPath);
   QStringList files = workPath.entryList(QStringList() << "*", QDir::Files, QDir::Name);
   QStringList::iterator it;
-  QString extName, fileName;
+  QString extName, fileName, fullExtName;
   QList<QStandardItem *> columnData;
 
 #define APPEND_CHILD(category, data) \
@@ -105,12 +105,14 @@ ProjectView::refresh()
 
   for(it = files.begin(); it != files.end(); ++it) {
     fileName = (*it).toLatin1();
-    extName = QFileInfo(workPath.filePath(fileName)).suffix();
+    extName = QFileInfo(workPath.filePath(fileName)).suffix().toLower();
+    fullExtName = QFileInfo(workPath.filePath(fileName)).completeSuffix().toLower();
 
     columnData.clear();
     columnData.append(new QStandardItem(fileName));
 
-    if(extName == "dat") {
+    if(extName == "dat" || fullExtName == "dat.ngspice" ||
+       fullExtName == "dat.xyce" || fullExtName == "dat.spopus" ) {
       APPEND_CHILD(0, columnData);
     }
     else if(extName == "dpl") {
@@ -138,7 +140,8 @@ ProjectView::refresh()
         APPEND_CHILD(6, columnData);
       }
     }
-    else if ((extName == "mod")||(extName=="ifs")) {
+    else if ((extName == "cir") || (extName=="ckt") ||
+             (extName=="sp")) {
         APPEND_CHILD(7,columnData);
     }
     else {

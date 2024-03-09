@@ -32,7 +32,8 @@
 #include <QMessageBox>
 
 
-ID_Dialog::ID_Dialog(ID_Text *idText_)
+ID_Dialog::ID_Dialog(ID_Text *idText_, QWidget *parent)
+    : QDialog(parent)
 {
   idText = idText_;
   setWindowTitle(tr("Edit Subcircuit Properties"));
@@ -118,7 +119,7 @@ ID_Dialog::ID_Dialog(ID_Text *idText_)
   ValueEdit = new QLineEdit;
   ValueEdit->setValidator(ValueVal);
 
-  Expr.setPattern("[^\"=\\x005B\\x005D]*");
+  Expr.setPattern("[^\"=\\[\\]]*");
   DescrVal = new QRegularExpressionValidator(Expr, this);
   DescriptionEdit = new QLineEdit;
   DescriptionEdit->setValidator(DescrVal);

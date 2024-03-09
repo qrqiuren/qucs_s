@@ -63,6 +63,7 @@
 #include "twistedpair.h"
 #include "coaxialline.h"
 #include "rectline.h"
+#include "circline.h"
 #include "rlcg.h"
 #include "substrate.h"
 #include "msline.h"
@@ -142,6 +143,7 @@
 #include "rfedd2p.h"
 #include "indq.h"
 #include "capq.h"
+#include "taperedline.h"
 
 #include "mod_amp.h"
 #include "log_amp.h"
@@ -182,6 +184,8 @@
 #include "comp_2bit.h"
 #include "comp_4bit.h"
 #include "hpribin4bit.h"
+#include "circularloop.h"
+#include "spiralinductor.h"
 
 // external simulation components
 #include "etr_sim.h"

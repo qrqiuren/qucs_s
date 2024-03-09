@@ -40,16 +40,16 @@ public:
   QString saveCpp();
   QString saveJSON();
   void MouseMoving(Schematic*, int, int, int, int, Schematic*, int, int, bool);
-  bool MousePressing();
+  bool MousePressing(Schematic *sch = 0);
   bool getSelected(float, float, float);
   void Bounding(int&, int&, int&, int&);
   bool resizeTouched(float, float, float);
   void MouseResizeMoving(int, int, Schematic*);
 
-  void rotate();
+  void rotate(int, int);
   void mirrorX();
   void mirrorY();
-  bool Dialog();
+  bool Dialog(QWidget *parent = 0);
 
   void calcArrowHead();
 

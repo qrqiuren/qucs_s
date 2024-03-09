@@ -13,11 +13,13 @@ if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
       "remove CMakeCache.txt and CMakeFiles.")
 endif()
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 file (STRINGS "${qucs-suite_SOURCE_DIR}/VERSION" QUCS_VERSION)
 message(STATUS "Configuring Qucs: VERSION ${QUCS_VERSION}")
 
-set(GIT unknown)
-if(EXISTS ${CMAKE_SOURCE_DIR}/../.git )
+set(GIT "")
+if(EXISTS ${CMAKE_SOURCE_DIR}/.git )
   find_package(Git)
   # Get the latest abbreviated commit hash of the working branch
   execute_process(
@@ -31,8 +33,11 @@ endif()
 
 message(STATUS "${PROJECT_NAME} ${CMAKE_INSTALL_PREFIX} ${qucs-suite_BINARY_DIR}" )
 
-set(QT_DEFAULT_MAJOR_VERSION 6)
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Widgets LinguistTools)
+if(WITH_QT6)
+    set(QT_VERSION_MAJOR 6)
+else()
+    set(QT_VERSION_MAJOR 5)
+endif()
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets LinguistTools)
 message(STATUS "QT Major Version: " ${QT_VERSION_MAJOR})
 

@@ -81,46 +81,47 @@ void Component::Bounding(int &_x1, int &_y1, int &_x2, int &_y2) {
 
 // -------------------------------------------------------
 // Size of component text.
-int Component::textSize(int &_dx, int &_dy) {
+int Component::textSize(int &textPropertyMaxWidth, int &totalTextPropertiesHeight) {
     // get size of text using the screen-compatible metric
     QFontMetrics metrics(QucsSettings.font, 0);
+    int textPropertiesCount = 0;
+    textPropertyMaxWidth = totalTextPropertiesHeight = 0;
 
-    int tmp, count = 0;
-    _dx = _dy = 0;
     if (showName) {
-        _dx = metrics.boundingRect(Name).width();
-        _dy = metrics.height();
-        count++;
+        textPropertyMaxWidth = metrics.boundingRect(Name).width();
+        totalTextPropertiesHeight = metrics.height();
+        textPropertiesCount++;
     }
-    for (Property *pp = Props.first(); pp != 0; pp = Props.next())
-        if (pp->display) {
-            // get width of text
-            tmp = metrics.boundingRect(pp->Name + "=" + pp->Value).width();
-            if (tmp > _dx) _dx = tmp;
-            _dy += metrics.height();
-            count++;
+
+    constexpr int flags = 0b00000000;
+    for (Property* p : Props) {
+        if (!(p->display)) continue;
+
+        // Update overall width if text of the current property is wider
+        auto w = metrics.size(flags, p->Name + "=" + p->Value).width();
+        if (w > textPropertyMaxWidth) {
+            textPropertyMaxWidth = w;
         }
-    return count;
+        // keeps total height of all text properties of component
+        // taking line breaks into account
+        totalTextPropertiesHeight += metrics.height();
+        textPropertiesCount++;
+    }
+    return textPropertiesCount;
 }
 
 // -------------------------------------------------------
 // Boundings including the component text.
-void Component::entireBounds(int &_x1, int &_y1, int &_x2, int &_y2, float Corr) {
-    _x1 = x1 + cx;
-    _y1 = y1 + cy;
-    _x2 = x2 + cx;
-    _y2 = y2 + cy;
+void Component::entireBounds(int& boundingRectLeft, int& boundingRectTop,
+                             int& boundingRectRight, int& boundingRectBottom) {
+    boundingRectLeft = std::min(x1, tx) + cx;
+    boundingRectTop  = std::min(y1, ty) + cy;
 
-    // text boundings
-    if (tx < x1) _x1 = tx + cx;
-    if (ty < y1) _y1 = ty + cy;
+    int textPropertyMaxWidth, totalTextPropertiesHeight;
+    textSize(textPropertyMaxWidth, totalTextPropertiesHeight);
 
-    int dx, dy, ny;
-    ny = textSize(dx, dy);
-    dy = int(float(ny) / Corr);  // correction for unproportional font scaling
-
-    if ((tx + dx) > x2) _x2 = tx + dx + cx;
-    if ((ty + dy) > y2) _y2 = ty + dy + cy;
+    boundingRectRight  = std::max(tx + textPropertyMaxWidth, x2) + cx;
+    boundingRectBottom = std::max(ty + totalTextPropertiesHeight, y2) + cy;
 }
 
 // -------------------------------------------------------
@@ -346,41 +347,121 @@ void Component::paint(ViewPainter *p) {
     }
 }
 
+// paint device icon for left panel list
+void Component::paintIcon(QPixmap *pixmap)
+{
+    pixmap->fill(Qt::transparent);
+    QPainter *painter = new QPainter(pixmap);
+    ViewPainter *p = new ViewPainter(painter);
+    int h = std::abs(x2 - x1) + 10;
+    int w = std::abs(y2 - y1) + 10;
+    int ph = pixmap->size().height();
+    p->Scale = (float) ph / std::max(w,h);
+
+    QFont f = p->Painter->font();   // save current font
+    QFont newFont = f;
+    int c_sc = ph / (2*p->Scale);
+    cx += c_sc + icon_dx*p->Scale;
+    cy += c_sc + icon_dy*p->Scale;
+    if (Model.at(0) != '.' && !isEquation) {    // normal components go here
+        // paint all lines
+        QPen portPen;
+        portPen.setWidth(3);
+        portPen.setColor(Qt::red);
+        p->Painter->setPen(portPen);
+        for (auto pp: Ports) {
+            p->drawEllipse(cx+pp->x-2,cy+pp->y-2,4,4);
+        }
+
+        for (qucs::Line *p1: Lines) {
+            p1->style.setWidth(3);
+            p->Painter->setPen(p1->style);
+            p->drawLine(cx + p1->x1, cy + p1->y1, cx + p1->x2, cy + p1->y2);
+        }
+
+        // paint all arcs
+        for (qucs::Arc *p3: Arcs) {
+            p3->style.setWidth(3);
+            p->Painter->setPen(p3->style);
+            p->drawArc(cx + p3->x, cy + p3->y, p3->w, p3->h, p3->angle, p3->arclen);
+        }
+
+        // paint all rectangles
+        for (qucs::Area *pa: Rects) {
+            pa->Pen.setWidth(3);
+            p->Painter->setPen(pa->Pen);
+            p->Painter->setBrush(pa->Brush);
+            p->drawRect(cx + pa->x, cy + pa->y, pa->w, pa->h);
+        }
+
+        // paint all ellipses
+        for (qucs::Area *pa: Ellips) {
+            p->Painter->setPen(pa->Pen);
+            p->Painter->setBrush(pa->Brush);
+            p->drawEllipse(cx + pa->x, cy + pa->y, pa->w, pa->h);
+        }
+        p->Painter->setBrush(Qt::NoBrush);
+
+        newFont.setWeight(QFont::Light);
+
+        for (Text *pt: Texts) {
+            p->Painter->setWorldTransform(
+                    QTransform(pt->mCos, -pt->mSin, pt->mSin, pt->mCos,
+                               p->DX + float(cx + pt->x) * p->Scale,
+                               p->DY + float(cy + pt->y) * p->Scale));
+            newFont.setPointSizeF(p->Scale * pt->Size);
+            newFont.setOverline(pt->over);
+            newFont.setUnderline(pt->under);
+            p->Painter->setFont(newFont);
+            p->Painter->setPen(pt->Color);
+            w = p->drawTextMapped(pt->s, 0, 0, &h);
+            Q_UNUSED(w)
+            Q_UNUSED(h)
+        }
+    }
+}
+
 // -------------------------------------------------------
 // Paints the component when moved with the mouse.
 void Component::paintScheme(Schematic *p) {
     // qDebug() << "paintScheme" << Model;
-    if (Model.at(0) == '.') {   // is simulation component (dc, ac, ...)
-        int a, b, xb, yb;
-        QFont newFont = p->font();
+    if (Model.at(0) == '.' || isEquation) {   // is simulation component (dc, ac, ...) + Equations
+//        int a, b, xb, yb;
+//        QFont newFont = p->font();
+//
+//        float Scale =
+//                ((Schematic *) QucsMain->DocumentTab->currentWidget())->Scale;
+//        newFont.setPointSizeF(float(Scale) * QucsSettings.largeFontSize);
+//        newFont.setWeight(QFont::DemiBold);
+//        // here the font metric is already the screen metric, since the font
+//        // is the current font the painter is using
+//        QFontMetrics metrics(newFont);
+//
+//        a = b = 0;
+//        QSize r;
+//        for (Text *pt: Texts) {
+//            r = metrics.size(0, pt->s);
+//            b += r.height();
+//            if (a < r.width()) a = r.width();
+//        }
+//        xb = a + int(12.0 * Scale);
+//        yb = b + int(10.0 * Scale);
+//        x2 = x1 + 25 + int(float(a) / Scale);
+//        y2 = y1 + 23 + int(float(b) / Scale);
+//        if (ty < y2 + 1) if (ty > y1 - r.height()) ty = y2 + 1;
+//
+//        p->PostPaintEvent(_Rect, cx - 6, cy - 5, xb, yb);
+//        p->PostPaintEvent(_Line, cx - 1, cy + yb, cx - 6, cy + yb - 5);
+//        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx - 1, cy + yb);
+//        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx + xb - 6, cy + yb - 5);
+//        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx + xb - 2, cy);
+//        p->PostPaintEvent(_Line, cx + xb - 2, cy, cx + xb - 6, cy - 5);
 
-        float Scale =
-                ((Schematic *) QucsMain->DocumentTab->currentWidget())->Scale;
-        newFont.setPointSizeF(float(Scale) * QucsSettings.largeFontSize);
-        newFont.setWeight(QFont::DemiBold);
-        // here the font metric is already the screen metric, since the font
-        // is the current font the painter is using
-        QFontMetrics metrics(newFont);
+        int _x1, _x2, _y1, _y2;
+        // textCorr to entireBounds
+        entireBounds(_x1, _y1, _x2, _y2);
+        p->PostPaintEvent(_Rect, _x1, _y1, _x2 - _x1, _y2 - _y1);
 
-        a = b = 0;
-        QSize r;
-        for (Text *pt: Texts) {
-            r = metrics.size(0, pt->s);
-            b += r.height();
-            if (a < r.width()) a = r.width();
-        }
-        xb = a + int(12.0 * Scale);
-        yb = b + int(10.0 * Scale);
-        x2 = x1 + 25 + int(float(a) / Scale);
-        y2 = y1 + 23 + int(float(b) / Scale);
-        if (ty < y2 + 1) if (ty > y1 - r.height()) ty = y2 + 1;
-
-        p->PostPaintEvent(_Rect, cx - 6, cy - 5, xb, yb);
-        p->PostPaintEvent(_Line, cx - 1, cy + yb, cx - 6, cy + yb - 5);
-        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx - 1, cy + yb);
-        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx + xb - 6, cy + yb - 5);
-        p->PostPaintEvent(_Line, cx + xb - 2, cy + yb, cx + xb - 2, cy);
-        p->PostPaintEvent(_Line, cx + xb - 2, cy, cx + xb - 6, cy - 5);
         return;
     }
 
@@ -389,8 +470,13 @@ void Component::paintScheme(Schematic *p) {
         p->PostPaintEvent(_Line, cx + p1->x1, cy + p1->y1, cx + p1->x2, cy + p1->y2);
 
     // paint all ports
-    for (Port *p2: Ports)
-        if (p2->avail) p->PostPaintEvent(_Ellipse, cx + p2->x - 4, cy + p2->y - 4, 8, 8);
+    for (Port *p2 : Ports)
+      if (p2->avail) {
+        Node *node = p2->Connection;
+        if (!node) {
+          p->PostPaintEvent(_Ellipse, cx + p2->x - 4, cy + p2->y - 4, 8, 8);
+        }
+      }
 
     for (qucs::Arc *p3: Arcs)   // paint all arcs
         p->PostPaintEvent(_Arc, cx + p3->x, cy + p3->y, p3->w, p3->h, p3->angle, p3->arclen);
@@ -515,6 +601,10 @@ void Component::rotate() {
         ty = y1 - ty + y2;
     }
     else ty -= dx;
+
+    if (containingSchematic != nullptr) {
+        containingSchematic->setOnGrid(cx,cy);
+    }
 
     rotated++;  // keep track of what's done
     rotated &= 3;
@@ -1216,7 +1306,7 @@ int Component::analyseLine(const QString &Row, int numProps) {
         return 1;
     } else if (s == "Text") {  // must be last in order to reuse "s" *********
         if (!getIntegers(Row, &i1, &i2, &i3, 0, &i4)) return -1;
-        Color.setNamedColor(Row.section(' ', 4, 4));
+        Color=misc::ColorFromString(Row.section(' ', 4, 4));
         if (!Color.isValid()) return -1;
 
         s = Row.mid(Row.indexOf('"') + 1);    // Text (can contain " !!!)
@@ -1298,8 +1388,7 @@ bool Component::getPen(const QString &s, QPen &Pen, int i) {
     QString n;
 
     n = s.section(' ', i, i);    // color
-    QColor co;
-    co.setNamedColor(n);
+    QColor co = misc::ColorFromString(n);
     Pen.setColor(co);
     if (!Pen.color().isValid()) return false;
 
@@ -1322,8 +1411,7 @@ bool Component::getBrush(const QString &s, QBrush &Brush, int i) {
     QString n;
 
     n = s.section(' ', i, i);    // fill color
-    QColor co;
-    co.setNamedColor(n);
+    QColor co = misc::ColorFromString(n);
     Brush.setColor(co);
     if (!Brush.color().isValid()) return false;
 

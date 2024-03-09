@@ -27,19 +27,19 @@ set(PROJECT_DOMAIN_FIRST "qucs")
 set(PROJECT_DOMAIN_SECOND "org")
 
 # If Git hash not defined, try to define it
-IF(NOT GIT)
-  IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../.git )
-    FIND_PACKAGE(Git)
-    # Get the latest abbreviated commit hash of the working branch
-    execute_process(
-      COMMAND ${GIT_EXECUTABLE} log --pretty=format:%h -n 1u
-      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-      OUTPUT_VARIABLE GIT_COMMIT_HASH
-    )
-    set(GIT ${GIT_COMMIT_HASH})
-    message(STATUS "Found Git repository, last commit hash: ${GIT}")
-  ENDIF()
-ENDIF()
+#IF(NOT GIT)
+#  IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../../.git )
+#    FIND_PACKAGE(Git)
+#    # Get the latest abbreviated commit hash of the working branch
+#    execute_process(
+#      COMMAND ${GIT_EXECUTABLE} log --pretty=format:%h -n 1u
+#      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+#      OUTPUT_VARIABLE GIT_COMMIT_HASH
+#    )
+#    set(GIT ${GIT_COMMIT_HASH})
+#    message(STATUS "Found Git repository, last commit hash: ${GIT}")
+#  ENDIF()
+#ENDIF()
 
 if(UNIX AND NOT APPLE)
   #string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWERCASE)
@@ -54,7 +54,12 @@ endif()
 add_compile_definitions(HAVE_CONFIG_H)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Widgets Svg Xml PrintSupport)
+if(WITH_QT6)
+    set(QT_VERSION_MAJOR 6)
+else()
+    set(QT_VERSION_MAJOR 5)
+endif()
+
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets Svg Xml PrintSupport)
 include_directories(
       ${Qt${QT_VERSION_MAJOR}Core_INCLUDE_DIRS}
@@ -101,6 +106,7 @@ INCLUDE_DIRECTORIES(
   ${PROJECT_SOURCE_DIR}/dialogs
   #${qucs_SOURCE_DIR}/octave ->no sources here
   ${PROJECT_SOURCE_DIR}/paintings
+  ${PROJECT_SOURCE_DIR}/third_party
   )
 
 #ADD_SUBDIRECTORY( bitmaps ) -> added as resources
@@ -118,7 +124,7 @@ SET(QUCS_SRCS
   element.cpp	octave_window.cpp	qucsdoc.cpp
   textdoc.cpp  main.cpp	schematic.cpp
   mnemo.cpp	qucs.cpp	viewpainter.cpp
-  module.cpp	schematic_element.cpp	wire.cpp
+  module.cpp	schematic_element.cpp	wire.cpp schematic_render.cpp
   mouseactions.cpp qucs_actions.cpp	schematic_file.cpp
   wirelabel.cpp node.cpp qucs_init.cpp
   syntax.cpp misc.cpp messagedock.cpp

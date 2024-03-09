@@ -30,6 +30,7 @@ logic_0::logic_0()
   createSymbol ();
   tx = x1 + 4;
   ty = y2 + 4;
+  icon_dx = 6;
   Model = "logic_0";
   Name  = "S";
 }
@@ -77,6 +78,7 @@ QString logic_0::vhdlCode( int )
   s = "\n  " + Name + ":process\n" +
      "  begin\n    " +
      LO + " <= '0';\n" + 
+     "    wait for 1 ns;\n" +
      "  end process;\n";
   return s;
 }

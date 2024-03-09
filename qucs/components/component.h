@@ -60,7 +60,7 @@ public:
   void    getCenter(int&, int&);
   int     textSize(int&, int&);
   void    Bounding(int&, int&, int&, int&);
-  void    entireBounds(int&, int&, int&, int&, float);
+  void    entireBounds(int&, int&, int&, int&);
   bool    getSelected(int, int);
   int     getTextSelected(int, int, float);
   void    rotate();
@@ -72,6 +72,9 @@ public:
   // to hold track of the component appearance for saving and copying
   bool mirroredX;   // is it mirrored about X axis or not
   int  rotated;     // rotation angle divided by 90 degrees
+
+  int icon_dx = 0; // used to adjust icon position
+  int icon_dy = 0;
 
   virtual QString getSubcircuitFile() { return ""; }
   // set the pointer scematic associated with the component
@@ -100,6 +103,8 @@ public:
   QString  Description;
   QString  SpiceModel;
   QPen WrongSimulatorPen;
+
+  void paintIcon(QPixmap *pixmap);
 
 protected:
   virtual QString netlist();

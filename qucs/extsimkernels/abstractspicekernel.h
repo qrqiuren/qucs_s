@@ -46,9 +46,9 @@ class AbstractSpiceKernel : public QObject
 {
     Q_OBJECT
 private:
-    enum outType {xyceSTD, spiceRaw, spiceRawSwp, xyceSTDswp, Unknown};
+    enum outType {xyceSTD, spiceRaw, spiceRawSwp, xyceSTDswp, spicePrn, Unknown};
 
-    void normalizeVarsNames(QStringList &var_list);
+    void normalizeVarsNames(QStringList &var_list, const QString &dataset_prefix, bool isCustom = false);
     int checkRawOutupt(QString ngspice_file, QStringList &values);
     void extractBinSamples(QDataStream &dbl, QList< QList<double> > &sim_points,
                            int NumPoints, int NumVars, bool isComplex);
@@ -64,7 +64,11 @@ protected:
     QStringList sims,vars,output_files;
 
     bool DC_OP_only; // only calculate operating point to show DC bias
+    bool needsPrefix;
     Schematic *Sch;
+
+    bool parseFourTHD = false;  // Fourier output is parsed twice, first freqencies, then THD
+    bool parsePZzeros = false;  // PZ output is parsed twice, first poles, then zeros
 
     bool prepareSpiceNetlist(QTextStream &stream, bool isSubckt = false);
     virtual void startNetlist(QTextStream& stream, bool xyce = false);
@@ -101,6 +105,10 @@ public:
     void parseSTEPOutput(QString ngspice_file,
                          QList< QList<double> > &sim_points,
                          QStringList &var_list, bool &isComplex);
+    void parsePrnOutput(const QString &ngspice_file,
+                        QList< QList<double> > &sim_points,
+                        QStringList &var_list,
+                        bool isComplex);
     void parseXYCESTDOutput(QString std_file,
                             QList< QList<double> > &sim_points,
                             QStringList &var_list, bool &isComplex, bool &hasParSweep);

@@ -326,7 +326,7 @@ void ImageWriter::getSelAreaWidthAndHeight(Schematic *sch, int &wsel, int &hsel,
      for(Component *pc = sch->Components->first(); pc != 0; pc = sch->Components->next()) {
          if (pc->isSelected) {
            int x1,y1,x2,y2;
-           pc->entireBounds(x1,y1,x2,y2,sch->textCorr());
+           pc->entireBounds(x1, y1, x2, y2);
            updateMinMax(xmin,xmax,ymin,ymax,x1,x2,y1,y2);
          }
     }
@@ -370,9 +370,10 @@ void ImageWriter::getSelAreaWidthAndHeight(Schematic *sch, int &wsel, int &hsel,
             int x1,y1,x2,y2;
             pd->Bounding(x1,y1,x2,y2);
             updateMinMax(xmin,xmax,ymin,ymax,x1,x2,y1,y2);
-
-            for (auto& pg: qAsConst(pd->Graphs)) {
-                for (auto& pm: qAsConst(pg->Markers)) {
+            auto const graphs = pd->Graphs;
+            for (auto& pg: graphs) {
+                auto const markers = pg->Markers;
+                for (auto& pm: markers) {
                     if (pm->isSelected) {
                         //int x1,y1,x2,y2;
                         pm->Bounding(x1,y1,x2,y2);

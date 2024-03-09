@@ -30,7 +30,7 @@ QucsDoc::QucsDoc(QucsApp *App_, const QString& Name_)
   QFileInfo Info(DocName);
   if(!DocName.isEmpty()) {
     DocName = Info.absoluteFilePath();
-    QString base = Info.baseName();
+    QString base = Info.completeBaseName();
     QString ext = Info.suffix();
 
     if(ext == "m" || ext == "oct")
@@ -45,7 +45,7 @@ QucsDoc::QucsDoc(QucsApp *App_, const QString& Name_)
       GridOn = false;              // data display without grid (per default)
     }
   }
-  SimOpenDpl = true;
+  SimOpenDpl = false;
   SimRunScript = false;
 
   DocChanged = false;

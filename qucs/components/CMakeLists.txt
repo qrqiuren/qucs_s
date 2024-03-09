@@ -57,6 +57,10 @@ vacomponent.cpp
 mutualx.cpp
 indq.cpp
 capq.cpp
+circline.cpp
+taperedline.cpp
+circularloop.cpp
+spiralinductor.cpp
 )
 
 SET(COMPONENTS_HDRS
@@ -79,6 +83,7 @@ capacitor.h
 capq.h
 cccs.h
 ccvs.h
+circline.h
 circulator.h
 coaxialline.h
 comp_1bit.h
@@ -199,6 +204,7 @@ subcirport.h
 substrate.h
 switch.h
 symtrafo.h
+taperedline.h
 tff_SR.h
 thyristor.h
 tline_4port.h
@@ -223,6 +229,8 @@ volt_noise.h
 vprobe.h
 vpulse.h
 vrect.h
+circularloop.h
+spiralinductor.h
 )
 
 
@@ -234,7 +242,6 @@ optimizedialog.h
 spicefile.h
 )
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 
 IF(QT_VERSION_MAJOR EQUAL 6)
     qt6_wrap_cpp(COMPONENTS_MOC_SRCS ${COMPONENTS_MOC_HDRS})

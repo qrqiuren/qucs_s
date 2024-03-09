@@ -116,38 +116,41 @@ QString Param_Sweep::getNgspiceBeforeSim(QString sim, int lvl)
     s += QString("foreach  %1_act ").arg(step_var);
 
     if((type == "list") || (type == "const")) {
-        QStringList List;
-        List = getProperty("Values")->Value.split(";");
-
+        QString list_str = getProperty("Values")->Value;
+        list_str.remove(0,1); // remove  [ ]
+        list_str.chop(1);
+        QStringList List = list_str.split(";");
         for(int i = 0; i < List.length(); i++) {
-            List[i].remove(QRegularExpression("[A-Z a-z [\\] s/' '//g]"));
             s += QString("%1 ").arg(List[i]);
         }
     } else {
-        double start,stop,step,fac,points;
-        misc::str2num(getProperty("Start")->Value,start,unit,fac);
-        start *= fac;
-        misc::str2num(getProperty("Stop")->Value,stop,unit,fac);
-        stop *= fac;
+        double start,stop,step,fac,points,ostart,ostop;
+        misc::str2num(getProperty("Start")->Value,ostart,unit,fac);
+        ostart *= fac;
+        misc::str2num(getProperty("Stop")->Value,ostop,unit,fac);
+        ostop *= fac;
         misc::str2num(getProperty("Points")->Value,points,unit,fac);
         points *= fac;
 
+        start = std::min(ostart,ostop);
+        stop = std::max(ostart,ostop);
+
         if(type == "lin") {
-            step = (stop-start)/points;
-            for (; start <= stop; start += step) {
+            step = (stop-start)/(points-1);
+            while ( points > 0 ) {
                 s += QString("%1 ").arg(start);
+                start += step;
+                points -= 1;
             }
         } else {
             start = log10(start);
             stop = log10(stop);
-            step = (stop - start)/points;
+            step = (stop - start)/(points - 1);
 
-            for(; start <= stop; start += step) {
+            while ( points > 0 ) {
                 s += QString("%1 ").arg(pow(10, start));
-            }
-
-            if (start - step < stop) {
-                s += QString("%1 ").arg(pow(10, stop));
+                start += step;
+                points -= 1;
             }
         }
     }
@@ -206,7 +209,7 @@ QString Param_Sweep::getNgspiceAfterSim(QString sim, int lvl)
 
     s = "set appendwrite\n";
 
-    if (lvl==0) s += QString("echo \"$&number_%1  $%2_act\">> spice4qucs.%3.cir.res\n").arg(par).arg(par).arg(sim);
+    if (lvl==0) s += QString("echo \"$&number_%1  $%2_act\" >> spice4qucs.%3.cir.res\n").arg(par).arg(par).arg(sim);
     else s += QString("echo \"$&number_%1\" $%1_act >> spice4qucs.%2.cir.res%3\n").arg(par).arg(sim).arg(lvl);
     s += QString("let number_%1 = number_%1 + 1\n").arg(par);
 
@@ -246,10 +249,10 @@ QString Param_Sweep::spice_netlist(bool isXyce)
         stop *= fac;
         misc::str2num(getProperty("Points")->Value,points,unit,fac);
         points *= fac;
-        step = (stop-start)/points;
+        step = (stop-start)/(points-1);
     }
 
-    if (Props.at(0)->Value.startsWith("DC")) {
+    if (Props.at(0)->Value.toLower().startsWith("dc")) {
         QString src = getProperty("Param")->Value;
         s = QString("DC %1 %2 %3 %4\n").arg(src).arg(start).arg(stop).arg(step);
         if (isXyce) s.prepend('.');

@@ -85,7 +85,7 @@ Diagram::Diagram(int _cx, int _cy) {
     rotZ = 225;
     hideLines = true;  // hide invisible lines
 
-    engineeringNotation = false;
+    engineeringNotation = true;
 
     Type = isDiagram;
     isSelected = false;
@@ -219,23 +219,25 @@ void Diagram::createAxisLabels() {
     wmax = 0;
     x = -x1;
     y = y2 >> 1;
+
+    QStringList used_kernels, used_simulations;
+    for (const auto pg: Graphs) {
+        QString kernel_name = pg->Var.section('/', 0, 0);
+        QString var_name = pg->Var;
+        auto p = var_name.indexOf('/');
+        var_name = var_name.mid(p + 1);
+        QString sim_name = var_name.section('.', 0, 0);
+        if (!used_simulations.contains(sim_name))
+            used_simulations.append(sim_name);
+        if (!used_kernels.contains(kernel_name))
+            used_kernels.append(kernel_name);
+    }
+
     if (yAxis.Label.isEmpty()) {
         // draw left y-label for all graphs ------------------------------
 
         // strip simulator name and simulation name like ngspice/ac.
         // if all graphs are from the same simulator and simulation
-        QStringList used_kernels, used_simulations;
-        for (const auto pg: Graphs) {
-            QString kernel_name = pg->Var.section('/', 0, 0);
-            QString var_name = pg->Var;
-            auto p = var_name.indexOf('/');
-            var_name = var_name.mid(p + 1);
-            QString sim_name = var_name.section('.', 0, 0);
-            if (!used_simulations.contains(sim_name))
-                used_simulations.append(sim_name);
-            if (!used_kernels.contains(kernel_name))
-                used_kernels.append(kernel_name);
-        }
 
         for (Graph *pg: Graphs) {
             if (pg->yAxisNo != 0) continue;
@@ -286,15 +288,26 @@ void Diagram::createAxisLabels() {
         for (Graph *pg: Graphs) {
             if (pg->yAxisNo != 1) continue;
             if (pg->cPointsY) {
+                QString var_name = pg->Var;
+                if (!QucsSettings.fullTraceName) {
+                    if (used_kernels.count() == 1) {
+                        auto p = var_name.indexOf('/');
+                        var_name = var_name.mid(p + 1);
+                    }
+                    if (used_simulations.count() == 1) {
+                        auto p = var_name.indexOf('.');
+                        var_name = var_name.mid(p + 1);
+                    }
+                }
                 if (Name[0] != 'C') {   // location curve ?
-                    w = metrics.boundingRect(pg->Var).width() >> 1;
+                    w = metrics.boundingRect(var_name).width() >> 1;
                     if (w > wmax) wmax = w;
-                    Texts.append(new Text(x, y + w, pg->Var,
+                    Texts.append(new Text(x, y + w, var_name,
                                           pg->Color, 12.0, 0.0, -1.0));
                 } else {
-                    w = metrics.boundingRect("imag(" + pg->Var + ")").width() >> 1;
+                    w = metrics.boundingRect("imag(" + var_name + ")").width() >> 1;
                     if (w > wmax) wmax = w;
-                    Texts.append(new Text(x, y + w, "imag(" + pg->Var + ")",
+                    Texts.append(new Text(x, y + w, "imag(" + var_name + ")",
                                           pg->Color, 12.0, 0.0, -1.0));
                 }
             } else {     // if no data => <invalid>
@@ -841,7 +854,8 @@ int Graph::loadDatFile(const QString &fileName) {
 
     Info.setFile(file);
     if (g->lastLoaded.isValid())
-        if (g->lastLoaded > Info.lastModified())
+        if (g->lastLoaded.currentMSecsSinceEpoch() >
+            Info.lastModified().currentMSecsSinceEpoch()) //Millisecond resulution is needed for tuning
             return 1;    // dataset unchanged -> no update necessary
 
     g->countY = 0;
@@ -1308,8 +1322,7 @@ bool Diagram::load(const QString &Line, QTextStream *stream) {
     hideLines = (c & 2) != 0;
 
     n = s.section(' ', 6, 6);    // color for GridPen
-    QColor co;
-    co.setNamedColor(n);
+    QColor co = misc::ColorFromString(n);
     GridPen.setColor(co);
     if (!GridPen.color().isValid()) return false;
 
@@ -1960,7 +1973,7 @@ bool Diagram::calcYAxis(Axis *Axis, int x0) {
 
             if ((zD < 1.5 * zDstep) || (z == 0)) {
                 double yVal = qucs::num2db(zD, Axis->Units);
-                if (engineeringNotation) tmp = misc::num2str(yVal);
+                if (engineeringNotation) tmp = misc::num2str(yVal, 2);
                 else tmp = misc::StringNiceNum(yVal);
 
                 if (Axis->up < 0.0) tmp = '-' + tmp;
@@ -2030,12 +2043,14 @@ bool Diagram::insideDiagramP(Graph::iterator const &p) const {
     return insideDiagram(f1, f2);
 }
 
-void
-Diagram::calcCoordinateP(const double *x, const double *y, const double *z, Graph::iterator &p, Axis const *A) const {
+void Diagram::calcCoordinateP(const double *x, const double *y, const double *z, Graph::iterator &p, Axis const *A) const {
     float f1, f2;
     calcCoordinate(x, y, z, &f1, &f2, A);
     p->setScr(f1, f2);
 };
+
+
+//void Diagram::SetLimitsBySelectionRect(QRectF) {}
 
 
 // vim:ts=8:sw=2:noet

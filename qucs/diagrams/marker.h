@@ -18,6 +18,8 @@
 #ifndef MARKER_H
 #define MARKER_H
 
+#include <vector>
+
 #include "element.h"
 #include "viewpainter.h"
 
@@ -31,6 +33,11 @@ typedef enum{
 	nM_Rad
 } numMode_t;
 
+typedef enum {
+  indicator_Off = 0,
+  indicator_Square,
+  indicator_Triangle
+} indicatorMode_t;
 
 class Marker : public Element {
 public:
@@ -78,6 +85,7 @@ public:
 // private: // not yet, cross-manipulated by MarkerDialog
   int Precision; // number of digits to show
   int numMode;   // real/imag or polar (deg/rad)
+  indicatorMode_t indicatorMode; // off/square/triangle supported. 
 
 public: // shouldn't be there, cross-manipulated by MarkerDialog
         // to be implemented within SmithDiagram.

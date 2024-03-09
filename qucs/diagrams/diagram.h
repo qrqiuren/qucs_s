@@ -58,6 +58,10 @@ struct Axis {
   double limit_min, limit_max, step;   // if not auto-scale
 };
 
+struct MappedPoint {
+  qreal x, y1, y2;
+};
+
 namespace qucs {
 double inline num2db(double zD, int unit) {
     double yVal = zD;
@@ -112,6 +116,9 @@ public:
   virtual void calcCoordinate
                (const double*, const double*, const double*, float*, float*, Axis const*) const {};
   void calcCoordinateP (const double*x, const double*y, const double*z, Graph::iterator& p, Axis const* A) const;
+  // TODO: Make pointToValue a pure virtual function.
+  virtual MappedPoint pointToValue(const QPointF&) { return MappedPoint(); };
+  virtual void setLimitsBySelectionRect(QRectF) {};
   virtual void finishMarkerCoordinates(float&, float&) const;
   virtual void calcLimits() {};
   virtual QString extraMarkerText(Marker const*) const {return "";}
@@ -171,6 +178,9 @@ protected:
   void rectClip(Graph::iterator &) const;
 
   virtual void calcData(Graph*);
+
+  QTransform pointTransform; // Transform between Qucs-S logical coordinates and diagram (logical) point coordinates.
+  QTransform valueTransform; // Transform between diagram point coordinates and diagram values.
 
 private:
   int Bounding_x1, Bounding_x2, Bounding_y1, Bounding_y2;

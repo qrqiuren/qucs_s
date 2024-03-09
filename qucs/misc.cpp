@@ -37,6 +37,23 @@
 #include <QtWidgets>
 
 
+QString misc::getWindowTitle()
+{
+    QString title = QUCS_NAME " " PACKAGE_VERSION;
+    if (title.endsWith(".0")) {
+        title.chop(2);
+    }
+#if defined(GIT)
+    QString hash = GIT;
+    if (!hash.isEmpty()) {
+        title = title + "-" + hash;
+    }
+#endif
+
+    return title;
+}
+
+
 bool misc::isDarkTheme()
 {
     QLabel *lbl = new QLabel("check dark");
@@ -71,13 +88,24 @@ QString misc::getIconPath(const QString &file, int icon_type)
         break;
     }
 
-    QString icon_path =":bitmaps/";
+    QString icon_path =":bitmaps/svg/"; // look for svg version first
     if (loadDark) {
-        QString icon_path_dark = ":bitmaps/dark/";
-        if (QFileInfo::exists(icon_path_dark + file))
+        QString icon_path_dark = ":bitmaps/svg/dark/";
+        if (QFileInfo::exists(icon_path_dark + file + ".svg"))
             icon_path = icon_path_dark;
     }
-    icon_path += file;
+    icon_path += file + ".svg";
+    if (QFile::exists(icon_path)) {
+        return icon_path;
+    }
+
+    icon_path =":bitmaps/";
+    if (loadDark) {
+        QString icon_path_dark = ":bitmaps/dark/";
+        if (QFileInfo::exists(icon_path_dark + file + ".png"))
+            icon_path = icon_path_dark;
+    }
+    icon_path += file + ".png";
     return icon_path;
 }
 
@@ -206,10 +234,10 @@ void misc::str2num(const QString& s_, double& Number, QString& Unit, double& Fac
   }*/
 
   QRegularExpression Expr( QRegularExpression("[^0-9\\x2E\\x2D\\x2B]") );
-  int i = str.indexOf( Expr );
+  auto i = str.indexOf( Expr );
   if(i >= 0)
     if((str.at(i).toLatin1() | 0x20) == 'e') {
-      int j = str.indexOf( Expr , ++i);
+      auto j = str.indexOf( Expr , ++i);
       if(j == i)  j--;
       i = j;
     }
@@ -237,12 +265,10 @@ void misc::str2num(const QString& s_, double& Number, QString& Unit, double& Fac
   {
     Factor = 1.0;
   }
-
-  return;
 }
 
 // #########################################################################
-QString misc::num2str(double Num)
+QString misc::num2str(double Num, int Precision)
 {
   char c = 0;
   double cal = fabs(Num);
@@ -267,10 +293,29 @@ QString misc::num2str(double Num)
     if(c)  Num /= pow(10.0, double(3*Expo));
   }
 
-  QString Str = QString::number(Num);
+  QString Str;
+  if (Precision == -1) {
+      Str = QString::number(Num);
+  } else {
+      Str = QString::number(Num,'f',Precision);
+      qDebug() << Str;
+  }
+
   if(c)  Str += c;
 
   return Str;
+}
+
+QColor misc::ColorFromString(const QString& color)
+{
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+    return QColor::fromString(color);
+#else
+    QColor c;
+    c.setNamedColor(color);
+    return c;
+#endif
+
 }
 
 // #########################################################################

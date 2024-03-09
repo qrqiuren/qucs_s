@@ -4,7 +4,7 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../qucs/dialogs/aboutdialog.cpp" line="+115"/>
+        <location filename="../qucs/dialogs/aboutdialog.cpp" line="+116"/>
         <source>About Qucs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14,13 +14,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+6"/>
+        <location line="+1"/>
         <location line="+1"/>
         <source>Copyright (C)</source>
         <translation>Copyright (C)</translation>
     </message>
     <message>
-        <location line="-84"/>
+        <location line="-82"/>
         <source>GUI programmer, Verilog-A dynamic loader</source>
         <translation type="unfinished"></translation>
     </message>
@@ -246,7 +247,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+1"/>
+        <source>Chinese by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+57"/>
         <source>Home Page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -258,6 +264,11 @@
     <message>
         <location line="+1"/>
         <source>Bugtracker page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Forum</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -303,6 +314,24 @@
     <message>
         <location line="+11"/>
         <source>GUI translations :</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AbstractSpiceKernel</name>
+    <message>
+        <location filename="../qucs/extsimkernels/abstractspicekernel.cpp" line="+1348"/>
+        <source>Simulate</source>
+        <translation type="unfinished">Simulovat</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to create dataset file </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Check write permission of the directory </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -501,7 +530,7 @@
 <context>
     <name>ComponentDialog</name>
     <message>
-        <location filename="../qucs/components/componentdialog.cpp" line="+45"/>
+        <location filename="../qucs/components/componentdialog.cpp" line="+47"/>
         <source>Edit Component Properties</source>
         <translation>Změnit vlastnosti komponent</translation>
     </message>
@@ -575,13 +604,13 @@
     </message>
     <message>
         <location line="+9"/>
-        <location line="+1185"/>
+        <location line="+1191"/>
         <location line="+22"/>
         <source>Step:</source>
         <translation>délka kroku:</translation>
     </message>
     <message>
-        <location line="-1200"/>
+        <location line="-1206"/>
         <source>Number:</source>
         <translation>počet:</translation>
     </message>
@@ -665,24 +694,24 @@
         <location line="+29"/>
         <location line="+92"/>
         <location line="+54"/>
-        <location line="+223"/>
-        <location line="+215"/>
+        <location line="+228"/>
+        <location line="+218"/>
         <location line="+167"/>
-        <location line="+317"/>
+        <location line="+315"/>
         <source>yes</source>
         <translation>ano</translation>
     </message>
     <message>
-        <location line="-1066"/>
+        <location line="-1072"/>
         <location line="+92"/>
-        <location line="+277"/>
-        <location line="+378"/>
-        <location line="+322"/>
+        <location line="+282"/>
+        <location line="+381"/>
+        <location line="+320"/>
         <source>no</source>
         <translation>ne</translation>
     </message>
     <message>
-        <location line="-382"/>
+        <location line="-380"/>
         <source>Select a file</source>
         <translation>vyber soubor</translation>
     </message>
@@ -717,7 +746,7 @@
         <translation>Verilog soubory</translation>
     </message>
     <message>
-        <location line="+210"/>
+        <location line="+208"/>
         <source>Points per decade:</source>
         <translation>bodů na dekádu:</translation>
     </message>
@@ -725,15 +754,20 @@
 <context>
     <name>CustomSimDialog</name>
     <message>
-        <location filename="../qucs/extsimkernels/customsimdialog.cpp" line="+40"/>
-        <location line="+44"/>
+        <location filename="../qucs/extsimkernels/customsimdialog.cpp" line="+42"/>
+        <location line="+55"/>
         <source>Edit SPICE code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-54"/>
         <source>Component: </source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>display in schematic</source>
+        <translation type="unfinished">zobrazit ve schématu</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -741,12 +775,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Extra outputs (semicolon separated; raw-SPICE or XYCE-STD format)</source>
+        <location line="+4"/>
+        <source>Extra outputs (semicolon separated; raw-SPICE or XYCE-STD or scalars print format)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1264,6 +1298,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+0"/>
+        <source>Grayscale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+3"/>
         <source>Original width to height ratio</source>
         <translation type="unfinished"></translation>
@@ -1297,23 +1336,22 @@
 <context>
     <name>ExternSimDialog</name>
     <message>
-        <location filename="../qucs/extsimkernels/externsimdialog.cpp" line="+43"/>
         <source>Simulate</source>
-        <translation type="unfinished">Simulovat</translation>
+        <translation type="obsolete">Simulovat</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location filename="../qucs/extsimkernels/externsimdialog.cpp" line="+44"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location line="+228"/>
+        <location line="+235"/>
         <source>Save netlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-232"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1323,18 +1361,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>Simulate with external simulator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+100"/>
+        <source>There were simulation errors. Please check log.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>There were simulation warnings. Please check log.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Simulation finished. Now place diagram on schematic to plot the result.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Simulation successful. Now place diagram on schematic to plot the result.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
         <source> started...
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+1"/>
+        <source>Simulation started on: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Failed to start simulator!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1349,12 +1412,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Simulate with SPICE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+7"/>
         <source> error...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1658,7 +1716,7 @@ program pro syntézu filtru
 <context>
     <name>ID_Dialog</name>
     <message>
-        <location filename="../qucs/paintings/id_dialog.cpp" line="+38"/>
+        <location filename="../qucs/paintings/id_dialog.cpp" line="+39"/>
         <source>Edit Subcircuit Properties</source>
         <translation>Úprava vlastností obvodu</translation>
     </message>
@@ -1933,17 +1991,15 @@ program pro syntézu filtru
         <translation>Přepsat ho?</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>&amp;Yes</source>
-        <translation>&amp;Ano</translation>
+        <translation type="vanished">&amp;Ano</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>&amp;No</source>
-        <translation>&amp;Ne</translation>
+        <translation type="vanished">&amp;Ne</translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>ERROR: Unknown file format! Please check file name extension!</source>
         <translation>CHYBA: neznámý formát souboru! Zkontrolujte příponu souboru!</translation>
     </message>
@@ -1971,7 +2027,7 @@ program pro syntézu filtru
 <context>
     <name>LabelDialog</name>
     <message>
-        <location filename="../qucs/dialogs/labeldialog.cpp" line="+33"/>
+        <location filename="../qucs/dialogs/labeldialog.cpp" line="+32"/>
         <source>Insert Nodename</source>
         <translation>Zadat označení uzlu</translation>
     </message>
@@ -2082,12 +2138,12 @@ Node name will not be changed.</source>
     </message>
     <message>
         <location line="+12"/>
-        <location line="+192"/>
+        <location line="+194"/>
         <source>Create</source>
         <translation>Vytvořit</translation>
     </message>
     <message>
-        <location line="-171"/>
+        <location line="-173"/>
         <source>Message:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2104,8 +2160,7 @@ Node name will not be changed.</source>
     <message>
         <location line="+18"/>
         <location line="+16"/>
-        <location line="+16"/>
-        <location line="+6"/>
+        <location line="+22"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
@@ -2130,17 +2185,20 @@ Node name will not be changed.</source>
         <translation>Nelze vytvořit adresář uživatelských knihoven !</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+15"/>
+        <source>A library with this name already exists! Rewrite?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>A system library with this name already exists!</source>
-        <translation>Systémová knihovna s tímto jménem již existuje!</translation>
+        <translation type="vanished">Systémová knihovna s tímto jménem již existuje!</translation>
     </message>
     <message>
-        <location line="+6"/>
         <source>A library with this name already exists!</source>
-        <translation>Knihovna s tímto jménem již existuje!</translation>
+        <translation type="vanished">Knihovna s tímto jménem již existuje!</translation>
     </message>
     <message>
-        <location line="+87"/>
+        <location line="+88"/>
         <source>Next...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2178,13 +2236,13 @@ Node name will not be changed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+10"/>
         <source>Creating SPICE netlist.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+20"/>
         <source>Creating Verilog netlist.
 </source>
         <translation type="unfinished"></translation>
@@ -2380,6 +2438,26 @@ Node name will not be changed.</source>
     <message>
         <location line="+3"/>
         <source>X-axis position:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Square</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Triangle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Marker Indicator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2592,7 +2670,7 @@ je ale %1 !</translation>
 <context>
     <name>Ngspice</name>
     <message>
-        <location filename="../qucs/extsimkernels/ngspice.cpp" line="+643"/>
+        <location filename="../qucs/extsimkernels/ngspice.cpp" line="+549"/>
         <source>Problem with SaveNetlist</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3054,24 +3132,24 @@ je ale %1 !</translation>
     </message>
     <message>
         <location line="+20"/>
-        <location line="+187"/>
+        <location line="+191"/>
         <source>Qucs Packages</source>
         <translation>Qucs balíčky</translation>
     </message>
     <message>
-        <location line="-186"/>
-        <location line="+187"/>
+        <location line="-190"/>
+        <location line="+191"/>
         <source>Any File</source>
         <translation>Všechny soubory</translation>
     </message>
     <message>
-        <location line="-190"/>
-        <location line="+187"/>
+        <location line="-194"/>
+        <location line="+191"/>
         <source>Enter a Package File Name</source>
         <translation>Vložit jméno balíčku</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-166"/>
         <location line="+69"/>
         <location line="+15"/>
         <location line="+19"/>
@@ -3095,12 +3173,12 @@ je ale %1 !</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location line="+51"/>
+        <location line="+55"/>
         <source>Info</source>
         <translation>Informace</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-54"/>
         <source>Output file already exists!</source>
         <translation>Výstupní soubor již existuje!</translation>
     </message>
@@ -3110,22 +3188,20 @@ je ale %1 !</translation>
         <translation>Přepsat ho?</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>&amp;Yes</source>
-        <translation>&amp;Ano</translation>
+        <translation type="vanished">&amp;Ano</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>&amp;No</source>
-        <translation>&amp;Ne</translation>
+        <translation type="vanished">&amp;Ne</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Cannot create package!</source>
         <translation>Nelze vytvořit balíček!</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+50"/>
         <source>Successfully created Qucs package!</source>
         <translation>Úspěšně vytvořen Qucs balíček!</translation>
     </message>
@@ -3145,7 +3221,7 @@ je ale %1 !</translation>
         <translation>CHYBA: Chybné číslo verze!</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+14"/>
         <source>ERROR: Checksum mismatch!</source>
         <translation>CHYBA: Kontrolní součet nesouhlasí! </translation>
     </message>
@@ -3254,7 +3330,7 @@ je ale %1 !</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>XSPICE</source>
+        <source>SPICE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3263,7 +3339,7 @@ je ale %1 !</translation>
         <translation>Ostatní</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+50"/>
         <source>-port</source>
         <translation>-port</translation>
     </message>
@@ -3278,20 +3354,20 @@ je ale %1 !</translation>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_sens_ac.cpp" line="+25"/>
-        <location line="+43"/>
+        <location line="+44"/>
         <source>AC sensitivity simulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-22"/>
-        <location filename="../qucs/spicecomponents/sp_sens.cpp" line="+46"/>
+        <location filename="../qucs/spicecomponents/sp_sens.cpp" line="+47"/>
         <source>Output variable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../qucs/spicecomponents/sp_noise.cpp" line="+47"/>
-        <location filename="../qucs/spicecomponents/sp_disto.cpp" line="+47"/>
+        <location filename="../qucs/spicecomponents/sp_noise.cpp" line="+48"/>
+        <location filename="../qucs/spicecomponents/sp_disto.cpp" line="+48"/>
         <location filename="../qucs/components/tr_sim.cpp" line="+47"/>
         <location filename="../qucs/components/sp_sim.cpp" line="+51"/>
         <location filename="../qucs/components/param_sweep.cpp" line="+49"/>
@@ -3333,18 +3409,18 @@ je ale %1 !</translation>
         <translation>Spočítání rušivých napětí</translation>
     </message>
     <message>
-        <location filename="../qucs/components/am_modulator.cpp" line="+23"/>
+        <location filename="../qucs/components/am_modulator.cpp" line="+24"/>
         <source>ac voltage source with amplitude modulator</source>
         <translation>AC zdroj napětí s amplitudovým modulátorem</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>AM</source>
         <translation>AM</translation>
     </message>
     <message>
         <location filename="../qucs/components/volt_ac.cpp" line="+50"/>
-        <location filename="../qucs/components/pm_modulator.cpp" line="+52"/>
+        <location filename="../qucs/components/pm_modulator.cpp" line="+54"/>
         <location filename="../qucs/components/am_modulator.cpp" line="+15"/>
         <source>peak voltage in Volts</source>
         <translation>špičková hodnota napětí ve voltech</translation>
@@ -3353,7 +3429,7 @@ je ale %1 !</translation>
         <location line="+2"/>
         <location filename="../qucs/components/source_ac.cpp" line="+69"/>
         <location filename="../qucs/components/pm_modulator.cpp" line="+2"/>
-        <location filename="../qucs/components/hb_sim.cpp" line="+47"/>
+        <location filename="../qucs/components/hb_sim.cpp" line="+48"/>
         <location filename="../qucs/components/ampere_ac.cpp" line="+52"/>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
         <source>frequency in Hertz</source>
@@ -3366,6 +3442,16 @@ je ale %1 !</translation>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
         <source>initial phase in degrees</source>
         <translation>počáteční fázové posunutí ve stupních</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>offset voltage (SPICE only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>delay time (SPICE only)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/components/am_modulator.cpp" line="+2"/>
@@ -3388,7 +3474,7 @@ je ale %1 !</translation>
         <translation>špičková hodnota proudu v ampérech</translation>
     </message>
     <message>
-        <location filename="../qucs/components/volt_ac.cpp" line="+2"/>
+        <location filename="../qucs/components/volt_ac.cpp" line="-4"/>
         <location filename="../qucs/components/ampere_ac.cpp" line="+6"/>
         <source>damping factor (transient simulation only)</source>
         <translation>tlumící faktor (pouze pro přechodovou simulaci)</translation>
@@ -3414,20 +3500,20 @@ je ale %1 !</translation>
         <translation>zdroj DC proudu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/ampere_noise.cpp" line="+25"/>
+        <location filename="../qucs/components/ampere_noise.cpp" line="+26"/>
         <source>noise current source</source>
         <translation>Proudový zdroj rušení</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>current power spectral density in A^2/Hz</source>
         <translation>spektrální proudová hustota rušení v A²/Hz</translation>
     </message>
     <message>
-        <location filename="../qucs/components/volt_noise.cpp" line="+48"/>
-        <location filename="../qucs/components/noise_vv.cpp" line="+67"/>
-        <location filename="../qucs/components/noise_iv.cpp" line="+72"/>
-        <location filename="../qucs/components/noise_ii.cpp" line="+77"/>
+        <location filename="../qucs/components/volt_noise.cpp" line="+50"/>
+        <location filename="../qucs/components/noise_vv.cpp" line="+69"/>
+        <location filename="../qucs/components/noise_iv.cpp" line="+74"/>
+        <location filename="../qucs/components/noise_ii.cpp" line="+79"/>
         <location filename="../qucs/components/ampere_noise.cpp" line="+2"/>
         <source>frequency exponent</source>
         <translation>frekvenční exponent</translation>
@@ -3456,19 +3542,19 @@ je ale %1 !</translation>
         <translation>Zdroj rušivého proudu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/amplifier.cpp" line="+23"/>
+        <location filename="../qucs/components/amplifier.cpp" line="+24"/>
         <source>ideal amplifier</source>
         <translation>ideální zesilovač</translation>
     </message>
     <message>
         <location filename="../qucs/components/vfile.cpp" line="+63"/>
         <location filename="../qucs/components/opamp.cpp" line="+54"/>
-        <location filename="../qucs/components/amplifier.cpp" line="+21"/>
+        <location filename="../qucs/components/amplifier.cpp" line="+22"/>
         <source>voltage gain</source>
         <translation>Napěťové zesílení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/isolator.cpp" line="+49"/>
+        <location filename="../qucs/components/isolator.cpp" line="+51"/>
         <location filename="../qucs/components/amplifier.cpp" line="+2"/>
         <source>reference impedance of input port</source>
         <translation>referenční impedance vstupního portu</translation>
@@ -3537,10 +3623,10 @@ je ale %1 !</translation>
     </message>
     <message>
         <location filename="../qucs/components/tff_SR.cpp" line="+34"/>
-        <location filename="../qucs/components/phototransistor.cpp" line="+52"/>
+        <location filename="../qucs/components/phototransistor.cpp" line="+54"/>
         <location line="+3"/>
-        <location filename="../qucs/components/photodiode.cpp" line="+48"/>
-        <location filename="../qucs/components/nigbt.cpp" line="+28"/>
+        <location filename="../qucs/components/photodiode.cpp" line="+50"/>
+        <location filename="../qucs/components/nigbt.cpp" line="+30"/>
         <location filename="../qucs/components/mux8to1.cpp" line="+1"/>
         <location filename="../qucs/components/mux4to1.cpp" line="+1"/>
         <location filename="../qucs/components/mux2to1.cpp" line="+1"/>
@@ -3570,7 +3656,7 @@ je ale %1 !</translation>
         <location filename="../qucs/components/andor4x4.cpp" line="+1"/>
         <location filename="../qucs/components/andor4x3.cpp" line="+1"/>
         <location filename="../qucs/components/andor4x2.cpp" line="+1"/>
-        <location filename="../qucs/components/MESFET.cpp" line="+69"/>
+        <location filename="../qucs/components/MESFET.cpp" line="+71"/>
         <location filename="../qucs/components/DLS_nto1.cpp" line="+22"/>
         <location filename="../qucs/components/DLS_1ton.cpp" line="+21"/>
         <source>s</source>
@@ -3587,7 +3673,7 @@ je ale %1 !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>4x3 AndOr</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3602,51 +3688,48 @@ je ale %1 !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/attenuator.cpp" line="+23"/>
+        <location filename="../qucs/components/attenuator.cpp" line="+24"/>
         <source>attenuator</source>
         <translation>útlumový člen</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>power attenuation</source>
         <translation>výkonový útlum</translation>
     </message>
     <message>
-        <location filename="../qucs/components/phaseshifter.cpp" line="+49"/>
-        <location filename="../qucs/components/hybrid.cpp" line="+58"/>
-        <location filename="../qucs/components/gyrator.cpp" line="+60"/>
-        <location filename="../qucs/components/coupler.cpp" line="+68"/>
+        <location filename="../qucs/components/phaseshifter.cpp" line="+51"/>
+        <location filename="../qucs/components/hybrid.cpp" line="+60"/>
+        <location filename="../qucs/components/gyrator.cpp" line="+61"/>
+        <location filename="../qucs/components/coupler.cpp" line="+70"/>
         <location filename="../qucs/components/attenuator.cpp" line="+2"/>
         <source>reference impedance</source>
         <translation>referenční impedance</translation>
     </message>
     <message>
         <location filename="../qucs/components/twistedpair.cpp" line="+75"/>
-        <location filename="../qucs/components/tunneldiode.cpp" line="+52"/>
+        <location filename="../qucs/components/tunneldiode.cpp" line="+54"/>
         <location filename="../qucs/components/tr_sim.cpp" line="+25"/>
-        <location filename="../qucs/components/tline_4port.cpp" line="+59"/>
-        <location filename="../qucs/components/tline.cpp" line="+55"/>
-        <location filename="../qucs/components/switch.cpp" line="+35"/>
+        <location filename="../qucs/components/tline_4port.cpp" line="+61"/>
+        <location filename="../qucs/components/tline.cpp" line="+57"/>
+        <location filename="../qucs/components/taperedline.cpp" line="+67"/>
         <location filename="../qucs/components/source_ac.cpp" line="+2"/>
-        <location filename="../qucs/components/rlcg.cpp" line="+70"/>
-        <location filename="../qucs/components/resistor.cpp" line="+31"/>
+        <location filename="../qucs/components/rlcg.cpp" line="+75"/>
         <location filename="../qucs/components/relais.cpp" line="+72"/>
-        <location filename="../qucs/components/rectline.cpp" line="+64"/>
-        <location filename="../qucs/components/msvia.cpp" line="+49"/>
-        <location filename="../qucs/components/msline.cpp" line="+56"/>
-        <location filename="../qucs/components/mslange.cpp" line="+62"/>
-        <location filename="../qucs/components/mscoupled.cpp" line="+70"/>
+        <location filename="../qucs/components/rectline.cpp" line="+66"/>
+        <location filename="../qucs/components/msvia.cpp" line="+51"/>
+        <location filename="../qucs/components/msline.cpp" line="+58"/>
+        <location filename="../qucs/components/mslange.cpp" line="+64"/>
+        <location filename="../qucs/components/mscoupled.cpp" line="+72"/>
         <location filename="../qucs/components/mosfet_sub.cpp" line="+121"/>
-        <location filename="../qucs/components/jfet.cpp" line="+65"/>
+        <location filename="../qucs/components/jfet.cpp" line="+64"/>
         <location filename="../qucs/components/isolator.cpp" line="+2"/>
-        <location filename="../qucs/components/indq.cpp" line="+77"/>
-        <location filename="../qucs/components/etr_sim.cpp" line="+59"/>
+        <location filename="../qucs/components/etr_sim.cpp" line="+60"/>
         <location filename="../qucs/components/diode.cpp" line="+63"/>
         <location filename="../qucs/components/dc_sim.cpp" line="+50"/>
-        <location filename="../qucs/components/ctline.cpp" line="+69"/>
-        <location filename="../qucs/components/coaxialline.cpp" line="+59"/>
-        <location filename="../qucs/components/capq.cpp" line="+76"/>
-        <location filename="../qucs/components/bondwire.cpp" line="+58"/>
+        <location filename="../qucs/components/ctline.cpp" line="+71"/>
+        <location filename="../qucs/components/coaxialline.cpp" line="+61"/>
+        <location filename="../qucs/components/bondwire.cpp" line="+60"/>
         <location filename="../qucs/components/bjtsub.cpp" line="+97"/>
         <location filename="../qucs/components/attenuator.cpp" line="+2"/>
         <source>simulation temperature in degree Celsius</source>
@@ -3658,18 +3741,18 @@ je ale %1 !</translation>
         <translation>Útlumový člen</translation>
     </message>
     <message>
-        <location filename="../qucs/components/biast.cpp" line="+23"/>
+        <location filename="../qucs/components/biast.cpp" line="+25"/>
         <source>bias t</source>
         <translation>Bias T</translation>
     </message>
     <message>
-        <location filename="../qucs/components/dcfeed.cpp" line="+48"/>
-        <location filename="../qucs/components/biast.cpp" line="+33"/>
+        <location filename="../qucs/components/dcfeed.cpp" line="+49"/>
+        <location filename="../qucs/components/biast.cpp" line="+35"/>
         <source>for transient simulation: inductance in Henry</source>
         <translation>pro přechodovou simulaci: induktivita v Henry</translation>
     </message>
     <message>
-        <location filename="../qucs/components/dcblock.cpp" line="+46"/>
+        <location filename="../qucs/components/dcblock.cpp" line="+48"/>
         <location filename="../qucs/components/biast.cpp" line="+2"/>
         <source>for transient simulation: capacitance in Farad</source>
         <translation>pro přechodovou simulaci: kapazität ve faradech</translation>
@@ -3689,13 +3772,13 @@ je ale %1 !</translation>
         <location filename="../qucs/components/logical_buf.cpp" line="+35"/>
         <location filename="../qucs/components/hpribin4bit.cpp" line="-3"/>
         <location filename="../qucs/components/greytobinary4bit.cpp" line="-3"/>
-        <location filename="../qucs/components/component.cpp" line="+1447"/>
+        <location filename="../qucs/components/component.cpp" line="+1529"/>
         <location filename="../qucs/components/binarytogrey4bit.cpp" line="+3"/>
         <source>transfer function scaling factor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/binarytogrey4bit.cpp" line="+22"/>
+        <location filename="../qucs/components/binarytogrey4bit.cpp" line="+23"/>
         <source>4Bit Bin2Gray</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3705,7 +3788,7 @@ je ale %1 !</translation>
         <translation>bipolární tranzistor</translation>
     </message>
     <message>
-        <location filename="../qucs/components/bjtsub.cpp" line="+51"/>
+        <location filename="../qucs/components/bjtsub.cpp" line="+52"/>
         <location filename="../qucs/components/bjt.cpp" line="+45"/>
         <source>npn transistor</source>
         <translation>npn tranzistor</translation>
@@ -3719,15 +3802,15 @@ je ale %1 !</translation>
     <message>
         <location filename="../qucs/components/mosfet_sub.cpp" line="-94"/>
         <location filename="../qucs/components/jfet.cpp" line="-36"/>
-        <location filename="../qucs/components/bjtsub.cpp" line="-131"/>
+        <location filename="../qucs/components/bjtsub.cpp" line="-132"/>
         <source>polarity</source>
         <translation>polarita</translation>
     </message>
     <message>
-        <location filename="../qucs/components/triac.cpp" line="+57"/>
-        <location filename="../qucs/components/thyristor.cpp" line="+53"/>
+        <location filename="../qucs/components/triac.cpp" line="+59"/>
+        <location filename="../qucs/components/thyristor.cpp" line="+55"/>
         <location filename="../qucs/components/diode.cpp" line="-34"/>
-        <location filename="../qucs/components/diac.cpp" line="+53"/>
+        <location filename="../qucs/components/diac.cpp" line="+55"/>
         <location filename="../qucs/components/bjtsub.cpp" line="+2"/>
         <source>saturation current</source>
         <translation>saturační proud</translation>
@@ -3988,7 +4071,6 @@ je ale %1 !</translation>
         <translation>energie valenčního odstupu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/resistor.cpp" line="+6"/>
         <location filename="../qucs/components/jfet.cpp" line="+6"/>
         <location filename="../qucs/components/diode.cpp" line="+14"/>
         <location filename="../qucs/components/bjtsub.cpp" line="+2"/>
@@ -4006,12 +4088,12 @@ je ale %1 !</translation>
         <translation>bipolární tranzistor mit Substratanschluss</translation>
     </message>
     <message>
-        <location filename="../qucs/components/bondwire.cpp" line="-35"/>
+        <location filename="../qucs/components/bondwire.cpp" line="-36"/>
         <source>bond wire</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <source>length of the wire</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4042,11 +4124,11 @@ je ale %1 !</translation>
     </message>
     <message>
         <location filename="../qucs/components/msvia.cpp" line="-4"/>
-        <location filename="../qucs/components/mstee.cpp" line="+38"/>
-        <location filename="../qucs/components/msstep.cpp" line="+50"/>
-        <location filename="../qucs/components/msmbend.cpp" line="+47"/>
-        <location filename="../qucs/components/mscross.cpp" line="+29"/>
-        <location filename="../qucs/components/mscorner.cpp" line="+46"/>
+        <location filename="../qucs/components/mstee.cpp" line="+39"/>
+        <location filename="../qucs/components/msstep.cpp" line="+52"/>
+        <location filename="../qucs/components/msmbend.cpp" line="+51"/>
+        <location filename="../qucs/components/mscross.cpp" line="+31"/>
+        <location filename="../qucs/components/mscorner.cpp" line="+50"/>
         <location filename="../qucs/components/bondwire.cpp" line="+2"/>
         <source>substrate</source>
         <translation>substrát</translation>
@@ -4059,11 +4141,11 @@ je ale %1 !</translation>
     <message>
         <location filename="../qucs/components/triac.cpp" line="+8"/>
         <location filename="../qucs/components/thyristor.cpp" line="+8"/>
-        <location filename="../qucs/components/potentiometer.cpp" line="+46"/>
+        <location filename="../qucs/components/potentiometer.cpp" line="+49"/>
         <location filename="../qucs/components/phototransistor.cpp" line="+15"/>
         <location filename="../qucs/components/photodiode.cpp" line="+25"/>
         <location filename="../qucs/components/nigbt.cpp" line="+41"/>
-        <location filename="../qucs/components/log_amp.cpp" line="+64"/>
+        <location filename="../qucs/components/log_amp.cpp" line="+66"/>
         <location filename="../qucs/components/hic2_full.cpp" line="+86"/>
         <location filename="../qucs/components/diac.cpp" line="+6"/>
         <location filename="../qucs/components/MESFET.cpp" line="+9"/>
@@ -4086,7 +4168,7 @@ je ale %1 !</translation>
         <translation>počáteční napětí pro přechodovou simulaci</translation>
     </message>
     <message>
-        <location filename="../qucs/components/resistor.cpp" line="+4"/>
+        <location filename="../qucs/components/resistor.cpp" line="+41"/>
         <location filename="../qucs/components/logical_inv.cpp" line="+4"/>
         <location filename="../qucs/components/logical_buf.cpp" line="+4"/>
         <location filename="../qucs/components/diode.cpp" line="+4"/>
@@ -4113,9 +4195,15 @@ je ale %1 !</translation>
         <translation>faktor dopředného přenosu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/vfile.cpp" line="+1"/>
-        <location filename="../qucs/components/vcvs.cpp" line="+1"/>
+        <location line="+1"/>
         <location filename="../qucs/components/vccs.cpp" line="+68"/>
+        <location filename="../qucs/components/ccvs.cpp" line="+1"/>
+        <location filename="../qucs/components/cccs.cpp" line="+1"/>
+        <source>delay time (Qucsator only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qucs/components/vfile.cpp" line="+1"/>
         <location filename="../qucs/components/rs_flipflop.cpp" line="+26"/>
         <location filename="../qucs/components/logical_inv.cpp" line="-6"/>
         <location filename="../qucs/components/logical_buf.cpp" line="-6"/>
@@ -4123,8 +4211,6 @@ je ale %1 !</translation>
         <location filename="../qucs/components/ifile.cpp" line="+62"/>
         <location filename="../qucs/components/d_flipflop.cpp" line="+27"/>
         <location filename="../qucs/components/component.cpp" line="-6"/>
-        <location filename="../qucs/components/ccvs.cpp" line="+1"/>
-        <location filename="../qucs/components/cccs.cpp" line="+1"/>
         <source>delay time</source>
         <translation>doba prodlevy</translation>
     </message>
@@ -4149,7 +4235,7 @@ je ale %1 !</translation>
         <translation>cirkulátor</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+27"/>
         <source>reference impedance of port 1</source>
         <translation>referenční impedance na portu 1</translation>
     </message>
@@ -4169,13 +4255,13 @@ je ale %1 !</translation>
         <translation>Cirkulátor</translation>
     </message>
     <message>
-        <location filename="../qucs/components/coaxialline.cpp" line="-36"/>
+        <location filename="../qucs/components/coaxialline.cpp" line="-37"/>
         <source>coaxial transmission line</source>
         <translation>koaxiální vedení</translation>
     </message>
     <message>
         <location filename="../qucs/components/rectline.cpp" line="-8"/>
-        <location filename="../qucs/components/coaxialline.cpp" line="+22"/>
+        <location filename="../qucs/components/coaxialline.cpp" line="+23"/>
         <source>relative permittivity of dielectric</source>
         <translation>relativní permitivita dielektrika</translation>
     </message>
@@ -4211,7 +4297,7 @@ je ale %1 !</translation>
     </message>
     <message>
         <location filename="../qucs/components/twistedpair.cpp" line="+4"/>
-        <location filename="../qucs/components/substrate.cpp" line="+65"/>
+        <location filename="../qucs/components/substrate.cpp" line="+68"/>
         <location filename="../qucs/components/rectline.cpp" line="+6"/>
         <location filename="../qucs/components/coaxialline.cpp" line="+2"/>
         <source>loss tangent</source>
@@ -4228,7 +4314,7 @@ je ale %1 !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>1Bit Comparator</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4260,19 +4346,19 @@ je ale %1 !</translation>
     <message>
         <location filename="../qucs/components/logical_inv.cpp" line="-2"/>
         <location filename="../qucs/components/logical_buf.cpp" line="-2"/>
-        <location filename="../qucs/components/digi_source.cpp" line="+60"/>
+        <location filename="../qucs/components/digi_source.cpp" line="+62"/>
         <location filename="../qucs/components/component.cpp" line="+2"/>
         <source>voltage of high level</source>
         <translation>napětí horní úrovně</translation>
     </message>
     <message>
-        <location filename="../qucs/schematic_file.cpp" line="+115"/>
+        <location filename="../qucs/schematic_file.cpp" line="+117"/>
         <location line="+18"/>
         <location line="+21"/>
         <location line="+24"/>
         <location line="+17"/>
         <location line="+70"/>
-        <location line="+32"/>
+        <location line="+37"/>
         <location line="+43"/>
         <location line="+78"/>
         <location line="+196"/>
@@ -4286,17 +4372,17 @@ je ale %1 !</translation>
         <location line="+29"/>
         <location line="+6"/>
         <location line="+8"/>
-        <location line="+17"/>
+        <location line="+19"/>
         <location line="+16"/>
         <location line="+6"/>
         <location line="+8"/>
         <location line="+15"/>
         <location line="+26"/>
         <location line="+54"/>
-        <location filename="../qucs/qucs_actions.cpp" line="+1313"/>
-        <location filename="../qucs/components/vacomponent.cpp" line="+333"/>
+        <location filename="../qucs/qucs_actions.cpp" line="+1351"/>
+        <location filename="../qucs/components/vacomponent.cpp" line="+334"/>
         <location line="+24"/>
-        <location filename="../qucs/components/component.cpp" line="+268"/>
+        <location filename="../qucs/components/component.cpp" line="+259"/>
         <location line="+46"/>
         <location filename="../qucs-powercombining/qucspowercombiningtool.cpp" line="+788"/>
         <location filename="../qucs-filter/quarterwave_filter.cpp" line="+51"/>
@@ -4329,22 +4415,22 @@ Wrong &apos;component&apos; line format!</source>
 Chybný řádkový formát &apos;component&apos; !</translation>
     </message>
     <message>
-        <location filename="../qucs/components/coplanar.cpp" line="+23"/>
+        <location filename="../qucs/components/coplanar.cpp" line="+24"/>
         <source>coplanar line</source>
         <translation>koplanární vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msrstub.cpp" line="+42"/>
-        <location filename="../qucs/components/msopen.cpp" line="+42"/>
+        <location filename="../qucs/components/msrstub.cpp" line="+44"/>
+        <location filename="../qucs/components/msopen.cpp" line="+45"/>
         <location filename="../qucs/components/msline.cpp" line="-12"/>
         <location filename="../qucs/components/mslange.cpp" line="-13"/>
-        <location filename="../qucs/components/msgap.cpp" line="+51"/>
+        <location filename="../qucs/components/msgap.cpp" line="+53"/>
         <location filename="../qucs/components/mscoupled.cpp" line="-13"/>
-        <location filename="../qucs/components/cpwstep.cpp" line="+66"/>
-        <location filename="../qucs/components/cpwshort.cpp" line="+62"/>
-        <location filename="../qucs/components/cpwopen.cpp" line="+63"/>
-        <location filename="../qucs/components/cpwgap.cpp" line="+64"/>
-        <location filename="../qucs/components/coplanar.cpp" line="+37"/>
+        <location filename="../qucs/components/cpwstep.cpp" line="+68"/>
+        <location filename="../qucs/components/cpwshort.cpp" line="+64"/>
+        <location filename="../qucs/components/cpwopen.cpp" line="+65"/>
+        <location filename="../qucs/components/cpwgap.cpp" line="+66"/>
+        <location filename="../qucs/components/coplanar.cpp" line="+38"/>
         <source>name of substrate definition</source>
         <translation>jméno definice substrátu</translation>
     </message>
@@ -4395,12 +4481,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Koplanární vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/coupler.cpp" line="-45"/>
+        <location filename="../qucs/components/coupler.cpp" line="-46"/>
         <source>ideal coupler</source>
         <translation>ideální vazební člen</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>coupling factor</source>
         <translation>vazební faktor</translation>
     </message>
@@ -4415,12 +4501,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Vazební člen</translation>
     </message>
     <message>
-        <location filename="../qucs/components/cpwgap.cpp" line="-45"/>
+        <location filename="../qucs/components/cpwgap.cpp" line="-46"/>
         <source>coplanar gap</source>
         <translation>koplanární mezera</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>width of gap between the two lines</source>
         <translation>Odstup mezi koplanárními vedeními</translation>
     </message>
@@ -4430,12 +4516,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>koplanární mezera</translation>
     </message>
     <message>
-        <location filename="../qucs/components/cpwopen.cpp" line="-48"/>
+        <location filename="../qucs/components/cpwopen.cpp" line="-49"/>
         <source>coplanar open</source>
         <translation>otevřené koplanární vedení</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+47"/>
         <source>width of gap at end of line</source>
         <translation>šířka mezery na konci vedení</translation>
     </message>
@@ -4445,24 +4531,24 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>otevřené koplanární vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/cpwshort.cpp" line="-45"/>
+        <location filename="../qucs/components/cpwshort.cpp" line="-46"/>
         <source>coplanar short</source>
         <translation>zkratované koplanární vedení</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+61"/>
         <source>Coplanar Short</source>
         <translation>Zkratované koplanární vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/cpwstep.cpp" line="-51"/>
+        <location filename="../qucs/components/cpwstep.cpp" line="-52"/>
         <source>coplanar step</source>
         <translation>koplanární krok</translation>
     </message>
     <message>
         <location filename="../qucs/components/mstee.cpp" line="+2"/>
         <location filename="../qucs/components/mscross.cpp" line="+2"/>
-        <location filename="../qucs/components/cpwstep.cpp" line="+45"/>
+        <location filename="../qucs/components/cpwstep.cpp" line="+46"/>
         <source>width of line 1</source>
         <translation>šířka vedení 1</translation>
     </message>
@@ -4484,12 +4570,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Koplanární odstup</translation>
     </message>
     <message>
-        <location filename="../qucs/components/ctline.cpp" line="-50"/>
+        <location filename="../qucs/components/ctline.cpp" line="-51"/>
         <source>coupled transmission lines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+37"/>
         <source>characteristic impedance of even mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4606,22 +4692,22 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Metoda pro řešení matice zapojení obvodu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/dcblock.cpp" line="-24"/>
+        <location filename="../qucs/components/dcblock.cpp" line="-25"/>
         <source>dc block</source>
         <translation>DC blokace</translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>dc Block</source>
         <translation>DC uzávěra</translation>
     </message>
     <message>
-        <location filename="../qucs/components/dcfeed.cpp" line="-25"/>
+        <location filename="../qucs/components/dcfeed.cpp" line="-26"/>
         <source>dc feed</source>
         <translation>DC přívod</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+40"/>
         <source>dc Feed</source>
         <translation>DC přívod</translation>
     </message>
@@ -4660,13 +4746,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/diac.cpp" line="-36"/>
+        <location filename="../qucs/components/diac.cpp" line="-37"/>
         <source>diac (bidirectional trigger diode)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/components/triac.cpp" line="-14"/>
-        <location filename="../qucs/components/diac.cpp" line="+24"/>
+        <location filename="../qucs/components/diac.cpp" line="+25"/>
         <source>(bidirectional) breakover voltage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4724,8 +4810,8 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/digi_source.cpp" line="-34"/>
-        <location line="+51"/>
+        <location filename="../qucs/components/digi_source.cpp" line="-36"/>
+        <location line="+53"/>
         <source>digital source</source>
         <translation>digitální zdroj</translation>
     </message>
@@ -4930,7 +5016,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>2to4 Demux</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4955,7 +5041,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/ecvs.cpp" line="+21"/>
+        <location filename="../qucs/components/ecvs.cpp" line="+22"/>
         <source>externally controlled voltage source</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5755,13 +5841,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/etr_sim.cpp" line="-44"/>
+        <location filename="../qucs/components/etr_sim.cpp" line="-45"/>
         <source>externally driven transient simulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/components/tr_sim.cpp" line="-25"/>
-        <location filename="../qucs/components/etr_sim.cpp" line="+19"/>
+        <location filename="../qucs/components/etr_sim.cpp" line="+20"/>
         <source>integration method</source>
         <translation>integrační metoda</translation>
     </message>
@@ -5808,7 +5894,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>dovolit nepřesnosti při časových krocích</translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/sp_sens_tr_xyce.cpp" line="+58"/>
+        <location filename="../qucs/spicecomponents/sp_sens_tr_xyce.cpp" line="+59"/>
         <location filename="../qucs/components/etr_sim.cpp" line="+2"/>
         <source>perform an initial DC analysis</source>
         <translation>spustit počáteční DC analýzu</translation>
@@ -5840,7 +5926,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>2Bit FullAdder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5860,7 +5946,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>4Bit Gray2Bin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5870,17 +5956,17 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>zem (referenční potenciál)</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+32"/>
         <source>Ground</source>
         <translation>Země</translation>
     </message>
     <message>
-        <location filename="../qucs/components/gyrator.cpp" line="-35"/>
+        <location filename="../qucs/components/gyrator.cpp" line="-36"/>
         <source>gyrator (impedance inverter)</source>
         <translation>gyrátor (impedanční negátor)</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+34"/>
         <source>gyrator ratio</source>
         <translation>gyrátorový poměr</translation>
     </message>
@@ -5900,12 +5986,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/hb_sim.cpp" line="-31"/>
+        <location filename="../qucs/components/hb_sim.cpp" line="-32"/>
         <source>Harmonic balance simulation</source>
         <translation>Harmonic balance simulace</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <source>number of harmonics</source>
         <translation>počet harmonických</translation>
     </message>
@@ -5925,13 +6011,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/hybrid.cpp" line="-39"/>
+        <location filename="../qucs/components/hybrid.cpp" line="-40"/>
         <source>hybrid (unsymmetrical 3dB coupler)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/components/phaseshifter.cpp" line="-2"/>
-        <location filename="../qucs/components/hybrid.cpp" line="+37"/>
+        <location filename="../qucs/components/hybrid.cpp" line="+38"/>
         <source>phase shift in degree</source>
         <translation>fázové posunutí ve stupních</translation>
     </message>
@@ -5995,7 +6081,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../qucs/components/sparamfile.cpp" line="+38"/>
+        <location filename="../qucs/components/sparamfile.cpp" line="+40"/>
         <location filename="../qucs/components/ifile.cpp" line="+2"/>
         <source>interpolation type</source>
         <translation>typ interpolace</translation>
@@ -6128,12 +6214,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Zdroj obdélníkového proudu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/isolator.cpp" line="-30"/>
+        <location filename="../qucs/components/isolator.cpp" line="-31"/>
         <source>isolator</source>
         <translation>izolátor</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Isolator</source>
         <translation>Isolátor</translation>
     </message>
@@ -6273,12 +6359,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>jméno komponenty v knihovně</translation>
     </message>
     <message>
-        <location filename="../qucs/components/log_amp.cpp" line="-47"/>
+        <location filename="../qucs/components/log_amp.cpp" line="-48"/>
         <source>Logarithmic Amplifier verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>scale factor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6414,7 +6500,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>Logic 0</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6429,7 +6515,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>Logic 1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6514,12 +6600,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>n-port XOR</translation>
     </message>
     <message>
-        <location filename="../qucs/components/MESFET.cpp" line="-39"/>
+        <location filename="../qucs/components/MESFET.cpp" line="-40"/>
         <source>MESFET verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>model selector</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6784,12 +6870,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/mod_amp.cpp" line="+15"/>
+        <location filename="../qucs/components/mod_amp.cpp" line="+16"/>
         <source>Modular Operational Amplifier verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Gain bandwidth product (Hz)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6884,7 +6970,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>MOS polem řízený tranzistor</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mosfet_sub.cpp" line="+86"/>
+        <location filename="../qucs/components/mosfet_sub.cpp" line="+87"/>
         <location filename="../qucs/components/mosfet.cpp" line="+20"/>
         <source>n-MOSFET</source>
         <translation>n-MOSFET</translation>
@@ -6902,7 +6988,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>MOSFET (depletion)</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-209"/>
         <source>zero-bias threshold voltage</source>
         <translation>nulové prahové napětí</translation>
     </message>
@@ -7097,13 +7183,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/mscorner.cpp" line="-23"/>
+        <location filename="../qucs/components/mscorner.cpp" line="-26"/>
         <source>microstrip corner</source>
         <translation>úhel mikropásku</translation>
     </message>
     <message>
         <location filename="../qucs/components/msmbend.cpp" line="+2"/>
-        <location filename="../qucs/components/mscorner.cpp" line="+25"/>
+        <location filename="../qucs/components/mscorner.cpp" line="+28"/>
         <source>width of line</source>
         <translation>šířka pásku</translation>
     </message>
@@ -7113,13 +7199,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Úhel mikropásku</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mscoupled.cpp" line="-38"/>
+        <location filename="../qucs/components/mscoupled.cpp" line="-39"/>
         <source>coupled microstrip line</source>
         <translation>svázané mikropáskové vedení</translation>
     </message>
     <message>
         <location filename="../qucs/components/mslange.cpp" line="+2"/>
-        <location filename="../qucs/components/mscoupled.cpp" line="+40"/>
+        <location filename="../qucs/components/mscoupled.cpp" line="+41"/>
         <source>spacing between the lines</source>
         <translation>odstup mezi vedeními</translation>
     </message>
@@ -7147,13 +7233,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>svázané mikropásková vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mscross.cpp" line="-19"/>
+        <location filename="../qucs/components/mscross.cpp" line="-20"/>
         <source>microstrip cross</source>
         <translation>Mikropáskové křížení</translation>
     </message>
     <message>
         <location filename="../qucs/components/mstee.cpp" line="-5"/>
-        <location filename="../qucs/components/mscross.cpp" line="+12"/>
+        <location filename="../qucs/components/mscross.cpp" line="+13"/>
         <source>width of line 3</source>
         <translation>šířka vedení 3</translation>
     </message>
@@ -7184,12 +7270,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Mikropáskové křížení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msgap.cpp" line="-36"/>
+        <location filename="../qucs/components/msgap.cpp" line="-37"/>
         <source>microstrip gap</source>
         <translation>mikropásková mezera</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+31"/>
         <source>width of the line 1</source>
         <translation>šířka vedení 1</translation>
     </message>
@@ -7209,42 +7295,42 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>mikropásková mezera</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mslange.cpp" line="-36"/>
+        <location filename="../qucs/components/mslange.cpp" line="-37"/>
         <source>microstrip lange coupler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Microstrip Lange Coupler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/msline.cpp" line="-27"/>
+        <location filename="../qucs/components/msline.cpp" line="-28"/>
         <source>microstrip line</source>
         <translation>mikropáskové vedení</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>Microstrip Line</source>
         <translation>Mikropáskové vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msmbend.cpp" line="-26"/>
+        <location filename="../qucs/components/msmbend.cpp" line="-29"/>
         <source>microstrip mitered bend</source>
         <translation>oříznutý mikropásek</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+43"/>
         <source>Microstrip Mitered Bend</source>
         <translation>Oříznutý mikropásek</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msopen.cpp" line="-23"/>
+        <location filename="../qucs/components/msopen.cpp" line="-25"/>
         <source>microstrip open</source>
         <translation>otevřené mikropáskové vedení</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+31"/>
         <source>microstrip open end model</source>
         <translation>model otevřeného mikropáskového vedení</translation>
     </message>
@@ -7254,12 +7340,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Otevřené mikropáskové vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msrstub.cpp" line="-20"/>
+        <location filename="../qucs/components/msrstub.cpp" line="-21"/>
         <source>microstrip radial stub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>inner radius</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7286,12 +7372,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/msstep.cpp" line="-33"/>
+        <location filename="../qucs/components/msstep.cpp" line="-34"/>
         <source>microstrip impedance step</source>
         <translation>Mikropáskový impedanční krok</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+30"/>
         <source>width 1 of the line</source>
         <translation>šířka vedení 1</translation>
     </message>
@@ -7306,12 +7392,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Odstup mikropásku</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mstee.cpp" line="-29"/>
+        <location filename="../qucs/components/mstee.cpp" line="-30"/>
         <source>microstrip tee</source>
         <translation>T rozbočení mikropáskového vedení</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+28"/>
         <source>temperature in degree Celsius</source>
         <translation>teplota ve °C</translation>
     </message>
@@ -7321,12 +7407,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Mikropáskové T rozdvojení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/msvia.cpp" line="-21"/>
+        <location filename="../qucs/components/msvia.cpp" line="-22"/>
         <source>microstrip via</source>
         <translation>mikropáskové prokontaktování</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <source>diameter of round via conductor</source>
         <translation>průměr kulatého prokontaktování</translation>
     </message>
@@ -7336,13 +7422,13 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Mikropáskové prokontaktování</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mutual.cpp" line="+23"/>
+        <location filename="../qucs/components/mutual.cpp" line="+25"/>
         <source>two mutual inductors</source>
         <translation>3 svázané induktivity</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mutual2.cpp" line="+83"/>
-        <location filename="../qucs/components/mutual.cpp" line="+35"/>
+        <location filename="../qucs/components/mutual2.cpp" line="+85"/>
+        <location filename="../qucs/components/mutual.cpp" line="+37"/>
         <source>inductance of coil 1</source>
         <translation>induktivita cívky 1</translation>
     </message>
@@ -7364,12 +7450,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Svázané induktivity</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mutual2.cpp" line="-63"/>
+        <location filename="../qucs/components/mutual2.cpp" line="-65"/>
         <source>three mutual inductors</source>
         <translation>tři svázané induktivity</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>inductance of coil 3</source>
         <translation>Induktivita cívky 3</translation>
     </message>
@@ -7389,12 +7475,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>3 svázané induktivity</translation>
     </message>
     <message>
-        <location filename="../qucs/components/mutualx.cpp" line="+27"/>
+        <location filename="../qucs/components/mutualx.cpp" line="+28"/>
         <source>several mutual inductors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+10"/>
         <source>number of mutual inductances</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7432,7 +7518,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>4to1 Mux</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7442,17 +7528,17 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>8to1 Mux</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/nigbt.cpp" line="-45"/>
+        <location filename="../qucs/components/nigbt.cpp" line="-46"/>
         <source>NIGBT verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>gate-drain overlap area</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7565,15 +7651,15 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/noise_vv.cpp" line="-48"/>
-        <location filename="../qucs/components/noise_iv.cpp" line="-53"/>
-        <location filename="../qucs/components/noise_ii.cpp" line="-58"/>
+        <location filename="../qucs/components/noise_vv.cpp" line="-49"/>
+        <location filename="../qucs/components/noise_iv.cpp" line="-54"/>
+        <location filename="../qucs/components/noise_ii.cpp" line="-59"/>
         <source>correlated current sources</source>
         <translation>korelované proudové zdroje</translation>
     </message>
     <message>
-        <location filename="../qucs/components/noise_iv.cpp" line="+43"/>
-        <location filename="../qucs/components/noise_ii.cpp" line="+48"/>
+        <location filename="../qucs/components/noise_iv.cpp" line="+44"/>
+        <location filename="../qucs/components/noise_ii.cpp" line="+49"/>
         <source>current power spectral density of source 1</source>
         <translation>spektrální výkonová hustota rušení od zdroje 1</translation>
     </message>
@@ -7583,7 +7669,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>spektrální výkonová hustota rušení od zdroje 2</translation>
     </message>
     <message>
-        <location filename="../qucs/components/noise_vv.cpp" line="+42"/>
+        <location filename="../qucs/components/noise_vv.cpp" line="+43"/>
         <location filename="../qucs/components/noise_iv.cpp" line="+4"/>
         <location filename="../qucs/components/noise_ii.cpp" line="+2"/>
         <source>normalized correlation coefficient</source>
@@ -7628,7 +7714,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Optimalizace</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+28"/>
         <source>optimization</source>
         <translation>optimalizace</translation>
     </message>
@@ -7645,7 +7731,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/pad2bit.cpp" line="+19"/>
+        <location filename="../qucs/components/pad2bit.cpp" line="+20"/>
         <source>2Bit Pattern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7655,7 +7741,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>3Bit Pattern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7665,7 +7751,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+23"/>
         <source>4Bit Pattern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7704,22 +7790,22 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/phaseshifter.cpp" line="-24"/>
+        <location filename="../qucs/components/phaseshifter.cpp" line="-25"/>
         <source>phase shifter</source>
         <translation>fázový posunovač</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+41"/>
         <source>Phase Shifter</source>
         <translation>Fázový posunovač</translation>
     </message>
     <message>
-        <location filename="../qucs/components/photodiode.cpp" line="-38"/>
+        <location filename="../qucs/components/photodiode.cpp" line="-39"/>
         <source>Photodiode verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>photodiode emission coefficient</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7775,12 +7861,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/phototransistor.cpp" line="-64"/>
+        <location filename="../qucs/components/phototransistor.cpp" line="-65"/>
         <source>Phototransistor verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>dark current</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7819,12 +7905,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/pm_modulator.cpp" line="-33"/>
+        <location filename="../qucs/components/pm_modulator.cpp" line="-34"/>
         <source>ac voltage source with phase modulator</source>
         <translation>AC zdroj napětí s fázovým modulátorem</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>PM</source>
         <translation>PM</translation>
     </message>
@@ -7834,7 +7920,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>offset volage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7845,7 +7931,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../qucs/spicecomponents/isffm.cpp" line="+57"/>
+        <location filename="../qucs/spicecomponents/isffm.cpp" line="+58"/>
         <source>carrier signal frequency</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7873,12 +7959,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>PM modulovaný zdroj</translation>
     </message>
     <message>
-        <location filename="../qucs/components/potentiometer.cpp" line="-14"/>
+        <location filename="../qucs/components/potentiometer.cpp" line="-15"/>
         <source>Potentiometer verilog device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>nominal device resistance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7923,7 +8009,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>Potentiometer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7938,7 +8024,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+32"/>
         <source>Characteristic impedance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7984,8 +8070,8 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/rectline.cpp" line="-38"/>
-        <location line="+59"/>
+        <location filename="../qucs/components/rectline.cpp" line="-39"/>
+        <location line="+60"/>
         <source>Rectangular Waveguide</source>
         <translation>Obdélníkový vodič</translation>
     </message>
@@ -8055,7 +8141,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>teplotní koeficient druhého řádu</translation>
     </message>
     <message>
-        <location line="+87"/>
+        <location line="+2"/>
+        <source>temperature at which parameters were extracted (Qucsator only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+98"/>
         <source>Resistor</source>
         <translation>Odpor</translation>
     </message>
@@ -8070,8 +8161,8 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/rfedd2p.cpp" line="+34"/>
-        <location filename="../qucs/components/rfedd.cpp" line="+7"/>
+        <location filename="../qucs/components/rfedd2p.cpp" line="+35"/>
+        <location filename="../qucs/components/rfedd.cpp" line="+8"/>
         <source>type of parameters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8114,27 +8205,27 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/rfedd2p.cpp" line="-20"/>
+        <location filename="../qucs/components/rfedd2p.cpp" line="-21"/>
         <source>equation defined 2-port RF device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+38"/>
         <source>Equation Defined 2-port RF Device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/rlcg.cpp" line="-40"/>
+        <location filename="../qucs/components/rlcg.cpp" line="-42"/>
         <source>RLCG transmission line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>RLCG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>resistive load</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8199,7 +8290,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+6"/>
+        <source>enable transient model as sine source [true,false]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Power Source</source>
         <translation>Zdroj signálu</translation>
     </message>
@@ -8239,12 +8335,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>S parameter simulace</translation>
     </message>
     <message>
-        <location filename="../qucs/components/sparamfile.cpp" line="-13"/>
+        <location filename="../qucs/components/sparamfile.cpp" line="-15"/>
         <source>S parameter file</source>
         <translation>S-parametrový soubor</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>name of the s parameter file</source>
         <translation>Jméno souboru s S-parametry</translation>
     </message>
@@ -8294,7 +8390,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>spice</translation>
     </message>
     <message>
-        <location filename="../qucs/schematic_file.cpp" line="+434"/>
+        <location filename="../qucs/schematic_file.cpp" line="+433"/>
         <location filename="../qucs/components/spicefile.cpp" line="+169"/>
         <source>ERROR: No file name in SPICE component &quot;%1&quot;.</source>
         <translation>CHYBA: ve SPICE-komponentě &quot;%1&quot; není zadán žádný název souboru.</translation>
@@ -8315,7 +8411,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/mouseactions.cpp" line="+903"/>
+        <location filename="../qucs/mouseactions.cpp" line="+985"/>
         <location filename="../qucs/components/spicefile.cpp" line="+81"/>
         <source>Info</source>
         <translation>Info</translation>
@@ -8381,17 +8477,17 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+62"/>
         <source>Subcircuit Port</source>
         <translation>Port podobvodu</translation>
     </message>
     <message>
-        <location filename="../qucs/components/substrate.cpp" line="-42"/>
+        <location filename="../qucs/components/substrate.cpp" line="-44"/>
         <source>substrate definition</source>
         <translation>definice substrátu</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>relative permittivity</source>
         <translation>relativní permitivita</translation>
     </message>
@@ -8421,7 +8517,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Substrát</translation>
     </message>
     <message>
-        <location filename="../qucs/components/switch.cpp" line="-11"/>
+        <location filename="../qucs/components/switch.cpp" line="+26"/>
         <source>switch (time controlled)</source>
         <translation>Spínač (časově řízený)</translation>
     </message>
@@ -8446,27 +8542,35 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>odpor v &quot;vypnutém&quot; stavu v Ohmech</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
+        <location filename="../qucs/components/resistor.cpp" line="-114"/>
+        <location filename="../qucs/components/indq.cpp" line="+75"/>
+        <location filename="../qucs/components/capq.cpp" line="+74"/>
+        <source>simulation temperature in degree Celsius (Qucsator only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Max possible switch transition time (transition time 1/100 smallest value in &apos;time&apos;, or this number)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Resistance transition shape</source>
+        <source>Resistance transition shape (Qucsator only)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <source>Switch</source>
         <translation>Spínač</translation>
     </message>
     <message>
-        <location filename="../qucs/components/symtrafo.cpp" line="+26"/>
+        <location filename="../qucs/components/symtrafo.cpp" line="+27"/>
         <source>ideal symmetrical transformer</source>
         <translation>ideální symetrický transformátor</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+64"/>
         <source>voltage transformation ratio of coil 1</source>
         <translation>transformační poměr napětí jádra 1</translation>
     </message>
@@ -8491,12 +8595,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/thyristor.cpp" line="-36"/>
+        <location filename="../qucs/components/thyristor.cpp" line="-37"/>
         <source>silicon controlled rectifier (SCR)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>breakover voltage</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8511,19 +8615,20 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/tline.cpp" line="-28"/>
+        <location filename="../qucs/components/tline.cpp" line="-29"/>
         <source>ideal transmission line</source>
         <translation>ideální přenosové vedení</translation>
     </message>
     <message>
         <location filename="../qucs/components/tline_4port.cpp" line="-2"/>
-        <location filename="../qucs/components/tline.cpp" line="+26"/>
+        <location filename="../qucs/components/tline.cpp" line="+27"/>
         <source>characteristic impedance</source>
         <translation>charakteristická impedance</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../qucs/components/tline.cpp" line="+4"/>
+        <location filename="../qucs/components/taperedline.cpp" line="-2"/>
         <source>attenuation factor per length in 1/m</source>
         <translation>faktor útlumu na jednotku délky v 1/m</translation>
     </message>
@@ -8533,12 +8638,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Přenosové vedení</translation>
     </message>
     <message>
-        <location filename="../qucs/components/tline_4port.cpp" line="-34"/>
+        <location filename="../qucs/components/tline_4port.cpp" line="-35"/>
         <source>ideal 4-terminal transmission line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>4-Terminal Transmission Line</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8548,12 +8653,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>přechodová simulace</translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/sp_sens_tr_xyce.cpp" line="-33"/>
+        <location filename="../qucs/spicecomponents/sp_sens_tr_xyce.cpp" line="-34"/>
         <source>Transient .SENS analysis with Xyce</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Analysis mode </source>
         <translation type="unfinished"></translation>
     </message>
@@ -8595,12 +8700,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Přechodová simulace</translation>
     </message>
     <message>
-        <location filename="../qucs/components/transformer.cpp" line="+23"/>
+        <location filename="../qucs/components/transformer.cpp" line="+24"/>
         <source>ideal transformer</source>
         <translation>ideální transformátor</translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>voltage transformation ratio</source>
         <translation>transformační poměr napětí</translation>
     </message>
@@ -8610,12 +8715,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Transformátor</translation>
     </message>
     <message>
-        <location filename="../qucs/components/triac.cpp" line="-40"/>
+        <location filename="../qucs/components/triac.cpp" line="-41"/>
         <source>triac (bidirectional thyristor)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+31"/>
         <source>(bidirectional) gate trigger current</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8625,12 +8730,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/components/tunneldiode.cpp" line="-35"/>
+        <location filename="../qucs/components/tunneldiode.cpp" line="-36"/>
         <source>resonance tunnel diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>peak current</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8756,12 +8861,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>napěťově řízený zdroj napětí</translation>
     </message>
     <message>
-        <location filename="../qucs/components/vcresistor.cpp" line="+23"/>
+        <location filename="../qucs/components/vcresistor.cpp" line="+24"/>
         <source>voltage controlled resistor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>resistance gain</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8792,7 +8897,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/schematic_file.cpp" line="+29"/>
+        <location filename="../qucs/schematic_file.cpp" line="+47"/>
         <location filename="../qucs/components/vhdlfile.cpp" line="+221"/>
         <location filename="../qucs/components/verilogfile.cpp" line="+45"/>
         <source>ERROR: No file name in %1 component &quot;%2&quot;.</source>
@@ -8877,8 +8982,8 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
-        <location filename="../qucs/components/volt_ac.cpp" line="+46"/>
+        <location line="+44"/>
+        <location filename="../qucs/components/volt_ac.cpp" line="+50"/>
         <source>ac Voltage Source</source>
         <translation>zdroj AC napětí</translation>
     </message>
@@ -8893,12 +8998,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>zdroj DC napětí</translation>
     </message>
     <message>
-        <location filename="../qucs/components/volt_noise.cpp" line="-29"/>
+        <location filename="../qucs/components/volt_noise.cpp" line="-30"/>
         <source>noise voltage source</source>
         <translation>zdroj rušivého napětí</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+24"/>
         <source>voltage power spectral density in V^2/Hz</source>
         <translation>spektrální napěťová hustota ve V²/Hz</translation>
     </message>
@@ -8948,7 +9053,12 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Napětí horní úrovně pulzu</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+12"/>
+        <source>voltage of low signal (SPICE only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
         <source>Rectangle Voltage</source>
         <translation>Zdroj obdélníkového napětí</translation>
     </message>
@@ -8964,7 +9074,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
     </message>
     <message>
         <location filename="../qucs/diagrams/tabdiagram.cpp" line="+261"/>
-        <location filename="../qucs/diagrams/marker.cpp" line="+260"/>
+        <location filename="../qucs/diagrams/marker.cpp" line="+275"/>
         <source>invalid</source>
         <translation>neplatný</translation>
     </message>
@@ -8989,7 +9099,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>3D-kartézský</translation>
     </message>
     <message>
-        <location filename="../qucs/diagrams/rectdiagram.cpp" line="+258"/>
+        <location filename="../qucs/diagrams/rectdiagram.cpp" line="+315"/>
         <source>Cartesian</source>
         <translation>Kartézský</translation>
     </message>
@@ -9042,7 +9152,7 @@ Chybný řádkový formát &apos;component&apos; !</translation>
         <translation>Logická tabulka</translation>
     </message>
     <message>
-        <location filename="../qucs/dialogs/librarydialog.cpp" line="-302"/>
+        <location filename="../qucs/dialogs/librarydialog.cpp" line="-291"/>
         <source>ERROR: Cannot open file &quot;%1&quot;.
 </source>
         <translation type="unfinished"></translation>
@@ -9072,7 +9182,7 @@ Overwrite ?</source>
 Přepsat ?</translation>
     </message>
     <message>
-        <location line="+108"/>
+        <location line="+111"/>
         <location line="+13"/>
         <location line="+5"/>
         <source>Export to image</source>
@@ -9084,13 +9194,13 @@ Přepsat ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="+3052"/>
+        <location filename="../qucs/qucs.cpp" line="+3360"/>
         <source>Successfully exported</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/imagewriter.cpp" line="+13"/>
-        <location filename="../qucs/extsimkernels/externsimdialog.cpp" line="+39"/>
+        <location filename="../qucs/extsimkernels/externsimdialog.cpp" line="+51"/>
         <source>Disk write error!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9101,7 +9211,7 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/misc.cpp" line="+391"/>
+        <location filename="../qucs/misc.cpp" line="+436"/>
         <location line="+64"/>
         <source>Error: Wrong time format in &quot;%1&quot;. Use positive number with units</source>
         <translation>Chyba: Chybný časový formát v &quot;%1&quot;. Použijte kladné číslo s jednotkami</translation>
@@ -9109,13 +9219,13 @@ Use PNG, JPEG or SVG graphics!</source>
     <message>
         <location filename="../qucs/qucs_actions.cpp" line="+146"/>
         <location line="+20"/>
-        <location filename="../qucs/qucs.cpp" line="-2291"/>
-        <location filename="../qucs/module.cpp" line="+119"/>
+        <location filename="../qucs/qucs.cpp" line="-2514"/>
+        <location filename="../qucs/module.cpp" line="+126"/>
         <source>verilog-a user devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/module.cpp" line="+66"/>
+        <location filename="../qucs/module.cpp" line="+68"/>
         <location line="+2"/>
         <source>lumped components</source>
         <translation type="unfinished"></translation>
@@ -9140,6 +9250,12 @@ Use PNG, JPEG or SVG graphics!</source>
         <location line="+2"/>
         <location line="+2"/>
         <source>nonlinear components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+2"/>
+        <source>microelectronics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9176,7 +9292,7 @@ Use PNG, JPEG or SVG graphics!</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>SPICE specific sections</source>
+        <source>SPICE netlist sections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9197,14 +9313,16 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="+1616"/>
+        <location filename="../qucs/qucs.cpp" line="+1730"/>
+        <location line="+92"/>
+        <location line="+784"/>
         <location filename="../qucs/module.cpp" line="-24"/>
         <location line="+4"/>
         <source>diagrams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1661"/>
+        <location line="-2729"/>
         <location filename="../qucs/module.cpp" line="+2"/>
         <location line="+2"/>
         <source>paintings</source>
@@ -9216,17 +9334,17 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/mouseactions.cpp" line="-124"/>
+        <location filename="../qucs/mouseactions.cpp" line="-154"/>
         <source>Edit Properties</source>
         <translation>Upravit vlastnosti</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+42"/>
         <source>Export as image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+27"/>
         <source>power matching</source>
         <translation>výkonové přizpůsobení</translation>
     </message>
@@ -9236,17 +9354,17 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation>přizpůsobení rušení</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+8"/>
         <source>2-port matching</source>
         <translation>2-port přizpůsobení</translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+76"/>
         <source>The ground potential cannot be labeled!</source>
         <translation>Uzemnění nelze pojmenovat!</translation>
     </message>
     <message>
-        <location filename="../qucs/paintings/arrow.cpp" line="+141"/>
+        <location filename="../qucs/paintings/arrow.cpp" line="+142"/>
         <source>Arrow</source>
         <translation>Šipka</translation>
     </message>
@@ -9261,7 +9379,7 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation>vyplněná elipsa</translation>
     </message>
     <message>
-        <location line="+265"/>
+        <location line="+277"/>
         <source>Edit Ellipse Properties</source>
         <translation>Změnit vlastnosti elipsy</translation>
     </message>
@@ -9271,7 +9389,7 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation>Eliptický oblouk</translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+309"/>
         <source>Edit Arc Properties</source>
         <translation>změnit parametry oblouku</translation>
     </message>
@@ -9281,12 +9399,12 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation>Čára</translation>
     </message>
     <message>
-        <location line="+236"/>
+        <location line="+247"/>
         <source>Edit Line Properties</source>
         <translation>Změnit vlastnosti čáry</translation>
     </message>
     <message>
-        <location filename="../qucs/paintings/graphictext.cpp" line="+129"/>
+        <location filename="../qucs/paintings/graphictext.cpp" line="+135"/>
         <source>Text</source>
         <translation>Text</translation>
     </message>
@@ -9301,7 +9419,7 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation>vyplněný obdélník</translation>
     </message>
     <message>
-        <location line="+267"/>
+        <location line="+279"/>
         <source>Edit Rectangle Properties</source>
         <translation>Změnit vlastnosti obdélníku</translation>
     </message>
@@ -9320,15 +9438,15 @@ Use PNG, JPEG or SVG graphics!</source>
         <translation type="vanished">nepojmenováno</translation>
     </message>
     <message>
-        <location filename="../qucs/schematic_file.cpp" line="-1344"/>
-        <location line="+787"/>
+        <location filename="../qucs/schematic_file.cpp" line="-1368"/>
+        <location line="+794"/>
         <source>Format Error:
 &apos;Painting&apos; field is not closed!</source>
         <translation>Chyba formátu:
 &apos;Grafický objekt&apos; Položka není uzavřena!</translation>
     </message>
     <message>
-        <location line="-769"/>
+        <location line="-776"/>
         <source>Wrong document version: </source>
         <translation>Špatná verze dokumentu: </translation>
     </message>
@@ -9351,7 +9469,7 @@ Neznámá položka!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+37"/>
         <source>Cannot save JSON props file &quot;%1&quot;!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9437,7 +9555,7 @@ Chybný formát řádku &apos;diagram&apos;!</translation>
 &apos;Diagram&apos; položka nebyla uzavřena!</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+19"/>
         <source>Format Error:
 Wrong &apos;painting&apos; line delimiter!</source>
         <translation>Chyba formátování:
@@ -9515,17 +9633,17 @@ Neznámá položka!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+24"/>
         <source>ERROR: &quot;%1&quot;: Cannot load library component &quot;%2&quot; from &quot;%3&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+196"/>
+        <location line="+214"/>
         <source>WARNING: Ignore simulation component in subcircuit &quot;%1&quot;.</source>
         <translation>UPOZORNĚNÍ: Simulační komponenta v podobvodu &quot;%1&quot; bude ignorována.</translation>
     </message>
     <message>
-        <location line="+206"/>
+        <location line="+207"/>
         <source>WARNING: Equations in &quot;%1&quot; are &apos;time&apos; typed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9545,12 +9663,12 @@ Neznámá položka!</translation>
         <translation>CHYBA: Digitální simulace potřebuje přinejmenším jeden digitální zdroj.</translation>
     </message>
     <message>
-        <location filename="../qucs-activefilter/filter.cpp" line="+233"/>
+        <location filename="../qucs-activefilter/filter.cpp" line="+237"/>
         <source>Part list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+26"/>
         <source>Filter order = %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9657,13 +9775,13 @@ a substrate with lower permittivity and larger height.
     </message>
     <message>
         <location filename="../qucs/spicecomponents/xyce_script.cpp" line="+25"/>
-        <location line="+34"/>
+        <location line="+35"/>
         <source>XYCE script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/xspicegeneric.cpp" line="+32"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>XSPICE generic device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9718,7 +9836,7 @@ a substrate with lower permittivity and larger height.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+33"/>
         <source> Distribution selector (1 to 4)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9753,8 +9871,8 @@ a substrate with lower permittivity and larger height.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
-        <location filename="../qucs/spicecomponents/iTRNOISE.cpp" line="+60"/>
+        <location line="+28"/>
+        <location filename="../qucs/spicecomponents/iTRNOISE.cpp" line="+61"/>
         <source> Rms noise amplitude Gaussian)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9803,7 +9921,7 @@ Leave continuation lines blank when NOT in use. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+49"/>
         <source>V(PWL)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9813,8 +9931,8 @@ Leave continuation lines blank when NOT in use. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
-        <location filename="../qucs/spicecomponents/iAmpMod.cpp" line="+53"/>
+        <location line="+28"/>
+        <location filename="../qucs/spicecomponents/iAmpMod.cpp" line="+54"/>
         <source>voltage amplitude</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9855,7 +9973,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+47"/>
         <source>B source (V)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9865,7 +9983,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>SpiceLibrary file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9886,7 +10004,7 @@ Leave continuation lines blank when NOT in use.  </source>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/spicegeneric.cpp" line="+30"/>
-        <location line="+27"/>
+        <location line="+29"/>
         <source>SPICE generic device</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9921,7 +10039,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.spiceinit</source>
         <translation type="unfinished"></translation>
@@ -9933,7 +10051,7 @@ Leave continuation lines blank when NOT in use.  </source>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_spectrum.cpp" line="+26"/>
-        <location line="+39"/>
+        <location line="+41"/>
         <source>Spectrum analysis</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9943,7 +10061,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <location filename="../qucs/spicecomponents/sp_sens_tr_xyce.cpp" line="-26"/>
         <source>Output expressions</source>
         <translation type="unfinished"></translation>
@@ -9976,14 +10094,14 @@ Leave continuation lines blank when NOT in use.  </source>
     </message>
     <message>
         <location line="+14"/>
-        <location filename="../qucs/spicecomponents/sp_sens.cpp" line="-29"/>
-        <location line="+43"/>
+        <location filename="../qucs/spicecomponents/sp_sens.cpp" line="-30"/>
+        <location line="+44"/>
         <source>DC sensitivity simulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_pz.cpp" line="+25"/>
-        <location line="+42"/>
+        <location line="+43"/>
         <source>Pole-Zero simulation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10013,7 +10131,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.PARAM</source>
         <translation type="unfinished"></translation>
@@ -10029,7 +10147,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.OPTIONS</source>
         <translation type="unfinished"></translation>
@@ -10050,19 +10168,19 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>Nutmeg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+27"/>
         <source>Nutmeg Equation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/sp_noise.cpp" line="-27"/>
-        <location line="+46"/>
+        <location filename="../qucs/spicecomponents/sp_noise.cpp" line="-28"/>
+        <location line="+47"/>
         <source>Noise simulation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10082,7 +10200,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.NODESET</source>
         <translation type="unfinished"></translation>
@@ -10100,7 +10218,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <location line="+6"/>
         <source>.MODEL</source>
         <translation type="unfinished"></translation>
@@ -10117,7 +10235,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.LIB</source>
         <translation type="unfinished"></translation>
@@ -10134,7 +10252,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.INCLUDE</source>
         <translation type="unfinished"></translation>
@@ -10150,7 +10268,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.IC</source>
         <translation type="unfinished"></translation>
@@ -10166,7 +10284,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <source>.GLOBAL_PARAM</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10186,7 +10304,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.FUNC</source>
         <translation type="unfinished"></translation>
@@ -10198,13 +10316,13 @@ Leave continuation lines blank when NOT in use.</source>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_fourier.cpp" line="+26"/>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>Fourier simulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/sp_disto.cpp" line="-27"/>
-        <location line="+44"/>
+        <location filename="../qucs/spicecomponents/sp_disto.cpp" line="-28"/>
+        <location line="+45"/>
         <source>Distortion simulation</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10215,17 +10333,17 @@ Leave continuation lines blank when NOT in use.</source>
     </message>
     <message>
         <location filename="../qucs/spicecomponents/sp_customsim.cpp" line="+25"/>
-        <location line="+34"/>
+        <location line="+45"/>
         <source>Nutmeg script</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/isffm.cpp" line="-33"/>
+        <location filename="../qucs/spicecomponents/isffm.cpp" line="-34"/>
         <source>SPICE I(SFFM):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>offset current</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10245,7 +10363,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+7"/>
         <location line="+6"/>
         <source>.INCLUDE SCRIPT</source>
         <translation type="unfinished"></translation>
@@ -10256,12 +10374,12 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/iTRNOISE.cpp" line="-43"/>
+        <location filename="../qucs/spicecomponents/iTRNOISE.cpp" line="-44"/>
         <source>SPICE I(TRNOISE):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+60"/>
         <source>I(TRNOISE)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10273,17 +10391,17 @@ Leave continuation lines blank when NOT in use. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>I(PWL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/iAmpMod.cpp" line="-32"/>
+        <location filename="../qucs/spicecomponents/iAmpMod.cpp" line="-33"/>
         <source>SPICE I(AM): ngspice only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+49"/>
         <source>I(AM)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10295,7 +10413,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+44"/>
         <source>G</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10307,7 +10425,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+44"/>
         <source>E</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10318,7 +10436,7 @@ seven line XSPICE specification. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>core</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10329,7 +10447,7 @@ Seven line XSPICE specification. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>XAPWL</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10341,7 +10459,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+55"/>
         <source>U(URC)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10352,7 +10470,7 @@ Seven line XSPICE specification. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>SDTF</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10364,7 +10482,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+49"/>
         <source> W(CSW)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10376,7 +10494,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+44"/>
         <source>V Source</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10388,7 +10506,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+56"/>
         <source> S(SW)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10400,7 +10518,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>B source (I)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10412,20 +10530,25 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+43"/>
         <source>I Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/spicecomponents/R_SPICE.cpp" line="+29"/>
+        <location filename="../qucs/spicecomponents/R_SPICE.cpp" line="+28"/>
         <source>SPICE R:
 Multiple line ngspice or Xyce R specifications allowed using &quot;+&quot; continuation lines.
 Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+59"/>
         <source> R Resistor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>R Resistor 3 pin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10436,7 +10559,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>Q(PNP) BJT</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10448,7 +10571,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+65"/>
         <source>M(PMOS)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10460,7 +10583,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+49"/>
         <source>Z(PMF)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10472,7 +10595,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+56"/>
         <source>J(PJF) JFET</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10485,8 +10608,8 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
-        <location filename="../qucs/spicecomponents/BJT_SPICE.cpp" line="+83"/>
+        <location line="+57"/>
+        <location filename="../qucs/spicecomponents/BJT_SPICE.cpp" line="+84"/>
         <source>Q(NPN) BJT</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10498,7 +10621,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+65"/>
         <source>M(NMOS)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10510,7 +10633,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+56"/>
         <source>J(NJF) JFET</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10522,7 +10645,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>unified MOSFET (3-4 pin)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10564,7 +10687,7 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+49"/>
         <source>Z(NMF)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10576,7 +10699,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>L Inductor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10586,7 +10709,7 @@ Leave continuation lines blank when NOT in use.  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+57"/>
         <source>O(LTRA)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10597,7 +10720,7 @@ Enter the names of the coupled inductances and their coupling factor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <source>Coupling factor ( 0  &lt;  K  &lt;= 1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10613,7 +10736,7 @@ two line XSPICE specification. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+65"/>
         <source>Icouple</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10625,8 +10748,13 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+60"/>
         <source>D Diode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>D Diode 3 pin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10637,8 +10765,13 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+56"/>
         <source>C Capacitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>C Capacitor 3 pin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10662,14 +10795,14 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/schematic.cpp" line="+2202"/>
+        <location filename="../qucs/schematic.cpp" line="+2656"/>
         <source>The schematic name and dataset/display file name is not matching! This may happen if schematic was copied using the file manager instead of using File-&gt;SaveAs. Correct dataset and display names automatically?
 
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Schematic file: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -10689,29 +10822,29 @@ Leave continuation lines blank when NOT in use.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/extsimkernels/spicecompat.cpp" line="+361"/>
-        <location line="+10"/>
+        <location filename="../qucs/extsimkernels/spicecompat.cpp" line="+362"/>
+        <source>Not Specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location line="+12"/>
         <source>Qucsator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-9"/>
         <source>Ngspice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>SpiceOpus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Xyce (Serial)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Xyce (Parallel)</source>
+        <location line="+3"/>
+        <source>Xyce</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10772,6 +10905,87 @@ Leave continuation lines blank when NOT in use.</source>
         <source>Chebyshev weighting for N&gt;7 is not available</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qucs/components/taperedline.cpp" line="-37"/>
+        <source>Exponential Tapered line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Characteristic impedance at port 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Characteristic impedance at port 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Line length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Taper weighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Maximum ripple (Klopfenstein taper only) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Tapered line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qucs/components/circline.cpp" line="+30"/>
+        <location line="+53"/>
+        <source>Circular Waveguide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-29"/>
+        <source>Radius</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Mechanical length of the line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Relative permittivity of dielectric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Relative permeability of conductor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Loss tangent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Specific resistance of conductor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Simulation temperature in degree Celsius</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Material parameter for temperature model</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QucsActiveFilter</name>
@@ -10829,29 +11043,29 @@ Enables/disables the filter calculation console</source>
     </message>
     <message>
         <location line="+15"/>
-        <location line="+467"/>
+        <location line="+472"/>
         <source>Passband attenuation, Ap (dB)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-466"/>
+        <location line="-471"/>
         <source>Stopband attenuation, As (dB)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+463"/>
+        <location line="+468"/>
         <source>Cutoff frequency, Fc (Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-462"/>
-        <location line="+463"/>
+        <location line="-467"/>
+        <location line="+468"/>
         <source>Stopband frequency, Fs (Hz)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-462"/>
+        <location line="-467"/>
         <source>Passband ripple Rp(dB)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10897,6 +11111,11 @@ Enables/disables the filter calculation console</source>
     </message>
     <message>
         <location line="+1"/>
+        <source>Legendre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>User defined</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10921,7 +11140,7 @@ Enables/disables the filter calculation console</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+141"/>
+        <location line="+144"/>
         <location line="+23"/>
         <location line="+21"/>
         <source>Unable to implement filter with such parameters and topology 
@@ -10945,7 +11164,7 @@ Change parameters and/or topology and try again!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+129"/>
+        <location line="+130"/>
         <source>Lower cutoff frequency, Fl (Hz)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10955,7 +11174,7 @@ Change parameters and/or topology and try again!</source>
         <translation type="unfinished">Copyright (C) 2005, 2006 : {2014, 2015 ?}</translation>
     </message>
     <message>
-        <location line="-463"/>
+        <location line="-467"/>
         <source>Filter topology</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10991,12 +11210,12 @@ Change parameters and/or topology and try again!</source>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+355"/>
+        <location line="+358"/>
         <source>Cauer section</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-350"/>
         <source>Filter parameters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11017,19 +11236,19 @@ Change parameters and/or topology and try again!</source>
     </message>
     <message>
         <location line="+10"/>
-        <location line="+319"/>
+        <location line="+323"/>
         <source>Ready.</source>
         <translation>Připraveno.</translation>
     </message>
     <message>
-        <location line="-290"/>
+        <location line="-294"/>
         <source>Upper cutoff frequency of band-pass/band-stop filter is
 less than lower. Unable to implement such filter.
 Change parameters and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+70"/>
         <source>Unable to use Cauer section for Chebyshev or Butterworth 
 frequency response. Try to use another topology.</source>
         <translation type="unfinished"></translation>
@@ -11046,7 +11265,7 @@ frequency response. Try to use another topology.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+140"/>
+        <location line="+141"/>
         <source>Upper cutoff frequency, Fu (Hz)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11086,7 +11305,7 @@ Active Filter synthesis program
 <context>
     <name>QucsApp</name>
     <message>
-        <location filename="../qucs/qucs.cpp" line="-571"/>
+        <location filename="../qucs/qucs.cpp" line="-613"/>
         <source>Schematic</source>
         <translation>Schéma</translation>
     </message>
@@ -11102,47 +11321,47 @@ Active Filter synthesis program
     </message>
     <message>
         <location line="+1"/>
-        <location line="+1500"/>
+        <location line="+1629"/>
         <source>VHDL Sources</source>
         <translation>VHDL zdroje</translation>
     </message>
     <message>
-        <location line="-1499"/>
-        <location line="+1500"/>
+        <location line="-1628"/>
+        <location line="+1629"/>
         <source>Verilog Sources</source>
         <translation>Verilog data</translation>
     </message>
     <message>
-        <location line="-1499"/>
-        <location line="+1500"/>
+        <location line="-1628"/>
+        <location line="+1629"/>
         <source>Verilog-A Sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1499"/>
-        <location line="+1500"/>
+        <location line="-1628"/>
+        <location line="+1629"/>
         <source>Octave Scripts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1499"/>
+        <location line="-1628"/>
         <source>Spice Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qucs/qucs_actions.cpp" line="-19"/>
         <location filename="../qucs/qucs.cpp" line="+1"/>
-        <location line="+1501"/>
+        <location line="+1631"/>
         <source>Any File</source>
         <translation>Všechny soubory</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="+308"/>
+        <location filename="../qucs/qucs.cpp" line="+326"/>
         <source>The schematic search path has been refreshed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+539"/>
+        <location line="+717"/>
         <source>Verilog</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11152,7 +11371,7 @@ Active Filter synthesis program
         <translation>VHDL</translation>
     </message>
     <message>
-        <location line="-966"/>
+        <location line="-1163"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11162,39 +11381,30 @@ Active Filter synthesis program
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+653"/>
-        <location line="+886"/>
-        <location line="+18"/>
+        <location line="+813"/>
+        <location line="+949"/>
+        <location line="+20"/>
         <source>Simulate schematic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-903"/>
+        <location line="-968"/>
         <source>DC bias simulation mode is not supported for digital schematic!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+307"/>
+        <location line="+344"/>
         <source>Schematics</source>
         <translation>Schémata</translation>
     </message>
     <message>
-        <location line="-2201"/>
+        <location line="-2496"/>
         <source>New</source>
         <translation>Nový</translation>
     </message>
     <message>
         <location line="-83"/>
         <source>Qucs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>Default simulator is not specified yet.
-Please setup it in the next dialog window.
-If you have no simulators except Qucs installed
-in your system leave default Qucsator setting
-and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -11233,18 +11443,18 @@ and simple press Apply button</source>
         <translation>obsah aktuálního projektu</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+30"/>
         <source>Search Components</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+35"/>
+        <location line="+33"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-18"/>
+        <location line="-16"/>
         <source>Components</source>
         <translation>Komponenty</translation>
     </message>
@@ -11254,8 +11464,8 @@ and simple press Apply button</source>
         <translation>komponenty a diagramy</translation>
     </message>
     <message>
-        <location line="+37"/>
-        <location line="+21"/>
+        <location line="+35"/>
+        <location line="+23"/>
         <source>Libraries</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11270,14 +11480,14 @@ and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_actions.cpp" line="-564"/>
-        <location line="+149"/>
+        <location filename="../qucs/qucs_actions.cpp" line="-558"/>
+        <location line="+147"/>
         <location line="+61"/>
         <location line="+32"/>
         <location line="+16"/>
         <location line="+10"/>
         <location line="+5"/>
-        <location line="+247"/>
+        <location line="+243"/>
         <location line="+15"/>
         <location line="+19"/>
         <location line="+138"/>
@@ -11285,20 +11495,24 @@ and simple press Apply button</source>
         <location line="+4"/>
         <location line="+73"/>
         <location line="+4"/>
-        <location line="+525"/>
+        <location line="+619"/>
         <location line="+25"/>
         <location line="+20"/>
         <location line="+19"/>
         <location line="+10"/>
         <location line="+79"/>
         <location line="+6"/>
-        <location line="+114"/>
-        <location line="+942"/>
+        <location line="+113"/>
+        <location line="+818"/>
+        <location line="+5"/>
+        <location line="+4"/>
+        <location line="+312"/>
         <location line="+28"/>
         <location line="+75"/>
         <location line="+112"/>
         <location line="+23"/>
-        <location line="+220"/>
+        <location line="+131"/>
+        <location line="+103"/>
         <location line="+7"/>
         <location line="+7"/>
         <location line="+7"/>
@@ -11307,7 +11521,7 @@ and simple press Apply button</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="-2306"/>
+        <location filename="../qucs/qucs.cpp" line="-2610"/>
         <location line="+77"/>
         <source>Cannot open &quot;%1&quot;.</source>
         <translation>Soubor &quot;%1&quot; nelze otevřít.</translation>
@@ -11315,7 +11529,7 @@ and simple press Apply button</source>
     <message>
         <location line="-73"/>
         <location line="+77"/>
-        <location line="+1955"/>
+        <location line="+2245"/>
         <location line="+23"/>
         <source>Library is corrupt.</source>
         <translation>Soubor s knihovnou je poškozen.</translation>
@@ -11328,24 +11542,24 @@ and simple press Apply button</source>
         <location line="+38"/>
         <location line="+14"/>
         <location line="+682"/>
-        <location filename="../qucs/qucs.cpp" line="-1809"/>
-        <location line="+491"/>
+        <location filename="../qucs/qucs.cpp" line="-2015"/>
+        <location line="+501"/>
         <location line="+74"/>
-        <location line="+72"/>
+        <location line="+71"/>
         <location line="+11"/>
         <location line="+26"/>
-        <location line="+223"/>
+        <location line="+224"/>
         <source>Info</source>
         <translation>Informace</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="-896"/>
+        <location filename="../qucs/qucs.cpp" line="-906"/>
         <source>Default icon not found:
  %1.png</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+264"/>
+        <location line="+274"/>
         <source>-port</source>
         <translation>-port</translation>
     </message>
@@ -11356,31 +11570,24 @@ and simple press Apply button</source>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+685"/>
+        <location line="+687"/>
         <source>The document contains unsaved changes!
 </source>
         <translation>Dokument obsahuje neuložené změny!
 </translation>
     </message>
     <message>
-        <location line="-684"/>
+        <location line="-686"/>
         <source>Do you want to save the changes before copying?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>&amp;Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qucs/qucs_init.cpp" line="+67"/>
-        <location filename="../qucs/qucs.cpp" line="+0"/>
-        <location line="+685"/>
         <source>&amp;Save</source>
         <translation>&amp;Uložit</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="-663"/>
+        <location filename="../qucs/qucs.cpp" line="+23"/>
         <source>Copy file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11410,33 +11617,29 @@ and simple press Apply button</source>
         <translation>Otevřený soubor nemůže být smazán!</translation>
     </message>
     <message>
-        <location line="-726"/>
-        <location line="+731"/>
-        <location line="+218"/>
-        <location line="+243"/>
-        <location line="+545"/>
+        <location line="-820"/>
+        <location line="+825"/>
+        <location line="+217"/>
+        <location line="+244"/>
+        <location line="+705"/>
         <source>Warning</source>
         <translation>Upozornění</translation>
     </message>
     <message>
-        <location line="-1005"/>
+        <location line="-1165"/>
         <source>This will delete the file permanently! Continue ?</source>
         <translation>Soubor bude nenávratně smazán! Pokračovat ?</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <location line="+462"/>
         <source>No</source>
-        <translation>Ne</translation>
+        <translation type="vanished">Ne</translation>
     </message>
     <message>
-        <location line="-462"/>
-        <location line="+462"/>
         <source>Yes</source>
-        <translation>Ano</translation>
+        <translation type="vanished">Ano</translation>
     </message>
     <message>
-        <location line="-615"/>
+        <location line="-152"/>
         <source>unknown</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11486,12 +11689,12 @@ and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-597"/>
+        <location line="-691"/>
         <source>Cannot create work directory !</source>
         <translation>Pracovní adresář nelze vytvořit !</translation>
     </message>
     <message>
-        <location line="+797"/>
+        <location line="+891"/>
         <source>Cannot create project directory !</source>
         <translation>Adresář s projektem nelze vytvořit !</translation>
     </message>
@@ -11519,26 +11722,46 @@ and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-483"/>
-        <location line="+98"/>
+        <location line="-493"/>
+        <location line="+103"/>
         <location line="+3"/>
-        <location line="+93"/>
+        <location line="+98"/>
         <location line="+79"/>
         <source>Search results</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-618"/>
+        <location line="-714"/>
         <source>Search Lib Components</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="-193"/>
+        <source>Set simulator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ngspice found at: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You can specify another location later using Simulation-&gt;Simulators Setings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Ngspice not found automatically. Please specify simulators in the next dialog window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+211"/>
         <source>Show model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+497"/>
+        <location line="+593"/>
         <source>verilog-a user devices</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11578,12 +11801,7 @@ and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
-        <source>No project</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+29"/>
+        <location line="+88"/>
         <source>Project directory name does not end in &apos;_prj&apos; (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11598,19 +11816,15 @@ and simple press Apply button</source>
         <translation>Tímto budou všechny soubory z projektu nenávratně smazány ! Pokračovat ?</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_actions.cpp" line="+2"/>
-        <location filename="../qucs/qucs.cpp" line="+1"/>
         <source>&amp;Yes</source>
-        <translation>&amp;Ano</translation>
+        <translation type="vanished">&amp;Ano</translation>
     </message>
     <message>
-        <location line="+0"/>
-        <location filename="../qucs/qucs.cpp" line="+0"/>
         <source>&amp;No</source>
-        <translation>&amp;Ne</translation>
+        <translation type="vanished">&amp;Ne</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="+4"/>
+        <location line="+5"/>
         <source>Cannot remove project directory!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11630,33 +11844,33 @@ and simple press Apply button</source>
         <translation>Vytvořit nové schéma...</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_init.cpp" line="+874"/>
-        <location filename="../qucs/qucs_actions.cpp" line="-1018"/>
+        <location filename="../qucs/qucs_init.cpp" line="+911"/>
+        <location filename="../qucs/qucs_actions.cpp" line="-1016"/>
         <location line="+15"/>
-        <location line="+383"/>
-        <location line="+327"/>
+        <location line="+389"/>
+        <location line="+325"/>
         <location filename="../qucs/qucs.cpp" line="+7"/>
         <location line="+12"/>
         <location line="+82"/>
         <location line="+31"/>
         <location line="+5"/>
-        <location line="+100"/>
+        <location line="+101"/>
         <location line="+5"/>
         <location line="+36"/>
-        <location line="+54"/>
+        <location line="+57"/>
         <location line="+35"/>
-        <location line="+200"/>
+        <location line="+219"/>
         <location line="+30"/>
         <source>Ready.</source>
         <translation>Hotovo.</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs.cpp" line="-584"/>
+        <location filename="../qucs/qucs.cpp" line="-607"/>
         <source>Creating new text editor...</source>
         <translation>Vytvoření nového textového editoru...</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_actions.cpp" line="-336"/>
+        <location filename="../qucs/qucs_actions.cpp" line="-334"/>
         <location filename="../qucs/qucs.cpp" line="+75"/>
         <source>Opening file...</source>
         <translation>Otevřít soubor...</translation>
@@ -11678,13 +11892,18 @@ and simple press Apply button</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+105"/>
+        <location line="+106"/>
         <source>Saving aborted</source>
         <translation>Ukládání přerušeno</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-65"/>
         <source>Qucs Netlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SPICE Netlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -11715,13 +11934,11 @@ and simple press Apply button</source>
         <translation>Při uložení bude přepsán původní soubor! pokračovat?</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <location line="+117"/>
         <source>Cancel</source>
-        <translation>Přerušit</translation>
+        <translation type="vanished">Přerušit</translation>
     </message>
     <message>
-        <location line="-108"/>
+        <location line="+10"/>
         <source>Cannot overwrite an open document</source>
         <translation>Otevřený soubor nelze přepsat</translation>
     </message>
@@ -11736,7 +11953,7 @@ and simple press Apply button</source>
         <translation>Uložit všechny soubory...</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+54"/>
         <source>Closing file...</source>
         <translation>Uzavřít soubor...</translation>
     </message>
@@ -11751,22 +11968,21 @@ and simple press Apply button</source>
         <translation>Chcete uložit změny před ukončením?</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>&amp;Discard</source>
-        <translation>&amp;Zrušit</translation>
+        <translation type="vanished">&amp;Zrušit</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+50"/>
         <source>Open examples directory...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+170"/>
+        <location line="+185"/>
         <source>untitled</source>
         <translation type="unfinished">nepojmenováno</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+29"/>
         <source>Printing...</source>
         <translation>Tisk...</translation>
     </message>
@@ -11776,12 +11992,32 @@ and simple press Apply button</source>
         <translation>Ukončení aplikace...</translation>
     </message>
     <message>
-        <location line="+1006"/>
+        <location line="+146"/>
+        <source>No simulations found. Tuning not possible. Please add at least one simulation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Tuning not possible for digital simulation. Only analog simulation supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Tuning has no effect without diagrams. Add at least one diagram on schematic.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+682"/>
+        <source>Symbol editing supported only for schematics and Verilog-A documents!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+369"/>
         <source>Schematic not saved! Simulation of unsaved schematic not possible. Save schematic first!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+20"/>
         <source>Simulation of text document is not possible!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11791,7 +12027,7 @@ and simple press Apply button</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+59"/>
         <source>Save Verilog-A module</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11815,7 +12051,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation type="vanished">Chcete program skutečně ukončit?</translation>
     </message>
     <message>
-        <location line="-918"/>
+        <location line="-1012"/>
         <source>The document was modified by another program !</source>
         <translation>Dokument byl modifikován jiným programem !</translation>
     </message>
@@ -11825,17 +12061,15 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation>Má být znovu nahráno nebo se má pokračovat s touto verzí ?</translation>
     </message>
     <message>
-        <location line="+1"/>
         <source>Reload</source>
-        <translation>Znovu otevřít</translation>
+        <translation type="vanished">Znovu otevřít</translation>
     </message>
     <message>
-        <location line="+0"/>
         <source>Keep it</source>
-        <translation>Ponechat</translation>
+        <translation type="vanished">Ponechat</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+174"/>
         <source>Cannot create </source>
         <translation>nelze vytvořit </translation>
     </message>
@@ -11850,7 +12084,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation>Program &quot;%1&quot; nelze spustit!</translation>
     </message>
     <message>
-        <location line="+354"/>
+        <location line="+368"/>
         <source>Could not load S[1,1].</source>
         <translation>Datovou sadu S[1,1] nelze otevřít.</translation>
     </message>
@@ -11875,7 +12109,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation>Chybná závislost!</translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_actions.cpp" line="-399"/>
+        <location filename="../qucs/qucs_actions.cpp" line="-405"/>
         <source>Cutting selection...</source>
         <translation>Vyříznout výběr...</translation>
     </message>
@@ -11895,7 +12129,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation>K tomuto úkonu musí být vybrány minimálně dva Elementy !</translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+65"/>
         <source>Opening aborted, file not found.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11907,7 +12141,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+29"/>
         <source>Show netlist</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11917,7 +12151,7 @@ Use subcircuit to crete Verilog-A module!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+118"/>
         <source>Cannot start %1 program! 
 
 (%2)</source>
@@ -11971,7 +12205,7 @@ Přepsat ?</translation>
         <translation>Soubor &quot;%1&quot; nelze uložit !</translation>
     </message>
     <message>
-        <location line="+247"/>
+        <location line="+243"/>
         <source>Please open project with subcircuits!</source>
         <translation>Je nutné otevřít projekt s podobvody!</translation>
     </message>
@@ -12039,7 +12273,7 @@ Have you saved the Verilog-A symbols?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/qucs_init.cpp" line="-893"/>
+        <location filename="../qucs/qucs_init.cpp" line="-930"/>
         <source>&amp;New</source>
         <translation>&amp;Nový</translation>
     </message>
@@ -13016,6 +13250,28 @@ Zobrazí obsah celé stránky</translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Zoom to selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Z</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Zoom to selected components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Zoom to selection
+
+Zoom to selected components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>View 1:1</source>
         <translation>Zobrazit 1:1</translation>
     </message>
@@ -13163,7 +13419,12 @@ Rotates the selected component by 90� counter-clockwise</source>
 Otočí vybrané komponenty o 90° doleva {90�?}</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+60"/>
+        <source>Ctrl+W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
         <source>Power combining</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13185,14 +13446,58 @@ Starts power combining calculation program</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+19"/>
         <source>View Data Display/Schematic
 
 Changes to data display or schematic page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+21"/>
+        <source>Set Diagram Limits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Pick the diagram limits using the mouse. Right click for default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set Diagram Limits
+
+Pick the diagram limits using the mouse. Right click for default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Reset Diagram Limits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Resets the limits for all axis to auto.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Reset Diagram Limits
+
+Resets the limits for all axis to auto.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Simulators Settings...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
         <source>&amp;About Qucs-S...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13209,7 +13514,7 @@ Rotates the selected component by 90° counter-clockwise</source>
 Otočí vybrané komponenty o 90° doleva</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-228"/>
         <source>Mirror about X Axis</source>
         <translation>Ozrcadlit podle x-ové osy</translation>
     </message>
@@ -13401,12 +13706,12 @@ Vloží symbol připojení</translation>
         <translation>Vodič</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+101"/>
         <source>Ctrl+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-99"/>
         <source>Inserts a wire</source>
         <translation>Vložit vodič</translation>
     </message>
@@ -13627,11 +13932,12 @@ Spustit podprogram pro výpočet atenuátoru</translation>
     </message>
     <message>
         <location line="+9"/>
+        <location line="+409"/>
         <source>Simulate</source>
         <translation>Simulovat</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-407"/>
         <source>Simulates the current schematic</source>
         <translation>Simuluje aktuální obvod</translation>
     </message>
@@ -13645,7 +13951,7 @@ Simulates the current schematic</source>
 Simuluje aktuální obvod</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+10"/>
         <source>View Data Display/Schematic</source>
         <translation>Zobrazit data/obvod</translation>
     </message>
@@ -13684,7 +13990,7 @@ Vypočítá pracovní DC bod a zobrazí ho</translation>
     <message>
         <location line="+3"/>
         <location line="+1"/>
-        <location filename="../qucs/qucs.cpp" line="+253"/>
+        <location filename="../qucs/qucs.cpp" line="+267"/>
         <source>Save netlist</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13713,7 +14019,7 @@ Sets a marker on a diagram&apos;s graph</source>
 Nastaví označení na jednom grafu v diagramu</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+17"/>
         <source>Show Last Messages</source>
         <translation>Zobrazit poslední hlášky</translation>
     </message>
@@ -13751,12 +14057,7 @@ Shows the netlist of the last simulation</source>
 Ukáže naposledy simulované netlisty</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Select default simulator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>Build Verilog-A module from subcircuit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13945,7 +14246,7 @@ O aplikačním prostředí QT od firmy Trolltech</translation>
         <translation>&amp;Nástroje</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <source>Compact modelling</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13955,12 +14256,12 @@ O aplikačním prostředí QT od firmy Trolltech</translation>
         <translation>&amp;Simulace</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+11"/>
         <source>&amp;View</source>
         <translation>&amp;Náhled</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+15"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
@@ -14011,12 +14312,12 @@ Open </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Work</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+36"/>
         <location line="+43"/>
         <source>no warnings</source>
         <translation>žádná varování</translation>
@@ -14139,12 +14440,12 @@ Open </source>
     </message>
     <message>
         <location line="+16"/>
-        <location line="+125"/>
+        <location line="+126"/>
         <source>Result:</source>
         <translation>Výsledek:</translation>
     </message>
     <message>
-        <location line="-107"/>
+        <location line="-108"/>
         <source>Qucs Attenuator Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14179,7 +14480,7 @@ Program pro návrh atenuátoru
         <translation>Copyright (C) 2006 :</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+83"/>
         <source>Success!</source>
         <translation>úspěšně!</translation>
     </message>
@@ -14275,7 +14576,7 @@ Jednoduchý editor pro Qucs
 <context>
     <name>QucsFilter</name>
     <message>
-        <location filename="../qucs-filter/qucsfilter.cpp" line="+54"/>
+        <location filename="../qucs-filter/qucsfilter.cpp" line="+55"/>
         <source>&amp;File</source>
         <translation>&amp;Soubor</translation>
     </message>
@@ -14351,29 +14652,29 @@ Jednoduchý editor pro Qucs
     </message>
     <message>
         <location line="+6"/>
-        <location line="+407"/>
+        <location line="+409"/>
         <source>Corner frequency:</source>
         <translation>Hraniční frekvence:</translation>
     </message>
     <message>
-        <location line="-394"/>
+        <location line="-396"/>
         <source>Stop frequency:</source>
         <translation>Koncová frekvence:</translation>
     </message>
     <message>
         <location line="+13"/>
-        <location line="+392"/>
+        <location line="+394"/>
         <source>Stop band frequency:</source>
         <translation>Limitní frekvence:</translation>
     </message>
     <message>
-        <location line="-379"/>
-        <location line="+380"/>
+        <location line="-381"/>
+        <location line="+382"/>
         <source>Pass band ripple:</source>
         <translation>Propustné zvlnění:</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-374"/>
         <source>Stop band attenuation:</source>
         <translation>Limitní tlumení:</translation>
     </message>
@@ -14418,7 +14719,7 @@ Jednoduchý editor pro Qucs
         <translation>Spočítat a zkopírovat do schránky</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+41"/>
         <source>About...</source>
         <translation>O programu...</translation>
     </message>
@@ -14682,7 +14983,7 @@ Aktivuje/deaktivuje výpis obsahu</translation>
         <translation type="vanished">Typ písma (aktivováno až po restartu):</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+30"/>
         <source>Large font size:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14802,7 +15103,7 @@ Aktivuje/deaktivuje výpis obsahu</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-39"/>
+        <location line="-44"/>
         <source>Schematic font (set after reload):</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14812,7 +15113,7 @@ Aktivuje/deaktivuje výpis obsahu</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+32"/>
         <source>Kazakh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14862,7 +15163,12 @@ Aktivuje/deaktivuje výpis obsahu</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="-65"/>
+        <source>Text document font (set after reload):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+71"/>
         <source>Use anti-aliasing for text for a smoother appearance.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15049,7 +15355,7 @@ soubory automaticky otevírat s odpovídajícími programy.</translation>
         <translation>Přednastavení</translation>
     </message>
     <message>
-        <location line="+62"/>
+        <location line="+64"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
@@ -15059,7 +15365,7 @@ soubory automaticky otevírat s odpovídajícími programy.</translation>
         <translation>Tato koncovka je již registrovaná!</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+470"/>
         <source>Select the home directory</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15692,7 +15998,7 @@ soubory automaticky otevírat s odpovídajícími programy.</translation>
 <context>
     <name>Schematic</name>
     <message>
-        <location filename="../qucs/schematic.cpp" line="-2109"/>
+        <location filename="../qucs/schematic.cpp" line="-2538"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
@@ -15712,7 +16018,7 @@ soubory automaticky otevírat s odpovídajícími programy.</translation>
         <translation>Verze:</translation>
     </message>
     <message>
-        <location line="+80"/>
+        <location line="+66"/>
         <source>Edit Text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15729,7 +16035,7 @@ Edits the text file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+2"/>
         <source>Edit Schematic</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15746,7 +16052,7 @@ Edits the schematic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+3"/>
         <source>Edit Circuit Symbol</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15765,12 +16071,12 @@ Edits the symbol for this schematic</source>
 Upraví symbol v tomto schématu</translation>
     </message>
     <message>
-        <location line="+1252"/>
+        <location line="+1634"/>
         <source>generic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qucs/schematic_file.cpp" line="-1423"/>
+        <location filename="../qucs/schematic_file.cpp" line="-1443"/>
         <location line="+22"/>
         <source>Error</source>
         <translation>Chyba</translation>
@@ -15788,7 +16094,17 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1036"/>
+        <location line="+897"/>
+        <source>Netlist error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>S2Spice warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+155"/>
         <source>ERROR: Cannot create library file &quot;%s&quot;.</source>
         <translation>CHYBA: Nelze vytvořit knihovnu v souboru &quot;%s&quot;.</translation>
     </message>
@@ -16011,7 +16327,7 @@ Set the admsXml location on the application settings.</source>
         <translation>Přerušit simulaci</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Starting new simulation on %1 at %2</source>
         <translation>Spustit novou simulaci na %1 v %2</translation>
     </message>
@@ -16021,7 +16337,7 @@ Set the admsXml location on the application settings.</source>
         <translation>vytváření netlistu... </translation>
     </message>
     <message>
-        <location line="+324"/>
+        <location line="+327"/>
         <location line="+24"/>
         <source>Error</source>
         <translation>Chyba</translation>
@@ -16033,7 +16349,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-357"/>
         <source>ERROR: Simulator is still running!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16059,7 +16375,7 @@ Set the admsXml location on the application settings.</source>
     </message>
     <message>
         <location line="+105"/>
-        <location line="+101"/>
+        <location line="+104"/>
         <source>done.
 </source>
         <translation type="unfinished"></translation>
@@ -16076,7 +16392,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+279"/>
+        <location line="+280"/>
         <source>ERROR: Cannot start </source>
         <translation type="unfinished"></translation>
     </message>
@@ -16142,12 +16458,7 @@ Set the admsXml location on the application settings.</source>
 <context>
     <name>SimSettingsDialog</name>
     <message>
-        <location filename="../qucs/extsimkernels/simsettingsdialog.cpp" line="+29"/>
-        <source>Default simulator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location filename="../qucs/extsimkernels/simsettingsdialog.cpp" line="+30"/>
         <source>Ngspice executable location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16157,12 +16468,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Xyce Parallel executable location (openMPI installed required)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>SpiceOpus executable location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16172,12 +16478,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Number of processors in a system:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Directory to store netlist and simulator output</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16187,7 +16488,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+28"/>
         <source>Apply changes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16199,8 +16500,7 @@ Set the admsXml location on the application settings.</source>
     <message>
         <location line="+3"/>
         <location line="+2"/>
-        <location line="+2"/>
-        <location line="+2"/>
+        <location line="+4"/>
         <location line="+2"/>
         <location line="+2"/>
         <source>Select ...</source>
@@ -16222,18 +16522,7 @@ Set the admsXml location on the application settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
-        <source>Simulator settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>Default simulator engine was changed!
-Please restart Qucs to affect changes!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
+        <location line="+42"/>
         <source>Select Ngspice executable location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16243,12 +16532,7 @@ Please restart Qucs to affect changes!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <source>Select Xyce Parallel executable location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+9"/>
+        <location line="+17"/>
         <source>Select SpiceOpus executable location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16357,35 +16641,35 @@ Please restart Qucs to affect changes!</source>
     </message>
     <message>
         <location line="+91"/>
-        <location line="+67"/>
+        <location line="+66"/>
         <source>Info</source>
         <translation>Informace</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-65"/>
         <source>Preprocessing SPICE file &quot;%1&quot;.</source>
         <translation>Předzpracování SPICE souboru &quot;%1&quot;.</translation>
     </message>
     <message>
+        <location line="+10"/>
         <location line="+11"/>
-        <location line="+11"/>
-        <location line="+55"/>
+        <location line="+54"/>
         <source>Error</source>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-64"/>
         <source>Cannot save preprocessed SPICE file &quot;%1&quot;.</source>
         <translation>Nelze uložit předzpracovaný SPICE soubor &quot;%1&quot;.</translation>
     </message>
     <message>
         <location line="+11"/>
-        <location line="+55"/>
+        <location line="+54"/>
         <source>Cannot execute &quot;%1&quot;.</source>
         <translation>Nelze spustit &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location line="-35"/>
+        <location line="-34"/>
         <source>SPICE Preprocessor Error</source>
         <translation>Chyba SPICE preprocesoru</translation>
     </message>
@@ -16395,7 +16679,7 @@ Please restart Qucs to affect changes!</source>
         <translation>Převod SPICE souboru &quot;%1&quot;.</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+23"/>
         <source>QucsConv Error</source>
         <translation>QucsConv chyba</translation>
     </message>
@@ -16424,7 +16708,7 @@ Please restart Qucs to affect changes!</source>
 <context>
     <name>SymbolWidget</name>
     <message>
-        <location filename="../qucs/symbolwidget.cpp" line="+49"/>
+        <location filename="../qucs/symbolwidget.cpp" line="+50"/>
         <source>Symbol:</source>
         <translation>Symbol:</translation>
     </message>
@@ -16489,7 +16773,7 @@ Please contact the developers.</source>
 <context>
     <name>TextDoc</name>
     <message>
-        <location filename="../qucs/textdoc.cpp" line="+229"/>
+        <location filename="../qucs/textdoc.cpp" line="+224"/>
         <source>Edit Text Symbol</source>
         <translation type="unfinished"></translation>
     </message>
@@ -16618,6 +16902,19 @@ Inserts the skeleton of a Octave function</source>
     </message>
 </context>
 <context>
+    <name>TunerDialog</name>
+    <message>
+        <location filename="../qucs/dialogs/tuner.cpp" line="+703"/>
+        <source>Add component</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Adding components from different schematics is not supported!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>VASettingsDialog</name>
     <message>
         <location filename="../qucs/dialogs/vasettingsdialog.cpp" line="+43"/>
@@ -16707,6 +17004,29 @@ Inserts the skeleton of a Octave function</source>
     <message>
         <location line="-3"/>
         <source>Enter an Icon File Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>tunerElement</name>
+    <message>
+        <location filename="../qucs/dialogs/tuner.cpp" line="-560"/>
+        <source>Max.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Min.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Val.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Step</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

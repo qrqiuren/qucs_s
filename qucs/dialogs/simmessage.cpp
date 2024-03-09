@@ -152,6 +152,9 @@ bool SimMessage::startProcess()
   Abort->setText(tr("Abort simulation"));
   Display->setDisabled(true);
 
+  ProgText->clear();
+  ErrText->clear();
+
   QString txt = tr("Starting new simulation on %1 at %2").
     arg(QDate::currentDate().toString("ddd dd. MMM yyyy")).
     arg(QTime::currentTime().toString("hh:mm:ss:zzz"));
@@ -394,9 +397,12 @@ void SimMessage::startSimulator()
         libs = "-c,-l" + libs;
       }
 #endif
+      // The following code runs the the qucs_run_hdl[.bat] script which in turn
+      // runs GHDL (three passes with -a -e and -r commands.). Note GHDL expects the
+      // time without spaces, so strip spaces from SimTime.
       Program = pathName(QucsSettings.BinDir + QucsDigi);
       Arguments  << QucsSettings.QucsHomeDir.filePath("netlist.txt")
-                 << DataSet << SimTime << pathName(SimPath)
+                 << DataSet << SimTime.remove(" ") << pathName(SimPath)
                  << pathName(QucsSettings.BinDir) << libs;
     }
     // Module.
@@ -569,7 +575,7 @@ void SimMessage::startSimulator()
 #else
     Program = QDir::toNativeSeparators(pathName(QucsSettings.BinDir + QucsDigi));
     Arguments << QucsSettings.QucsHomeDir.filePath("netlist.txt")
-              << DataSet << SimTime << pathName(SimPath)
+              << DataSet << SimTime.remove(" ") << pathName(SimPath)
 		      << pathName(QucsSettings.BinDir) << "-Wall" << "-c";
 
 #endif
@@ -638,9 +644,10 @@ void SimMessage::slotDisplayMsg()
       }
 #else
       SimProgress->setMaximum(100);
-      SimProgress->setValue(
-         10*int(ProgressText.at(i-2).toLatin1()-'0') +
-            int(ProgressText.at(i-1).toLatin1()-'0'));
+      int value = 10*int(ProgressText.at(i-2).toLatin1()-'0') +
+              int(ProgressText.at(i-1).toLatin1()-'0');
+      SimProgress->setValue(value);
+      emit progressBarChanged(value);
 #endif
       ProgressText.remove(0, i+1);
     }
@@ -851,4 +858,31 @@ void SimMessage::AbortSim()
   simKilled = true;
   SimProcess.kill();
 }
+
+/* \brief Allows the doc Widget to be set after the constructor
+ *
+ *  Useful for creating only one SimMessage dialog
+ */
+void SimMessage::setDocWidget(QWidget *w)
+{
+    this->DocWidget = w;
+
+    QucsDoc *Doc;
+    DocWidget = w;
+    if(QucsApp::isTextDocument(DocWidget))
+      Doc = (QucsDoc*) ((TextDoc*)DocWidget);
+    else
+      Doc = (QucsDoc*) ((Schematic*)DocWidget);
+
+    DocName = Doc->DocName;
+    DataDisplay = Doc->DataDisplay;
+    Script = Doc->Script;
+    QFileInfo Info(DocName);
+    DataSet = QDir::toNativeSeparators(Info.path()) +
+      QDir::separator() + Doc->DataSet;
+    showBias = Doc->showBias;     // save some settings as the document...
+    SimOpenDpl = Doc->SimOpenDpl; // ...could be closed during the simulation.
+    SimRunScript = Doc->SimRunScript;
+}
+
 // vim:ts=8:sw=2:et

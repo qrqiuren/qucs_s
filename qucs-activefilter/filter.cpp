@@ -22,6 +22,7 @@
 #include "filter.h"
 #include "qf_poly.h"
 #include "bessel.h"
+#include "legendre.h"
 
 static const int MaxOrder = 50;
 
@@ -57,7 +58,8 @@ Filter::Filter(Filter::FilterFunc ffunc_, Filter::FType type_, FilterParam par)
     Rp = par.Rp;
     As = par.As;
     Kv = par.Kv;
-    if (ffunc==Filter::Bessel) {
+    if (ffunc==Filter::Bessel||
+        ffunc==Filter::Legendre) {
         order = par.order;
     }
 }
@@ -124,6 +126,8 @@ bool Filter::calcFilter()
     case Filter::InvChebyshev : res = calcInvChebyshev();
         break;
     case Filter::Bessel : res = calcBessel();
+        break;
+    case Filter::Legendre : res = calcLegendre();
         break;
     case Filter::User : res = calcUserTrFunc();
         break;
@@ -231,7 +235,9 @@ void Filter::calcFirstOrder()
 
 void Filter::createPartList(QStringList &lst) {
     lst << QObject::tr("Part list");
-    lst << "Stage# C1(uF) C2(uF) R1(kOhm) R2(kOhm) R3(kOhm) R4(kOhm)  R5(kOhm) R6(kOhm)";
+    lst << QString("%1%2%3%4%5%6%7%8%9").arg("Stage#",6)
+           .arg("C1",12).arg("C2",12).arg("R1(kOhm)",10).arg("R2(kOhm)",10).arg("R3(kOhm)",10).arg("R4(kOhm)",10)
+           .arg("R5(kOhm)",10).arg("R6(kOhm)",10);
 
     for (const auto &stage: Sections) {
         QString suff1, suff2;
@@ -651,3 +657,20 @@ void Filter::set_TrFunc(QVector<long double> a, QVector<long double> b)
     vec_A = a;
     vec_B = b;
 }
+
+bool Filter::calcLegendre()
+{
+    Poles.clear();
+    Zeros.clear();
+
+    if (order<=0) return false;
+
+    for (int i=0;i<order;i++) {
+        Poles.append(std::complex<float>(LegendrePoles[order-1][2*i],LegendrePoles[order-1][2*i+1]));
+    }
+
+    reformPolesZeros();
+    return true;
+}
+
+

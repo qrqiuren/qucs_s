@@ -89,22 +89,23 @@ bool loadSettings()
     if(settings.contains("dy"))QucsSettings.dy=settings.value("dy").toInt();
     if(settings.contains("font"))QucsSettings.font.fromString(settings.value("font").toString());
     if(settings.contains("appFont"))QucsSettings.appFont.fromString(settings.value("appFont").toString());
+    if(settings.contains("textFont"))QucsSettings.textFont.fromString(settings.value("textFont").toString());
     if(settings.contains("LargeFontSize"))QucsSettings.largeFontSize=settings.value("LargeFontSize").toDouble(); // use toDouble() as it can interpret the string according to the current locale
     if(settings.contains("maxUndo"))QucsSettings.maxUndo=settings.value("maxUndo").toInt();
     if(settings.contains("NodeWiring"))QucsSettings.NodeWiring=settings.value("NodeWiring").toInt();
-    if(settings.contains("BGColor"))QucsSettings.BGColor.setNamedColor(settings.value("BGColor").toString());
+    if(settings.contains("BGColor"))QucsSettings.BGColor = misc::ColorFromString(settings.value("BGColor").toString());
     if(settings.contains("Editor"))QucsSettings.Editor=settings.value("Editor").toString();
     if(settings.contains("FileTypes"))QucsSettings.FileTypes=settings.value("FileTypes").toStringList();
     if(settings.contains("Language"))QucsSettings.Language=settings.value("Language").toString();
-    if(settings.contains("Comment"))QucsSettings.Comment.setNamedColor(settings.value("Comment").toString());
-    if(settings.contains("String"))QucsSettings.String.setNamedColor(settings.value("String").toString());
-    if(settings.contains("Integer"))QucsSettings.Integer.setNamedColor(settings.value("Integer").toString());
-    if(settings.contains("Real"))QucsSettings.Real.setNamedColor(settings.value("Real").toString());
-    if(settings.contains("Character"))QucsSettings.Character.setNamedColor(settings.value("Character").toString());
-    if(settings.contains("Type"))QucsSettings.Type.setNamedColor(settings.value("Type").toString());
-    if(settings.contains("Attribute"))QucsSettings.Attribute.setNamedColor(settings.value("Attribute").toString());
-    if(settings.contains("Directive"))QucsSettings.Directive.setNamedColor(settings.value("Directive").toString());
-    if(settings.contains("Task"))QucsSettings.Task.setNamedColor(settings.value("Task").toString());
+    if(settings.contains("Comment"))QucsSettings.Comment=misc::ColorFromString(settings.value("Comment").toString());
+    if(settings.contains("String"))QucsSettings.String=misc::ColorFromString(settings.value("String").toString());
+    if(settings.contains("Integer"))QucsSettings.Integer=misc::ColorFromString(settings.value("Integer").toString());
+    if(settings.contains("Real"))QucsSettings.Real=misc::ColorFromString(settings.value("Real").toString());
+    if(settings.contains("Character"))QucsSettings.Character=misc::ColorFromString(settings.value("Character").toString());
+    if(settings.contains("Type"))QucsSettings.Type=misc::ColorFromString(settings.value("Type").toString());
+    if(settings.contains("Attribute"))QucsSettings.Attribute=misc::ColorFromString(settings.value("Attribute").toString());
+    if(settings.contains("Directive"))QucsSettings.Directive=misc::ColorFromString(settings.value("Directive").toString());
+    if(settings.contains("Task"))QucsSettings.Task=misc::ColorFromString(settings.value("Task").toString());
 
     if (settings.contains("panelIconsTheme")) QucsSettings.panelIconsTheme = settings.value("panelIconsTheme").toInt();
     else QucsSettings.panelIconsTheme = qucs::autoIcons;
@@ -232,6 +233,7 @@ bool saveApplSettings()
     settings.setValue("dy", QucsSettings.dy);
     settings.setValue("font", QucsSettings.font.toString());
     settings.setValue("appFont", QucsSettings.appFont.toString());
+    settings.setValue("textFont", QucsSettings.textFont.toString());
     // store LargeFontSize as a string, so it will be also human-readable in the settings file (will be a @Variant() otherwise)
     settings.setValue("LargeFontSize", QString::number(QucsSettings.largeFontSize));
     settings.setValue("maxUndo", QucsSettings.maxUndo);
@@ -823,11 +825,17 @@ int main(int argc, char *argv[])
   QucsSettings.maxUndo = 20;
   QucsSettings.NodeWiring = 0;
 
+#if QT_VERSION < 0x060000
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling,true);
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps,true);
+#endif
+
   // initially center the application
   QApplication a(argc, argv);
   //QDesktopWidget *d = a.desktop();
   QucsSettings.font = QApplication::font();
   QucsSettings.appFont = QApplication::font();
+  QucsSettings.textFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
   QucsSettings.font.setPointSize(12);
   QSize size = QGuiApplication::primaryScreen()->size();
   int w = size.width();
@@ -950,11 +958,7 @@ int main(int argc, char *argv[])
     QucsSettings.Task = Qt::darkRed;
 
   QucsSettings.sysDefaultFont = QApplication::font();
-  a.setFont(QucsSettings.appFont);
-
-  // set codecs
-  //QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-//  QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+  QApplication::setFont(QucsSettings.appFont);
 
   QTranslator tor( 0 );
   QString lang = QucsSettings.Language;
@@ -964,7 +968,7 @@ int main(int argc, char *argv[])
 //    lang = QTextCodec::locale();
   }
   tor.load( QString("qucs_") + lang, QucsSettings.LangDir);
-  a.installTranslator( &tor );
+  QApplication::installTranslator( &tor );
 
   // This seems to be necessary on a few system to make strtod()
   // work properly !???!
@@ -1015,7 +1019,7 @@ int main(int argc, char *argv[])
     }
     else if (!strcmp(argv[i], "-v") || !strcmp(argv[i], "--version")) {
 #ifdef GIT
-      fprintf(stdout, "Qucs " PACKAGE_VERSION " (" GIT ")" "\n");
+      fprintf(stdout, "qucs s" PACKAGE_VERSION " (" GIT ")" "\n");
 #else
       fprintf(stdout, "Qucs " PACKAGE_VERSION "\n");
 #endif

@@ -22,6 +22,7 @@ pad2bit::pad2bit()
   createSymbol ();
   tx = x1 + 4;
   ty = y2 + 4;
+  icon_dx = 6;
   Model = "pad2bit";
   Name  = "Y";
 }
@@ -80,7 +81,8 @@ QString pad2bit::vhdlCode( int )
        "      when 3 => "+A+" <= '1'; "+B+" <= '1';\n" +
        "      when others => null;\n" +
        "    end case;\n";
-  s3 = "  end process;\n";
+  s3 = "    wait for 1 ns;\n"
+       "  end process;\n";
   s = s1+s2+s3;
   return s;
 }

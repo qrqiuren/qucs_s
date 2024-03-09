@@ -23,6 +23,7 @@
 #include "arrow.h"
 #include "arrowdialog.h"
 #include "schematic.h"
+#include "misc.h"
 #include <cmath>
 
 #include <QPolygon>
@@ -176,8 +177,7 @@ bool Arrow::load(const QString& s)
   if(!ok) return false;
 
   n  = s.section(' ',7,7);    // color
-  QColor co;
-  co.setNamedColor(n);
+  QColor co = misc::ColorFromString(n);
   Pen.setColor(co);
   if(!Pen.color().isValid()) return false;
 
@@ -318,8 +318,9 @@ void Arrow::MouseMoving(
 }
 
 // --------------------------------------------------------------------------
-bool Arrow::MousePressing()
+bool Arrow::MousePressing(Schematic *sch)
 {
+  Q_UNUSED(sch)
   State++;
   if(State > 2) {
     x1 = y1 = 0;
@@ -439,22 +440,33 @@ void Arrow::Bounding(int& _x1, int& _y1, int& _x2, int& _y2)
 
 // --------------------------------------------------------------------------
 // Rotates around the center.
-void Arrow::rotate()
+void Arrow::rotate(int xc, int yc)
 {
-  cx += (x2>>1) - (y2>>1);
-  cy += (x2>>1) + (y2>>1);
+    int xr1 = cx - xc;
+    int yr1 = cy - yc;
+    int xr2 = cx + x2 - xc;
+    int yr2 = cy + y2 - yc;
 
-  int tmp = x2;
-  x2  =  y2;
-  y2  = -tmp;
+    int tmp = xr2;
+    xr2  =  yr2;
+    yr2  = -tmp;
 
-  tmp =  xp1;
-  xp1 =  yp1;
-  yp1 = -tmp;
+    tmp = xr1;
+    xr1  =  yr1;
+    yr1  = -tmp;
 
-  tmp =  xp2;
-  xp2 =  yp2;
-  yp2 = -tmp;
+    cx = xr1 + xc;
+    cy = yr1 + yc;
+    x2 = xr2 - xr1;
+    y2 = yr2 - yr1;
+
+    tmp = xp1;
+    xp1 = yp1;
+    yp1 = -tmp;
+
+    tmp = xp2;
+    xp2 = yp2;
+    yp2 = -tmp;
 }
 
 // --------------------------------------------------------------------------
@@ -480,11 +492,11 @@ void Arrow::mirrorY()
 // --------------------------------------------------------------------------
 // Calls the property dialog for the painting and changes them accordingly.
 // If there were changes, it returns 'true'.
-bool Arrow::Dialog()
+bool Arrow::Dialog(QWidget *parent)
 {
   bool changed = false;
 
-  ArrowDialog *d = new ArrowDialog();
+  ArrowDialog *d = new ArrowDialog(parent);
   d->HeadWidth->setText(QString::number(Width));
   d->HeadLength->setText(QString::number(Height));
 

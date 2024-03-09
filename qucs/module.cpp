@@ -40,10 +40,12 @@ QMap<QString, QString> Module::vaComponents;
 Module::Module () {
   info = 0;
   category = "#special";
+  icon = nullptr;
 }
 
 // Destructor removes instance of module object from memory.
 Module::~Module () {
+    if (icon != nullptr) delete icon;
 }
 
 // Module registration using a category name and the appropriate
@@ -68,6 +70,9 @@ void Module::registerComponent(QString category, pInfoFunc info) {
     char *File;
     Component *c = (Component *) info(Name, File, true);
     Model = c->Model;
+
+    m->icon = new QPixmap(128,128);
+    c->paintIcon(m->icon);
 
     // put into category and the component hash
     if ((c->Simulator & QucsSettings.DefaultSimulator) == QucsSettings.DefaultSimulator) {
@@ -175,6 +180,8 @@ void Module::intoCategory (Module * m) {
 
 #define REGISTER_COMP_1(cat,val) \
   registerComponent (cat, &val::info)
+#define REGISTER_SPECIFIC_COMP_1(cat,val,inf1) \
+registerComponent (cat, &val::inf1)
 #define REGISTER_COMP_2(cat,val,inf1,inf2) \
   registerComponent (cat, &val::inf1); \
   registerComponent (cat, &val::inf2)
@@ -191,6 +198,8 @@ void Module::intoCategory (Module * m) {
   REGISTER_COMP_1 (QObject::tr("sources"),val)
 #define REGISTER_PROBE_1(val) \
   REGISTER_COMP_1 (QObject::tr("probes"),val)
+#define REGISTER_RF_COMP_1(val) \
+  REGISTER_COMP_1 (QObject::tr("RF components"),val)
 #define REGISTER_TRANS_1(val) \
   REGISTER_COMP_1 (QObject::tr("transmission lines"),val)
 #define REGISTER_NONLINEAR_1(val) \
@@ -199,6 +208,10 @@ void Module::intoCategory (Module * m) {
   REGISTER_COMP_2 (QObject::tr("nonlinear components"),val,inf1,inf2)
 #define REGISTER_NONLINEAR_3(val,inf1,inf2,inf3) \
   REGISTER_COMP_3 (QObject::tr("nonlinear components"),val,inf1,inf2,inf3)
+#define REGISTER_MICROEL_1(val,inf1) \
+REGISTER_SPECIFIC_COMP_1 (QObject::tr("microelectronics"),val,inf1)
+#define REGISTER_MICROEL_2(val,inf1,inf2) \
+REGISTER_COMP_2 (QObject::tr("microelectronics"),val,inf1,inf2)
 #define REGISTER_VERILOGA_1(val) \
   REGISTER_COMP_1 (QObject::tr("verilog-a devices"),val)
 #define REGISTER_VERILOGA_2(val,inf1,inf2) \
@@ -226,7 +239,7 @@ void Module::intoCategory (Module * m) {
 #define REGISTER_SPICE_1(val) \
   REGISTER_COMP_1 (QObject::tr("SPICE components"),val)
 #define REGISTER_SPICE_SEC_1(val) \
-  REGISTER_COMP_1 (QObject::tr("SPICE specific sections"),val)
+  REGISTER_COMP_1 (QObject::tr("SPICE netlist sections"),val)
 #define REGISTER_SPICE_SIM_1(val) \
   REGISTER_COMP_1 (QObject::tr("SPICE simulations"),val)
 #define REGISTER_XSPICE_1(val) \
@@ -249,6 +262,10 @@ void Module::registerModules (void) {
   REGISTER_LUMPED_1 (Inductor);
   REGISTER_LUMPED_1 (IndQ);
   REGISTER_LUMPED_1 (CapQ);
+  REGISTER_LUMPED_1 (potentiometer);
+  REGISTER_LUMPED_1 (Mutual);
+  REGISTER_LUMPED_1 (Mutual2);
+  REGISTER_LUMPED_1 (MutualX);
   // lumped components
   //if (QucsSettings.DefaultSimulator != spicecompat::simQucsator) {
       REGISTER_LUMPED_1 (R_SPICE);
@@ -256,33 +273,19 @@ void Module::registerModules (void) {
       REGISTER_LUMPED_1 (L_SPICE);
       REGISTER_LUMPED_1 (K_SPICE);
   //}
-  REGISTER_LUMPED_1 (Ground);
-  REGISTER_LUMPED_1 (SubCirPort);
 
   //if (QucsSettings.DefaultSimulator == spicecompat::simQucsator) {
       REGISTER_LUMPED_1 (Transformer);
       REGISTER_LUMPED_1 (symTrafo);
-      REGISTER_LUMPED_1 (dcBlock);
-      REGISTER_LUMPED_1 (dcFeed);
-      REGISTER_LUMPED_1 (BiasT);
-      REGISTER_LUMPED_1 (Attenuator);
-      REGISTER_LUMPED_1 (Amplifier);
-      REGISTER_LUMPED_1 (Isolator);
-      REGISTER_LUMPED_1 (Circulator);
+      REGISTER_LUMPED_1 (Ground);
+      REGISTER_LUMPED_1 (SubCirPort);
       REGISTER_LUMPED_1 (Gyrator);
-      REGISTER_LUMPED_1 (Phaseshifter);
-      REGISTER_LUMPED_1 (Coupler);
-      REGISTER_LUMPED_1 (Hybrid);
   //}
-
 
   REGISTER_LUMPED_1 (iProbe);
   REGISTER_LUMPED_1 (vProbe);
 
   //if (QucsSettings.DefaultSimulator == spicecompat::simQucsator) {
-      REGISTER_LUMPED_1 (Mutual);
-      REGISTER_LUMPED_1 (Mutual2);
-      REGISTER_LUMPED_1 (MutualX);
       REGISTER_LUMPED_1 (Switch);
   //} else {
       REGISTER_LUMPED_1 (S4Q_S);
@@ -290,11 +293,6 @@ void Module::registerModules (void) {
   //}
 
   REGISTER_LUMPED_1 (Relais);
-
-  //if (QucsSettings.DefaultSimulator == spicecompat::simQucsator) {
-      REGISTER_LUMPED_1 (RFedd);
-      REGISTER_LUMPED_1 (RFedd2P);
-  //}
 
   // sources
   REGISTER_SOURCE_1 (Volt_dc);
@@ -344,12 +342,27 @@ void Module::registerModules (void) {
       REGISTER_SOURCE_1 (vTRNOISE);
       REGISTER_SOURCE_1 (iTRNOISE);
       REGISTER_SOURCE_1 (vTRRANDOM);
-      REGISTER_SOURCE_1 (Vac_SPICE);
   //}
 
   // probes
   REGISTER_PROBE_1 (iProbe);
   REGISTER_PROBE_1 (vProbe);
+
+  // RF devices except transmission line
+  REGISTER_RF_COMP_1 (dcBlock);
+  REGISTER_RF_COMP_1 (dcFeed);
+  REGISTER_RF_COMP_1 (circularloop);
+  REGISTER_RF_COMP_1 (spiralinductor);
+  REGISTER_RF_COMP_1 (BiasT);
+  REGISTER_RF_COMP_1 (Attenuator);
+  REGISTER_RF_COMP_1 (Amplifier);
+  REGISTER_RF_COMP_1 (Isolator);
+  REGISTER_RF_COMP_1 (Circulator);
+  REGISTER_RF_COMP_1 (Phaseshifter);
+  REGISTER_RF_COMP_1 (Coupler);
+  REGISTER_RF_COMP_1 (Hybrid);
+  REGISTER_RF_COMP_1 (RFedd);
+  REGISTER_RF_COMP_1 (RFedd2P);
 
   // transmission lines
   //if (QucsSettings.DefaultSimulator == spicecompat::simQucsator) {
@@ -359,7 +372,9 @@ void Module::registerModules (void) {
       REGISTER_TRANS_1 (TwistedPair);
       REGISTER_TRANS_1 (CoaxialLine);
       REGISTER_TRANS_1 (RectLine);
+      REGISTER_TRANS_1 (CircLine);
       REGISTER_TRANS_1 (RLCG);
+      REGISTER_TRANS_1 (taperedline);
       REGISTER_TRANS_1 (Substrate);
       REGISTER_TRANS_1 (MSline);
       REGISTER_TRANS_1 (MScoupled);
@@ -398,15 +413,11 @@ void Module::registerModules (void) {
       REGISTER_NONLINEAR_1 (DIODE_SPICE);
       REGISTER_NONLINEAR_1 (NPN_SPICE);
       REGISTER_NONLINEAR_1 (PNP_SPICE);
-      REGISTER_NONLINEAR_2 (BJT_SPICE,infoNPN4,infoPNP4);
-      REGISTER_NONLINEAR_2 (BJT_SPICE,infoNPN5,infoPNP5);
+      REGISTER_NONLINEAR_2 (MOS_SPICE,info_NM3pin,info_PM3pin);
       REGISTER_NONLINEAR_1 (NJF_SPICE);
       REGISTER_NONLINEAR_1 (PJF_SPICE);
       REGISTER_NONLINEAR_1 (NMOS_SPICE);
       REGISTER_NONLINEAR_1 (PMOS_SPICE);
-      REGISTER_NONLINEAR_2 (MOS_SPICE,info_NM3pin,info_PM3pin);
-      REGISTER_NONLINEAR_2 (MOS_SPICE,info_NX3pin,info_PX3pin);
-      REGISTER_NONLINEAR_2 (MOS_SPICE,info_NX4pin,info_PX4pin);
       REGISTER_NONLINEAR_1 (MESFET_SPICE);
       REGISTER_NONLINEAR_1 (PMF_MESFET_SPICE);
       REGISTER_NONLINEAR_1 (S4Q_Ieqndef);
@@ -423,12 +434,22 @@ void Module::registerModules (void) {
       REGISTER_NONLINEAR_1 (TunnelDiode);
   //}
 
+// PDK devices
+      REGISTER_MICROEL_1 (R_SPICE, info_R3);
+      REGISTER_MICROEL_1 (C_SPICE, info_C3);
+      REGISTER_MICROEL_1 (DIODE_SPICE, info_DIODE3);
+      REGISTER_MICROEL_1 (NMOS_SPICE, info);
+      REGISTER_MICROEL_1 (PMOS_SPICE, info);
+      REGISTER_MICROEL_2 (MOS_SPICE,info_NM3pin,info_PM3pin);
+      REGISTER_MICROEL_2 (MOS_SPICE,info_NX3pin,info_PX3pin);
+      REGISTER_MICROEL_2 (MOS_SPICE,info_NX4pin,info_PX4pin);
+      REGISTER_MICROEL_2 (BJT_SPICE,infoNPN4,infoPNP4);
+      REGISTER_MICROEL_2 (BJT_SPICE,infoNPN5,infoPNP5);
 
   //if (QucsSettings.DefaultSimulator == spicecompat::simQucsator) {
       // verilog-a devices
       REGISTER_VERILOGA_1 (mod_amp);
       REGISTER_VERILOGA_1 (log_amp);
-      REGISTER_VERILOGA_1 (potentiometer);
       REGISTER_VERILOGA_1 (MESFET);
       REGISTER_VERILOGA_1 (photodiode);
       REGISTER_VERILOGA_1 (phototransistor);

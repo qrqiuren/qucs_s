@@ -1,6 +1,7 @@
 
 SET(COMPLIBS
 555_timer.lib
+AudioIC.lib
 Bridges.lib
 BJT_Extended.lib
 Cores.lib
@@ -10,9 +11,12 @@ DiodesSchottky.lib
 Ideal.lib
 JFETs.lib
 LEDs.lib
+Loudspeaker.lib
 MOSFETs.lib
 NMOSFETs.lib
 OpAmps.lib
+Optocoupler.lib
+PhotovoltaicRelay.lib
 PMOSFETs.lib
 Regulators.lib
 Substrates.lib
@@ -20,12 +24,17 @@ Transistors.lib
 Varistors.lib
 Z-Diodes.lib
 SpiceOpamp.lib
+Thermistor.lib
+Thyristor.lib
 Transformers.lib
 Xanalogue.lib
 XyceDigital.lib
 Xyce_Digital_TTL_Technology.lib
 BF998.lib
 Tubes.lib
+VoltageComparators.lib
+VoltageReferences.lib
+VoltageRegulators.lib
 )
 
 SET(BLACKLIST

@@ -25,6 +25,7 @@
 
 class Wire;
 class Schematic;
+class Diagram;
 class QPainter;
 class QMenu;
 class QMouseEvent;
@@ -38,7 +39,7 @@ public:
   MouseActions(QucsApp*);
   virtual ~MouseActions();
 
-  void setPainter(Schematic*);
+  static void setPainter(Schematic*);
   bool pasteElements(Schematic*);
   void editElement(Schematic*, QMouseEvent*);
   void editLabel(Schematic*, WireLabel*);
@@ -59,6 +60,10 @@ private:
   bool isMoveEqual;
   QucsApp* App;
 
+  Diagram* pActiveDiagram = nullptr;
+  QPointF mouseDownPoint;
+  QPointF mouseUpPoint;
+
   // -------------------------------------------------------------------
 public:
   void MMoveSelect(Schematic*, QMouseEvent*);
@@ -71,6 +76,7 @@ public:
   void MMoveDelete(Schematic*, QMouseEvent*);
   void MMoveLabel(Schematic*, QMouseEvent*);
   void MMoveMarker(Schematic*, QMouseEvent*);
+  void MMoveSetLimits(Schematic*, QMouseEvent*);
   void MMoveMirrorY(Schematic*, QMouseEvent*);
   void MMoveMirrorX(Schematic*, QMouseEvent*);
   void MMoveRotate(Schematic*, QMouseEvent*);
@@ -83,6 +89,7 @@ public:
   void MMoveScrollBar(Schematic*, QMouseEvent*);
 
   void MPressSelect(Schematic*, QMouseEvent*, float, float);
+  void MPressTune(Schematic *Doc, QMouseEvent *Event, float fX, float fY);
   void MPressDelete(Schematic*, QMouseEvent*, float, float);
   void MPressActivate(Schematic*, QMouseEvent*, float, float);
   void MPressMirrorX(Schematic*, QMouseEvent*, float, float);
@@ -94,6 +101,7 @@ public:
   void MPressWire2(Schematic*, QMouseEvent*, float, float);
   void MPressPainting(Schematic*, QMouseEvent*, float, float);
   void MPressMarker(Schematic*, QMouseEvent*, float, float);
+  void MPressSetLimits(Schematic*, QMouseEvent*, float, float);
   void MPressOnGrid(Schematic*, QMouseEvent*, float, float);
   void MPressMoveText(Schematic*, QMouseEvent*, float, float);
   void MPressZoomIn(Schematic*, QMouseEvent*, float, float);
@@ -110,11 +118,12 @@ public:
   void MReleaseResizePainting(Schematic*, QMouseEvent*);
   void MReleaseMoveText(Schematic*, QMouseEvent*);
   void MReleaseZoomIn(Schematic*, QMouseEvent*);
+  void MReleaseSetLimits(Schematic*, QMouseEvent*);
 
   void paintElementsScheme(Schematic*);
   void rotateElements(Schematic*, int&, int&);
   void moveElements(Schematic*, int&, int&);
-  void moveElements(Q3PtrList<Element>*, int, int);
+  static void moveElements(Q3PtrList<Element>*, int, int);
   void endElementMoving(Schematic*, Q3PtrList<Element>*);
   void rightPressMenu(Schematic*, QMouseEvent*, float, float);
 };

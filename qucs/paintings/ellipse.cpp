@@ -137,8 +137,7 @@ bool qucs::Ellipse::load(const QString& s)
   if(!ok) return false;
 
   n  = s.section(' ',5,5);    // color
-  QColor co;
-  co.setNamedColor(n);
+  QColor co = misc::ColorFromString(n);
   Pen.setColor(co);
   if(!Pen.color().isValid()) return false;
 
@@ -151,7 +150,7 @@ bool qucs::Ellipse::load(const QString& s)
   if(!ok) return false;
 
   n  = s.section(' ',8,8);    // fill color
-  co.setNamedColor(n);
+  co = misc::ColorFromString(n);
   Brush.setColor(co);
   if(!Brush.color().isValid()) return false;
 
@@ -292,8 +291,9 @@ void qucs::Ellipse::MouseMoving(
 }
 
 // --------------------------------------------------------------------------
-bool qucs::Ellipse::MousePressing()
+bool qucs::Ellipse::MousePressing(Schematic *sch)
 {
+  Q_UNUSED(sch)
   State++;
   if(State == 1) {
     x1 = x2;
@@ -342,13 +342,25 @@ bool qucs::Ellipse::getSelected(float fX, float fY, float w)
 
 // --------------------------------------------------------------------------
 // Rotates around the center.
-void qucs::Ellipse::rotate()
+void qucs::Ellipse::rotate(int xc, int yc)
 {
-  cy += (y2-x2) >> 1;
-  cx += (x2-y2) >> 1;
-  int tmp = x2;
-  x2 = y2;
-  y2 = tmp;
+    int xr1 = cx - xc;
+    int yr1 = cy - yc;
+    int xr2 = cx + x2 - xc;
+    int yr2 = cy + y2 - yc;
+
+    int tmp = xr2;
+    xr2  =  yr2;
+    yr2  = -tmp;
+
+    tmp = xr1;
+    xr1  =  yr1;
+    yr1  = -tmp;
+
+    cx = xr1 + xc;
+    cy = yr1 + yc;
+    x2 = xr2 - xr1;
+    y2 = yr2 - yr1;
 }
 
 // --------------------------------------------------------------------------
@@ -368,11 +380,11 @@ void qucs::Ellipse::mirrorY()
 // --------------------------------------------------------------------------
 // Calls the property dialog for the painting and changes them accordingly.
 // If there were changes, it returns 'true'.
-bool qucs::Ellipse::Dialog()
+bool qucs::Ellipse::Dialog(QWidget *parent)
 {
   bool changed = false;
 
-  FillDialog *d = new FillDialog(QObject::tr("Edit Ellipse Properties"));
+  FillDialog *d = new FillDialog(QObject::tr("Edit Ellipse Properties"), true, parent);
   misc::setPickerColor(d->ColorButt,Pen.color());
   d->LineWidth->setText(QString::number(Pen.width()));
   d->StyleBox->setCurrentIndex(Pen.style()-1);
